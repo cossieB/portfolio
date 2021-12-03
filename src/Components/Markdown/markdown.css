@@ -1,0 +1,28 @@
+#markedownContainer {
+    background-color: aqua;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
+}
+
+#preview {
+    background: white;
+    border: 2px solid black;
+}
+.prevAndEdit {
+    padding: 1rem;
+    width: 45%;
+    height: 80%;
+    overflow-y: scroll;
+}
+  
+@media  (max-width: 768px) {
+    #markedownContainer {
+        flex-direction: column;
+    }
+    .prevAndEdit {
+        width: 90%;
+    }
+}  
