@@ -1,0 +1,71 @@
+  #quoteContainer {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: gray;
+  }
+  
+  #quote-box {
+    margin: 50px auto;
+    background: white;
+    width: 50%;
+    border-radius: 10px;
+    padding: 1.5rem 1.5rem
+  }
+  #author {
+    color: blue;
+    text-align: right;
+   
+  }
+  #quoteButtons {
+    display: flex;
+    justify-content: space-around;
+  }
+  #tweet-quote img{
+    height: 35px;
+    width: auto;
+  }
+  #new-quote {
+    background: lightblue;
+    border: 1px solid blue
+  }
+  #new-quote:active {
+    transform: scale(0.95);
+    background: rgb(100,100,255);
+  }
+  
+
+  .anims-enter {
+    opacity: 0;
+    transform: translateX(150px);
+
+  }
+  .anims-enter-active {
+    transform: translateX(0); 
+    opacity: 1;
+    transition:all 200ms ease;
+
+  }
+  .anims-exit {
+    opacity: 1;
+    transform: translateX(0);
+    
+  }
+  .anims-exit.anims-exit-active {
+    opacity: 0;
+    transform: translateX(-150px);
+    transition: all 200ms ease;
+  }
+  .anims-exit-done {
+    opacity: 0;
+  }
+
+  @media screen and (max-width: 768px) {
+    body {
+      font-size: .8rem;
+    }
+    #quote-box {
+      width: 80%
+    }  
+  }
