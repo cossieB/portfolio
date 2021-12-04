@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { marked } from 'marked'
 import { initialText } from "./initial";
 import './markdown.css'
@@ -13,6 +13,9 @@ interface P { }
 marked.setOptions({ breaks: true })
 
 export default function Markdown(props: P) {
+    useEffect(() => {
+        document.title = "Markdown Preview"
+    }, [])
     const [input, setInput] = useState(initialText);
     const [markeddown, setMarkeddown] = useState(marked(initialText))
 

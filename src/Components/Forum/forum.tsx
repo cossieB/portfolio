@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import Users from "./users";
 import './forum.css'
 import Board from "./Board";
@@ -44,6 +44,9 @@ function Signup(props: P) {
 }
 
 export default function Forum() {
+    useEffect(() => {
+        document.title = "Forum"
+    }, [])
     const [user, setUser] = useState<Users | null>(null)
     return (
         <main id="forumContainer">
