@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Projs } from "./Interfaces";
 import './Projects.css'
@@ -30,6 +30,9 @@ const projectArray: Projs[] = [
 }]
 
 export default function Projects() {
+    useEffect(() => {
+        document.title = "Cossie"
+    }, [])
     return (
         <main id="projectContainer">
             <div id="projects">
