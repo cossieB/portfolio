@@ -72,31 +72,31 @@ export default class Calculator extends React.Component<P, S> {
     }
     render() {
         return (
-            <main id="calcContainer">
+            <main id="calcContainer" className="container flexCenter">
                 <div id="calculator">
                     <div id="calcDisp">
                         <div>{this.state.display}</div>
                         <div id="result">{this.state.calc}</div>
                     </div>
                     <div id="calcButtons">
-                        <button id="clear" style={{background: "red"}} onClick={() => this.setState(initialState)}>AC</button>
-                        <button id="del" onClick={this.del} value="del">←</button>
-                        <button id="multiply" value="*" onClick={this.operation} >X</button>
-                        <button id="seven" value="7" onClick={this.numPress}>7</button>
-                        <button id="eight" value="8" onClick={this.numPress}>8</button>
-                        <button id="nine" value="9" onClick={this.numPress}>9</button>
-                        <button id="divide" value="/" onClick={this.operation} >/</button>
-                        <button id="four" value="4" onClick={this.numPress}>4</button>
-                        <button id="five" value="5" onClick={this.numPress}>5</button>
-                        <button id="six" value="6" onClick={this.numPress}>6</button>
-                        <button id="add" value="+" onClick={this.operation} >+</button>
-                        <button id="one" value="1" onClick={this.numPress}>1</button>
-                        <button id="two" value="2" onClick={this.numPress}>2</button>
-                        <button id="three" value="3" onClick={this.numPress}>3</button>
-                        <button id="subtract" value="-" onClick={this.operation} >-</button>
-                        <button id="decimal" onClick={this.decimal} >.</button>
-                        <button id="zero" value="0" onClick={this.numPress}>0</button>
-                        <button id="equals" style={{background: "green"}} onClick={this.eval}>=</button>
+                        <button className="numButtons" id="clear" style={{background: "red"}} onClick={() => this.setState(initialState)}>AC</button>
+                        <button className="numButtons" id="del" onClick={this.del} value="del">←</button>
+                        <button className="numButtons" id="multiply" value="*" onClick={this.operation} >X</button>
+                        <button className="numButtons" id="seven" value="7" onClick={this.numPress}>7</button>
+                        <button className="numButtons" id="eight" value="8" onClick={this.numPress}>8</button>
+                        <button className="numButtons" id="nine" value="9" onClick={this.numPress}>9</button>
+                        <button className="numButtons" id="divide" value="/" onClick={this.operation} >/</button>
+                        <button className="numButtons" id="four" value="4" onClick={this.numPress}>4</button>
+                        <button className="numButtons" id="five" value="5" onClick={this.numPress}>5</button>
+                        <button className="numButtons" id="six" value="6" onClick={this.numPress}>6</button>
+                        <button className="numButtons" id="add" value="+" onClick={this.operation} >+</button>
+                        <button className="numButtons" id="one" value="1" onClick={this.numPress}>1</button>
+                        <button className="numButtons" id="two" value="2" onClick={this.numPress}>2</button>
+                        <button className="numButtons" id="three" value="3" onClick={this.numPress}>3</button>
+                        <button className="numButtons" id="subtract" value="-" onClick={this.operation} >-</button>
+                        <button className="numButtons" id="decimal" onClick={this.decimal} >.</button>
+                        <button className="numButtons" id="zero" value="0" onClick={this.numPress}>0</button>
+                        <button className="numButtons" id="equals" style={{background: "green"}} onClick={this.eval}>=</button>
                     </div>
                 </div>
             </main>

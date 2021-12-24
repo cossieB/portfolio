@@ -66,7 +66,7 @@ export default class Soundboard extends React.Component<{}, State> {
     }
     render() {
         return (
-            <div id="soundboardContainer">
+            <div id="soundboardContainer" className="container flexCenter">
                 <div id="drum-machine">
                     <div id="display" >{this.state.disp}</div>
                     <SoundButtons play={this.play} />

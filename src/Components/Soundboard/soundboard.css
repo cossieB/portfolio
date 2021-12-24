@@ -1,10 +1,7 @@
 #soundboardContainer {
-    height: 100vh;
     background: lightblue;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;    
+    flex-direction: column; 
   }
     
   #drum-machine {
@@ -46,7 +43,7 @@
   @media (max-width: 768px) {
     #drum-machine {
       width: 90%;
-      height: 50%
+      height: 50vh;
     }
   }
   

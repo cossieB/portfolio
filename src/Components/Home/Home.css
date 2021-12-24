@@ -1,13 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Stick+No+Bills:wght@600&display=swap');
 
-body {
-    width: 100vw;
-    min-height: 100vh;
-    margin: 0px
-}
-
 #homeContainer {
-    display: flex;
     flex-direction: column;
     color: white;
     height: 100vh;
@@ -25,7 +18,7 @@ hr {
     width: 100%; 
     height: 50px;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     top: 0px; 
     left: 0px;
@@ -36,8 +29,10 @@ hr {
     color: red;
     font-size: 20px;
 }
+.homepageLinks {
+    margin: 0 5%
+}
 #welcome {
-    width: 100vw;
     height: 100%;
     background: linear-gradient(45deg, red, black);
     display: flex;
@@ -45,4 +40,28 @@ hr {
     justify-content: center;
     align-items: center;
     border-bottom: 2px solid white;
+}
+
+@media (max-width: 768px) {
+    #navbar {
+        width: 100vw;
+        height: 5rem;
+        justify-content: left;
+        overflow-x: scroll;
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
+    #navbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    #navbar a {
+        font-size: 16px;
+    }
+    .homepageLinks {
+        height: fit-content;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
