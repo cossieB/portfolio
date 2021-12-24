@@ -10,6 +10,9 @@ import Quotes from '../Quotes/quotes';
 import Soundboard from '../Soundboard/soundboard';
 import Forum from '../Forum/forum';
 import Markdown from '../Markdown/markdown';
+import Quiz from '../Quiz/Quiz';
+import About from '../About/about';
+import Contact from '../Contact/contact';
 
 function App() {
   return (
@@ -25,22 +28,12 @@ function App() {
       <Route path="/calculator"><Calculator /></Route>
       <Route path="/forum"><Forum /> </Route>
       <Route path="/markdown-preview"><Markdown />  </Route>
+      <Route path="/quiz"><Quiz  /></Route>
+      <Route path="/about"><About  /></Route>
+      <Route path="/contact"><Contact /> </Route>
     </Router>)
 }
 
 export default App;
 
-export const colors = [
-  '#16a085',
-  '#27ae60',
-  '#2c3e50',
-  '#f39c12',
-  '#e74c3c',
-  '#9b59b6',
-  '#FB6964',
-  '#342224',
-  '#472E32',
-  '#BDBB99',
-  '#77B1A9',
-  '#73A857'
-]
+

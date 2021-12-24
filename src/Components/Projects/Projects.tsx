@@ -11,6 +11,10 @@ const projectArray: Projs[] = [
     title: "Calculator",
     img: "https://i.imgur.com/ZATzYu9.jpg",
     path: "/calculator"
+}, {
+    title: 'Quiz',
+    path: '/quiz',
+    img: 'https://i.imgur.com/9Vyco2A.png'
 },{
     title: "Soundboard",
     img: "https://i.imgur.com/r6vVDjt.jpg",
@@ -34,7 +38,7 @@ export default function Projects() {
         document.title = "Cossie"
     }, [])
     return (
-        <main id="projectContainer">
+        <main id="projectContainer" className="container flexCenter">
             <div id="projects">
                 {projectArray.map(proj => {
                     return <div key={proj.path} className="tile"><Link to={proj.path} ><img src={proj.img} alt={proj.path} />{proj.title} </Link></div>

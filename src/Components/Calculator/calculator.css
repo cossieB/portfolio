@@ -1,9 +1,5 @@
 #calcContainer {
     background: antiquewhite;
-	display: flex;
-	height: 100vh;
-	justify-content: center;
-	align-items: center;
 }
 #calculator {
 	width: 400px;
@@ -22,7 +18,7 @@
 	height: 250px;
 	padding: 1rem 1rem;
 }
-#calcButtons button {
+.numButtons {
 	border-radius: 10px;
 	background: gray;
 	color: white;

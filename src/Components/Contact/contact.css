@@ -1,0 +1,45 @@
+#contactContainer {
+    background-color: darkslategray;
+    color: white;
+    font-size: large;
+    font-family: helvetica;
+    flex-direction: column;
+}
+
+#contactForm {
+    width: 50vw;
+    height: 75vh;
+}
+#contactForm div {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    width: 100%;
+}
+#contactForm div textarea {
+    height: 12rem
+}
+
+#contactForm button {
+    margin-top: 5%;
+    font-size: large;
+    width: inherit;
+    color: aliceblue;
+    height: 3rem;
+    background: none;
+    border: 5px solid steelblue;
+}
+#contactForm button:hover {
+    background-color: steelblue;
+    box-shadow: 0 0 5px 5px aliceblue;
+    border: none;
+}
+#contactForm input {
+    height: 25px;
+}
+@media (max-width: 768px) {
+
+    #contactForm {
+        width: 90%;
+    }
+}

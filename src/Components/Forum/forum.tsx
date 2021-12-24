@@ -49,7 +49,7 @@ export default function Forum() {
     }, [])
     const [user, setUser] = useState<Users | null>(null)
     return (
-        <main id="forumContainer">
+        <main id="forumContainer" className="container">
             <UserContext.Provider value={user} >
             {user ? <Board /> : <Signup setUser={setUser} />}       
             </UserContext.Provider>

@@ -1,9 +1,8 @@
   #quoteContainer {
-    height: 100vh;
-    width: 100%;
-    display: flex;
     align-items: center;
-    background-color: gray;
+    background: gray;
+    background-size: cover;
+    transition: all 500ms ease;
   }
   
   #quote-box {
@@ -19,11 +18,12 @@
    
   }
   #quoteButtons {
+    height: 50px;
     display: flex;
     justify-content: space-around;
   }
-  #tweet-quote img{
-    height: 35px;
+  .shareQuotes img{
+    height: 100%;
     width: auto;
   }
   #new-quote {
@@ -32,16 +32,15 @@
   }
   #new-quote:active {
     transform: scale(0.95);
-    background: rgb(100,100,255);
+    background-color: deepskyblue;
   }
-  
 
   .anims-enter {
     opacity: 0;
     transform: translateX(150px);
 
   }
-  .anims-enter-active {
+  .anims-enter.anims-enter-active {
     transform: translateX(0); 
     opacity: 1;
     transition:all 200ms ease;
@@ -62,10 +61,16 @@
   }
 
   @media screen and (max-width: 768px) {
-    body {
+    #quoteContainer {
       font-size: .8rem;
     }
     #quote-box {
       width: 80%
     }  
+    #socialButtons {
+      width: 70%;
+    }
+    .shareQuotes img {
+      padding-left: 3%;
+    }
   }

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import { useRef } from "react";
 import { NavLink } from "react-router-dom";
 import './navigator.css'
 
@@ -12,9 +12,19 @@ const paths: O[] = [
     {
         label: "Home",
         path: "/"
+    }, 
+    {
+        label: "About Me",
+        path: "/about"
     }, {
+        label: "Contact Me",
+        path: "contact"
+    },{
         label: "Calculator",
         path: "/calculator"
+    }, {
+        label: "Quiz",
+        path: '/quiz'
     }, {
         label: "Soundboard",
         path: "/soundboard"

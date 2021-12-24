@@ -90,7 +90,7 @@ export default class Pomodoro extends React.Component<PomProp, PomState> {
     }
     render() {
         return (
-            <main id="pomodoro">
+            <main id="pomodoro" className="container flexCenter">
                 <div id="outer">
                     <div id="controls">
                         <section >
