@@ -26,8 +26,8 @@ const paths: O[] = [
         label: "Quiz",
         path: '/quiz'
     }, {
-        label: "Soundboard",
-        path: "/soundboard"
+        label: 'Memory Game',
+        path: '/memory'
     }, {
         label: "Pomodoro",
         path: "/pomodoro"
@@ -35,11 +35,14 @@ const paths: O[] = [
         label: "Random Quote Machine",
         path: "/quotes"
     }, {
+        label: "Markdown Preview",
+        path: "/markdown-preview"
+    }, {
         label: "Message Board",
         path: "/forum"
     }, {
-        label: "Markdown Preview",
-        path: "markdown-preview"
+        label: "Soundboard",
+        path: "soundboard"
     }]
 
 export default function RouteNavigator() {

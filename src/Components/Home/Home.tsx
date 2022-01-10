@@ -5,7 +5,7 @@ import './Home.css'
 export default function Home() {
     useEffect(() => {
         document.title = "Cossie"
-    })
+    }, [])
     return (
         <main id="homeContainer" className="container">
             <nav id="navbar">

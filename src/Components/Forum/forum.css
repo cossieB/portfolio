@@ -6,15 +6,13 @@
 }
 #signupForm {
     align-self: center;
-    justify-self: center;
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 1rem;
     height: 60vh;
-    width: 45vh;
+    width: 50%;
     border: 1px solid #ebe9f8;
 }
 #errorDiv {
@@ -24,6 +22,7 @@
     position: absolute;
     line-height: 1;
     bottom: 0;
+    width: 80%;
 }
 #header {
     display: flex;
@@ -214,5 +213,8 @@
     }
     .posterInfo {
         padding: 0.5rem;
+    }
+    #signupForm {
+        width: 90%;
     }
   }

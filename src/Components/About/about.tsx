@@ -5,7 +5,7 @@ import { langs, lang, frontend, backend } from './vars'
 export default function About() {
     useEffect(() => {
         document.title = "Buntu Cossie"
-    })
+    },[])
     return (
         <div id="aboutContainer">
             <div id="nameAndPic">

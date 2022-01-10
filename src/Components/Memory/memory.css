@@ -1,0 +1,81 @@
+#memoryContainer {
+    background: radial-gradient(black, blue);
+    color: white;
+    font-size: large;
+}
+#memoryContainer button {
+    color: white;
+    background-color: white!;
+}
+#memoryContainer button:hover {
+    color: black
+}
+#memoryContainer svg {
+    color: black
+}
+#memoryBlock {
+    width: 500px;
+    height: 500px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.memoryCard {
+    background-color: thistle;
+    display: flex;
+    border: 1px solid white;
+    font-size: xx-large;
+    transition: background-color 500ms ease;
+}
+.memoryCard.hide {
+    background-color: black;
+}
+.memoryCard.matched {
+    background-color: green;
+}
+.memoryCard svg {
+    transform: scale(3);
+}
+#highScores {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    width: 100%;
+}
+#finished {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 100%;
+}
+.datesAndTimes {
+    display: flex;
+    justify-content: space-between;
+}
+.leaderboardContainer {
+    width: 33%;
+}
+#memoryContainer input{
+    background: white;
+}
+@media (max-width: 768px) {
+    #highScores {
+        flex-direction: column-reverse;
+        align-items: center;
+        width: 100%;
+    }
+    .leaderboard {
+        width: 100%;
+    }
+    .leadership {
+        width: 100%;
+    }
+    .leaderboardContainer {
+        width: 90%;
+    }
+    .datesAndTimes {
+        width: 100%;
+    }
+    #memoryBlock {
+        width: 90%;
+    }
+}

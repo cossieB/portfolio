@@ -14,7 +14,6 @@ export interface Scores {
 }
 
 export interface P11 {
-    user: string,
     setReadInstructions: React.Dispatch<React.SetStateAction<boolean>>
 }
 export interface P333 {

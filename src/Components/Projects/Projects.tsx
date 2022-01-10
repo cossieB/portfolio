@@ -16,17 +16,21 @@ const projectArray: Projs[] = [
     path: '/quiz',
     img: 'https://i.imgur.com/9Vyco2A.png'
 },{
-    title: "Soundboard",
-    img: "https://i.imgur.com/r6vVDjt.jpg",
-    path: "/soundboard"
+    title: 'Memory Game',
+    path: '/memory',
+    img: "https://i.imgur.com/WO3chGz.png"
+},{
+    title: "Random Quote Machine",
+    path: "/quotes",
+    img: "https://i.imgur.com/2yUdLKH.jpg"   
 }, {
     title: "Markdown Preview",
     path: "markdown-preview",
     img: "https://i.imgur.com/kCxWBFO.jpg"
 }, {
-    title: "Random Quote Machine",
-    path: "/quotes",
-    img: "https://i.imgur.com/2yUdLKH.jpg"
+    title: "Soundboard",
+    img: "https://i.imgur.com/r6vVDjt.jpg",
+    path: "/soundboard"
 }, {
     title: "Message Board",
     path: "/forum",

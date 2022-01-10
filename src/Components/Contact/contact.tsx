@@ -1,5 +1,5 @@
 import { addDoc, collection } from 'firebase/firestore'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { db } from '../../firestore'
 import './contact.css'
 
@@ -12,11 +12,12 @@ interface P {
     setEmail: React.Dispatch<React.SetStateAction<string>>
     msg: string,
     setMsg: React.Dispatch<React.SetStateAction<string>>,
-    handleSubmit(e: React.FormEvent<HTMLFormElement>): void
+    handleSubmit(e: React.FormEvent<HTMLFormElement>): void,
+    pressed: boolean
 }
 
 function ContactForm(props: P) {
-    const { name, setName, company, setCompany, email, setEmail, msg, setMsg, handleSubmit } = props
+    const { name, setName, company, setCompany, email, setEmail, msg, setMsg, handleSubmit, pressed } = props
     return (
         <>
             <h1>Contact Me</h1>
@@ -37,7 +38,7 @@ function ContactForm(props: P) {
                     <label htmlFor='contactMessage' >Message</label>
                     <textarea onChange={(e) => setMsg(e.target.value)} value={msg} id='contactMessage' required minLength={10} maxLength={500} name="message" placeholder="Message" />
                 </div>
-                <button type="submit" >Submit</button>
+                <button type="submit" disabled={pressed} >Submit</button>
             </form>
         </>
     )
@@ -62,6 +63,11 @@ function Fail({errors}: {errors: string[]}) {
         </div>
     )
 }
+function Loading() {
+    return (
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/YouTube_loading_symbol_3_%28transparent%29.gif" alt="working please waiting..." />
+    )
+}
 
 export default function Contact() {
     const [name, setName] = useState("")
@@ -70,10 +76,16 @@ export default function Contact() {
     const [msg, setMsg] = useState("")
     const [sent, setSent] = useState(false);
     const [addedToBD, setAddedTODB] = useState(false)
-    const [errors, setErrors] = useState<string[]>([])
+    const [errors, setErrors] = useState<string[]>([]);
+    const [pressed, setPressed] = useState(false)
+
+    useEffect(() => {
+        document.title = 'Contact Me'
+    }, [])
 
     function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
+        setPressed(true)
         sendData();
         addToDB();
     }
@@ -91,13 +103,17 @@ export default function Contact() {
 
     async function sendData() {
         try {
-            const data = await fetch('https://BitesizedCarelessPort.cossie.repl.co/email', {
+            const response = await fetch('https://BitesizedCarelessPort.cossie.repl.co/email', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({ name, company, email, msg })
             })
+            const data = await response.json()
+            if (data.status == 'failure') {
+                throw new Error(data.error)
+            }
             setSent(true)
         }
         catch (e: any) {
@@ -107,7 +123,7 @@ export default function Contact() {
 
     return (
         <div id="contactContainer" className="container flexCenter">
-            {sent || addedToBD ? <Thanks /> : errors.length > 0 ? <Fail errors={errors} /> : <ContactForm name={name} setName={setName} company={company} setCompany={setCompany} email={email} setEmail={setEmail} msg={msg} setMsg={setMsg} handleSubmit={handleSubmit} /> }
+            {sent || addedToBD ? <Thanks /> : errors.length > 0 ? <Fail errors={errors} /> : pressed ? <Loading /> : <ContactForm name={name} setName={setName} company={company} setCompany={setCompany} email={email} setEmail={setEmail} msg={msg} setMsg={setMsg} handleSubmit={handleSubmit} pressed={pressed} /> }
         </div>
     )
 }

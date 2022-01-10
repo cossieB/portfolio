@@ -11,8 +11,8 @@ export default function MathLogic({next, total}: P9155) {
     }, [total])
 
     const multiplication = () => {
-        let a = Math.floor(Math.random() * 10)
-        let b = Math.floor(Math.random() * 10)
+        let a = Math.floor(Math.random() * 15)
+        let b = Math.floor(Math.random() * 15)
         next(`${a} * ${b}`, a*b)
     }
 
@@ -23,8 +23,8 @@ export default function MathLogic({next, total}: P9155) {
     }
 
     const subtraction = () => {
-        let a = Math.floor(Math.random() * 25);
-        let b = Math.floor(Math.random() * 25);
+        let a = Math.floor(Math.random() * 50);
+        let b = Math.floor(Math.random() * 50);
         [a, b] = [Math.max(a, b), Math.min(a, b)];
         next(`${a} - ${b}`, a-b)              
     }

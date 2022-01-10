@@ -37,7 +37,7 @@ function Signup(props: P) {
         <div id="signupForm">
             <h4>Select Username</h4>
             <input onChange={(e) => {setTempName(e.target.value); setErrorMsg([])}} /><br />
-            <button onClick={submit}>Submit </button>
+            <button className="button2" onClick={submit}>Submit </button>
             { errorMsg.length > 0 ? <div id="errorDiv">{errorMsg.map(msg => <p>{msg}</p> )}</div> : ""}
         </div>
     )
