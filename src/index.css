@@ -26,6 +26,20 @@ body {
   transform: scale(1.15);
   transition: transform 200ms ease-in-out;
 }
+.button2 {
+  padding: 0 1rem;
+  font-size: large;
+  color: inherit;
+  height: 3rem;
+  background: none;
+  border: inherit;
+  background-color: none;
+}
+.button2:hover {
+  background-color: aliceblue;
+  color: initial
+
+}
 /* width */
 ::-webkit-scrollbar {
   width: 10px;

@@ -145,7 +145,7 @@ export const userlist: User[] = [
         joinDate: new Date(2183, 10, 11)
     },
     {
-        username: "perfect",
+        username: "Miranda",
         name: "Miranda Lawson",
         avatar: "https://i.imgur.com/6jJuVjF.jpg",
         joinDate: new Date(2184, 6, 17)

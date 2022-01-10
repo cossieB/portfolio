@@ -4,6 +4,7 @@
     background-color: #ddd;
     display: flex;
     flex-direction: column;
+    min-height: 100%;
 }
 #myPic {
     object-fit: cover;
@@ -107,6 +108,7 @@
     #aboutContainer {
         min-height: 100vh;
         width: 100vw;
+        align-items: center;
     }
     
     #nameAndPic {
@@ -120,7 +122,9 @@
     #aboutMain {
         flex-direction: column;
         height: auto;
-        margin: 1rem;
+        margin-top: 1rem;
+        width: 80%;
+        align-items: center;
     }
     #myPic {
         left: auto;
@@ -129,6 +133,7 @@
         width: var(--htwtsmall);
     }
     #aboutNav {
+        width: 100%;
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 5%;
@@ -141,6 +146,10 @@
     .langDiv {
         flex-direction: column;
         align-items: center;
-        margin-top: 10%;
+        margin-top: 1.5rem;
+    }
+    .aboutNavBtn {
+        width: 100%;
+        justify-self: center;
     }
 }

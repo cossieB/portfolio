@@ -41,7 +41,7 @@ export default class MathQuiz extends React.Component<P, S> {
             this.setState(prev => ({ time: prev.time - 1 }))
         }
         else {
-            this.setState({ time: startTime })
+            this.setState({ time: startTime, userInput: "" })
             this.props.setTotal(c => c + 1)
         }
     }
@@ -58,7 +58,7 @@ export default class MathQuiz extends React.Component<P, S> {
             this.props.setTotal(t => t + 1)
         }
         else {
-            this.setState({ userInput: "" })
+            this.setState({ userInput: "", time: startTime })
             this.props.setTotal(t => t + 1)
         }
     }

@@ -8,7 +8,7 @@ import { P11, P333, P084 } from "./interfaces";
 export default function Quiz() {
     useEffect(() => {
         document.title = "Quiz"
-    })
+    }, [])
 
     const [user, setUser] = useState("")
     const [readInstructions, setReadInstructions] = useState(false)
@@ -26,7 +26,14 @@ export default function Quiz() {
     else if (!readInstructions) {
         return (
             <div id="quizContainer" className="container flexCenter">
-                <Instructions user={user} setReadInstructions={setReadInstructions} />
+                <Instructions setReadInstructions={setReadInstructions}>
+                    <div style={{ width: "60%" }}>
+                        <h1>Rules</h1>
+                        <h2>This challenge will test your mental math skills. You will have only <strong><em>five</em></strong> seconds to answer each question. There are 35 questions in total.</h2>
+                        <h3>Ready?</h3>
+                        <button className="niceButton" onClick={() => setReadInstructions(true)}>I'm Ready.</button>
+                    </div>
+                </Instructions>
             </div>
         )
     }
@@ -46,14 +53,11 @@ export default function Quiz() {
     }
 }
 
-function Instructions({ user, setReadInstructions }: P11) {
+export function Instructions({ setReadInstructions, children }: P11 & { children?: React.ReactNode }) {
     return (
-        <div style={{ width: "60%" }}>
-            <h1>Rules</h1>
-            <h2>This challenge will test your mental math skills. You will have only <strong><em>five</em></strong> seconds to answer each question.</h2>
-            <h3>Ready?</h3>
-            <button className="niceButton" onClick={() => setReadInstructions(true)}>I'm Ready.</button>
-        </div>
+        <>
+            {children}
+        </>
     )
 }
 
@@ -77,17 +81,17 @@ function Game({ user, total, correct, setTotal, setCorrect, setGameOver }: P333)
 function GameStats({ user, correct, total }: P084) {
     return (
         <div id="gameStats" className="gamePanels">
-            <div style={{fontSize: 25, fontWeight: 'bold'}}>{user}</div>
-            <div style ={{fontSize: 19}}>Correct: {correct}</div>
-            <div style ={{fontSize: 19}}>Total: {total}</div>
+            <div style={{ fontSize: 25, fontWeight: 'bold' }}>{user}</div>
+            <div style={{ fontSize: 19 }}>Correct: {correct}</div>
+            <div style={{ fontSize: 19 }}>Total: {total}</div>
         </div>
     )
 }
 
-function Signup({setUser}: {setUser: React.Dispatch<React.SetStateAction<string>>}) {
+export function Signup({ setUser }: { setUser: React.Dispatch<React.SetStateAction<string>> }) {
     const [tempname, setTempName] = useState("")
     const [errorMsg, setErrorMsg] = useState<string[]>([])
-    
+
     function submit() {
         let e = []
         if (tempname.length > 12 || tempname.length < 3) {
@@ -106,10 +110,10 @@ function Signup({setUser}: {setUser: React.Dispatch<React.SetStateAction<string>
     }
     return (
         <div id="signupForm">
-            <h4>Select Username</h4>
-            <input onChange={(e) => {setTempName(e.target.value); setErrorMsg([])}} /><br />
-            <button onClick={submit}>Submit </button>
-            { errorMsg.length > 0 ? <div id="errorDiv">{errorMsg.map(msg => <p>{msg}</p> )}</div> : ""}
+            <h4>Enter Your Name</h4>
+            <input onChange={(e) => { setTempName(e.target.value); setErrorMsg([]) }} /><br />
+            <button className="button2" onClick={submit}>Submit </button>
+            {errorMsg.length > 0 ? <div id="errorDiv">{errorMsg.map(msg => <p>{msg}</p>)}</div> : ""}
         </div>
     )
 }

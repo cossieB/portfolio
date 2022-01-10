@@ -13,6 +13,7 @@ import Markdown from '../Markdown/markdown';
 import Quiz from '../Quiz/Quiz';
 import About from '../About/about';
 import Contact from '../Contact/contact';
+import Memory from '../Memory/Memory';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
       <Route path="/quiz"><Quiz  /></Route>
       <Route path="/about"><About  /></Route>
       <Route path="/contact"><Contact /> </Route>
+      <Route path="/memory"><Memory /> </Route>
     </Router>)
 }
 
