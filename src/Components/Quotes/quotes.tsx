@@ -53,7 +53,7 @@ export default function Quotes() {
     }
     return (
         <TransitionGroup timeout={200}  >
-            <main style={window.innerWidth > 768 ? { background: `url(${background})` } : {backgroundColor: mobileBG} } id="quoteContainer" className="container">
+            <main style={ {backgroundColor: mobileBG} } id="quoteContainer" className="container">
                 <CSSTransition key={quote} enter={true} exit={true} in={true} appear={false} timeout={200} classNames="anims" >
                     <Quote quote={quote} author={author} next={next} />
                 </CSSTransition>
@@ -79,7 +79,7 @@ function Quote({ quote, author, next }: P) {
             </div>
             <div id="quoteButtons">
                 <div id="socialButtons">
-                    <a id="tweet-quote" title="Tweet this quote" className="shareQuotes" href={"https://twitter.com/intent/tweet?text=" + quote + " - " + author} target="_blank"> <img src="https://cdn-icons-png.flaticon.com/512/124/124021.png" /></a>
+                    <a id="tweet-quote" title="Tweet this quote" className="shareQuotes" href={`https://twitter.com/intent/tweet?text="${quote}" - ${author}`} target="_blank"> <img src="https://cdn-icons-png.flaticon.com/512/124/124021.png" /></a>
                     <a className="shareQuotes" title="Post on tumblr" href={"https://www.tumblr.com/widgets/share/tool?posttype=quote&tags=quotes&caption=" + author + "&content=" + quote + "&canonicalUrl=https%3A%2F%2Fwww.tumblr.com%2Fbuttons&shareSource=tumblr_share_button"} target="_blank" rel="noreferrer" ><img src="https://i.imgur.com/kUU9bBp.png" /> </a>
                 </div>
                 <button className="niceButton" id="new-quote" onClick={next} >Next Quote</button>
