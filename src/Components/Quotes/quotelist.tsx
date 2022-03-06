@@ -381,7 +381,7 @@ export const quotes: qt[] = [
     author: "Drax"
   },
   {
-    quote: "When you're ugly and someone loves you, you know they love you for who you're are.",
+    quote: "When you're ugly and someone loves you, you know they love you for who you are.",
     author: "Drax"
   },
   {
@@ -601,7 +601,7 @@ export const quotes: qt[] = [
     author: "Benjamin Franklin"
   },
   {
-    quote: "The ancient Oracle said that I was the wisest of all the Greeks. It is because I alone, of all the Greeks,know that I know nothing.",
+    quote: "The ancient Oracle said that I was the wisest of all the Greeks. It is because I alone, of all the Greeks, know that I know nothing.",
     author: "Socrates"
   },
   {
@@ -641,7 +641,7 @@ export const quotes: qt[] = [
     author: "Dave Barry"
   },
   {
-    quote: "Normal people … believe that if it ain't broke, don't fix it. Engineers believe that if it ain't broke, it doesn't have enough features yet.",
+    quote: "Normal people believe that if it ain't broke, don't fix it. Engineers believe that if it ain't broke, it doesn't have enough features yet.",
     author: "Scott Adams"
   },
   {
@@ -739,5 +739,29 @@ export const quotes: qt[] = [
   {
     quote: "Out on the town having the time of my life with a bunch of friends. They're all just out of frame, laughing too.",
     author: "Nathan Fielder"
+  },
+  {
+    quote: "There is no sunrise so beautiful that it is worth waking me up to see it.",
+    author: "Mindy Kaling"
+  },
+  {
+    quote: "Do not take life too seriously. You will never get out of it alive.",
+    author: "Elbet Hubbard"
+  },
+  {
+    quote: "Had I known that you'd be so willing to sacrifice yourself to save the world I wouldn't have tried to kill you.",
+    author: "Matt Miller"
+  },
+  {
+    quote: "Sometimes I hate being right.",
+    author: "Chrisjen Avasarala"
+  },
+  {
+    quote: "I want to die peacefully in my sleep like my grandfather, not screaming in terror like his passengers.",
+    author: "Jack Handey"
+  },
+  {
+    quote: "I'll have what Dr.V is having. The exact same order. If he has a fly in his thing I want a fly in mine but put the fly on the side coz I don't eat no flies. They walk on crap",
+    author: "Sheriff Mike Thompson"
   }
 ]

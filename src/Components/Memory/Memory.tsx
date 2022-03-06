@@ -1,7 +1,5 @@
-import { addDoc, collection, getDocs, limit, orderBy, query } from "firebase/firestore"
 import React, { useEffect } from "react"
 import { useState } from "react"
-import { db } from "../../firestore"
 import { Instructions, Signup } from "../Quiz/Quiz"
 import "./memory.css"
 import { GlobalScores, LocalScores } from "./memoryScores"
@@ -15,16 +13,6 @@ while (list.length > 0) {
     let elem = list.splice(idx, 1);
     cards = cards.concat(elem)
 }
-interface P9876 {
-    user?: string,
-    setUser?: React.Dispatch<React.SetStateAction<string>>,
-    time?: number,
-    setTime?: React.Dispatch<React.SetStateAction<number>>,
-    finished?: boolean,
-    setFinished?: React.Dispatch<React.SetStateAction<boolean>>,
-    readInstructions?: boolean,
-    setReadInstructions?: React.Dispatch<React.SetStateAction<boolean>>
-}
 
 export default function Memory() {
     useEffect(() => {
@@ -32,6 +20,7 @@ export default function Memory() {
     }, [])
     const [user, setUser] = useState("")
     const [time, setTime] = useState(0);
+    const [flips, setFlips] = useState(0)
     const [finished, setFinished] = useState(false)
     const [readInstructions, setReadInstructions] = useState(false);
     if (!user) {
@@ -58,14 +47,14 @@ export default function Memory() {
     else if (finished) {
         return (
             <div id="memoryContainer" className="container flexCenter">
-                <Finished user={user} time={time} setFinished={setFinished} />
+                <Finished user={user} time={time} setFinished={setFinished} flips={flips} />
             </div>
         )
     }
     else {
         return (
             <div id="memoryContainer" className="container flexCenter">
-                <GameStart time={time} setTime={setTime} setFinished={setFinished} />
+                <GameStart time={time} setTime={setTime} setFinished={setFinished} flips={flips} setFlips={setFlips} />
             </div>
         )
     }
@@ -74,27 +63,31 @@ export default function Memory() {
 export interface P33532 {
     user: string,
     time: number,
-    setFinished: React.Dispatch<React.SetStateAction<boolean>>
+    setFinished: React.Dispatch<React.SetStateAction<boolean>>,
+    flips: number
 }
 
 export interface P335320 {
     user: string,
-    time: number
+    time: number,
+    flips: number
 }
 
-function Finished({ user, time, setFinished }: P33532) {
+function Finished(props: P33532) {
+    const { user, time, setFinished, flips } = props
 
     return (
         <div id="finished">
             <div style={{ textAlign: 'center' }}>
                 <h1>A winner is you!!!</h1>
-                <h4>{user}, you finished in {time} seconds</h4>
+                <h4>{user}, you finished in {time} seconds and {flips} flips.</h4><br />
+                <h4>Total score: {flips + time}</h4>
             </div>
-            <button onClick={() => setFinished(false)} className="niceButton">Play Again</button>
-            <h2>Fastest Times</h2>
+            <button onClick={() => setFinished(false)} style={{width: '50%', alignSelf: 'center'}} className="niceButton">Play Again</button>
+            <h2 style={{textAlign: 'center'}}>Best Scores</h2>
             <div id="highScores">
-                <LocalScores user={user} time={time} />
-                <GlobalScores user={user} time={time} />
+                <LocalScores user={user} time={time} flips={flips} />
+                <GlobalScores user={user} time={time} flips={flips} />
             </div>
         </div>
     )
@@ -104,9 +97,13 @@ interface P54424 {
     time: number,
     setTime: React.Dispatch<React.SetStateAction<number>>,
     setFinished: React.Dispatch<React.SetStateAction<boolean>>
+    flips: number,
+    setFlips: React.Dispatch<React.SetStateAction<number>>
 }
 
-function GameStart({ time, setTime, setFinished }: P54424) {
+function GameStart(props: P54424) {
+    const { time, setTime, setFinished, setFlips } = props
+
     const [activeCards, setActiveCards] = useState<{ id: string, value: string }[]>([])
     const [matches, setMatches] = useState<string[]>([])
 
@@ -130,6 +127,7 @@ function GameStart({ time, setTime, setFinished }: P54424) {
                 setMatches(prev => [...prev, id, activeCards[0].id]);
             }
         }
+        setFlips(f => f + 1)
     }
     if (matches.length == 16) setFinished(true)
     return (
