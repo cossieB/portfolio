@@ -71,3 +71,17 @@ export const backend: lang[] = [
         logo: "https://jwt.io/img/logo-asset.svg"
     }
 ]
+export const misc: lang[] = [
+    {
+        language: "Docker",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Docker_%28container_engine%29_logo.svg/610px-Docker_%28container_engine%29_logo.svg.png"
+    },
+    {
+        language: "Git",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Git-logo.svg/1280px-Git-logo.svg.png"
+    },
+    {
+        language: "Firebase",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/3/37/Firebase_Logo.svg"
+    }
+]

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import './about.css'
-import { langs, lang, frontend, backend } from './vars'
+import { langs, lang, frontend, backend, misc } from './vars'
 
 export default function About() {
     useEffect(() => {
@@ -21,7 +21,8 @@ const aboutNavBtns = [
     "About",
     "Languages",
     "Front-End",
-    "Back-End"
+    "Back-End",
+    "Misc"
 ]
 
 function AboutMain() {
@@ -35,7 +36,7 @@ function AboutMain() {
                     </button>)}
             </div>
             <div id="aboutContent">
-               {page == 'About' ? <AboutMe  /> : page == 'Languages' ? <Languages arr={langs} /> : page == 'Front-End' ? <Languages arr={frontend} /> : <Languages arr={backend} />}     
+               {page == 'About' ? <AboutMe  /> : page == 'Languages' ? <Languages arr={langs} /> : page == 'Front-End' ? <Languages arr={frontend} /> : page == "Back-End" ? <Languages arr={backend} /> : <Languages arr={misc} />}     
             </div>
         </div>
     )
@@ -52,10 +53,10 @@ function AboutMe() {
 function Languages({arr}: {arr: lang[]}) {
     return (
         <>
-            {arr.map(arr => 
-                <div key={arr.language} className='langDiv'>
-                    <img className='langLogos' src={arr.logo} alt={`${arr.language} logo`} />
-                    <span style={{marginLeft: "1.5rem"}}>{arr.language}</span>
+            {arr.map(lingo => 
+                <div key={lingo.language} className='langDiv'>
+                    <img className='langLogos' src={lingo.logo} alt={`${lingo.language} logo`} />
+                    <span style={{marginLeft: "1.5rem"}}>{lingo.language}</span>
                 </div>)}
         </>
     )
