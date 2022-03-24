@@ -763,5 +763,9 @@ export const quotes: qt[] = [
   {
     quote: "I'll have what Dr.V is having. The exact same order. If he has a fly in his thing I want a fly in mine but put the fly on the side coz I don't eat no flies. They walk on crap",
     author: "Sheriff Mike Thompson"
+  },
+  {
+    quote: "To iterate is human, to recurse divine.",
+    author: "Peter Deutsh"
   }
 ]

@@ -42,7 +42,7 @@ const paths: O[] = [
         path: "/forum"
     }, {
         label: "Soundboard",
-        path: "soundboard"
+        path: "/soundboard"
     }]
 
 export default function RouteNavigator() {

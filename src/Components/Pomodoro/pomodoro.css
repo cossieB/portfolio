@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
 #pomodoro {
     font-family: Helvetica;
     background: teal;
@@ -36,6 +38,11 @@
     color: white;
     transform: scale(3)
   }
+#time-left {
+  font-family: 'Orbitron', sans-serif;
+  font-size: xx-large;
+}
+
 @media (max-width: 768px) {
   #outer {
     width: 90%

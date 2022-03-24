@@ -65,7 +65,7 @@ function Fail({errors}: {errors: string[]}) {
 }
 function Loading() {
     return (
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/YouTube_loading_symbol_3_%28transparent%29.gif" alt="working please waiting..." />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/YouTube_loading_symbol_3_%28transparent%29.gif" alt="working please wait..." />
     )
 }
 
@@ -103,7 +103,7 @@ export default function Contact() {
 
     async function sendData() {
         try {
-            const response = await fetch('https://BitesizedCarelessPort.cossie.repl.co/email', {
+            const response = await fetch('https://cossie.herokuapp.com/api/email', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
