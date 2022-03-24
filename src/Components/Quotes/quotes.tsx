@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { CSSProperties, useEffect, useState } from "react";
 import { quotes } from "./quotelist";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import './quotes.css'
@@ -17,7 +17,11 @@ const colors = [
     '#472E32',
     '#BDBB99',
     '#77B1A9',
-    '#73A857'
+    '#73A857',
+    '#ffae11',
+    '#ff5c1e',
+    '#4637ed',
+    '#28bb1b'
   ]
 
 const bgs = [

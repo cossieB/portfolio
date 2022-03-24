@@ -5,8 +5,8 @@
 
 #projects {
     display: grid; 
-    width: 90%;
-    grid-template-columns: 1fr 1fr 1fr;
+    width: 95%;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 1rem;
     align-items: center;
     text-align: center;
@@ -14,6 +14,18 @@
 }
 #projects a {
     color: white;
+    text-decoration: none;
+}
+
+#projects a:hover {
+    text-decoration: underline;
+}
+.tile {
+    transition: all 250ms ease;
+}
+.tile:hover {
+    transform: scale(1.03);
+    transition: all 250ms ease;
 }
 
 .tile img {
