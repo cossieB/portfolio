@@ -1,4 +1,4 @@
-import {  useEffect, useState } from "react";
+import { CSSProperties, useEffect, useState } from "react";
 import { quotes } from "./quotelist";
 import './quotes.css'
 import { motion } from "framer-motion";
