@@ -20,8 +20,10 @@ function App() {
     const location = useLocation()
   return (
     <AnimatePresence>
+      <Switch>
       <Route exact path="/"><Home /></Route>
       <Route path="/"><RouteNavigator /></Route>
+      </Switch>
       <Route path="/projects"><Projects /> </Route>
       <Switch location={location} key={location.key}>
       <Route path="/pomodoro"><Pomodoro /></Route>

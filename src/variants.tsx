@@ -7,14 +7,14 @@ export const containerVariant: Variants = {
     end: {
         x: 0,
         transition: {
-            delay: 0.5,
+            delay: 0.3,
 
         }
     },
     exit: {
         x: '100vw',
         transition: {
-            ease: 'easeInOut'
+            ease: 'backIn'
         }
     }
 }
