@@ -1,7 +1,8 @@
-import { CSSProperties, useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import { quotes } from "./quotelist";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
 import './quotes.css'
+import { motion } from "framer-motion";
+import { containerVariant } from "../../variants";
 
 const elems = quotes.length
 
@@ -40,7 +41,7 @@ export default function Quotes() {
     const [quote, setQuote] = useState("")
     const [author, setAuthor] = useState("");
     const [background, setBackground] = useState('')
-    const [mobileBG, setMobileBG] = useState('')
+    const [mobileBG, setMobileBG] = useState(colors[0])
     useEffect(() => {
         document.title = "Random Quote Machine";
         next()
@@ -56,13 +57,9 @@ export default function Quotes() {
         setMobileBG(colors[color])
     }
     return (
-        <TransitionGroup timeout={200}  >
-            <main style={ {backgroundColor: mobileBG} } id="quoteContainer" className="container">
-                <CSSTransition key={quote} enter={true} exit={true} in={true} appear={false} timeout={200} classNames="anims" >
+            <motion.main style={ {backgroundColor: mobileBG} } id="quoteContainer" className="container" variants={containerVariant} initial="start" animate="end" exit={'exit'}>
                     <Quote quote={quote} author={author} next={next} />
-                </CSSTransition>
-            </main>
-        </TransitionGroup>
+            </motion.main>
     )
 }
 

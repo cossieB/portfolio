@@ -1,4 +1,6 @@
+import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
+import { containerVariant } from '../../variants'
 import './about.css'
 import { langs, lang, frontend, backend, misc } from './vars'
 
@@ -7,13 +9,13 @@ export default function About() {
         document.title = "Buntu Cossie"
     },[])
     return (
-        <div id="aboutContainer">
+        <motion.div id="aboutContainer" variants={containerVariant} initial="start" animate="end" exit={'exit'}>
             <div id="nameAndPic">
                 <img id="myPic" src="https://i.imgur.com/Cvu9RGY.jpg" alt="Picture of Me" />
                 <h1>Buntu Cossie</h1>
             </div>
             <AboutMain  />
-        </div>
+        </motion.div>
     )
 }
 

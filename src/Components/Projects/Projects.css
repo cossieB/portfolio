@@ -20,13 +20,13 @@
 #projects a:hover {
     text-decoration: underline;
 }
-.tile {
+/* .tile {
     transition: all 250ms ease;
 }
 .tile:hover {
     transform: scale(1.03);
     transition: all 250ms ease;
-}
+} */
 
 .tile img {
     width: 100%;

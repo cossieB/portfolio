@@ -1,4 +1,6 @@
+import { motion } from "framer-motion";
 import React from "react";
+import { containerVariant } from "../../variants";
 import './calculator.css'
 
 interface S {
@@ -72,7 +74,7 @@ export default class Calculator extends React.Component<P, S> {
     }
     render() {
         return (
-            <main id="calcContainer" className="container flexCenter">
+            <motion.main id="calcContainer" className="container flexCenter" variants={containerVariant} initial="start" animate="end" exit={'exit'}>
                 <div id="calculator">
                     <div id="calcDisp">
                         <div>{this.state.display}</div>
@@ -99,7 +101,7 @@ export default class Calculator extends React.Component<P, S> {
                         <button className="numButtons" id="equals" style={{background: "green"}} onClick={this.eval}>=</button>
                     </div>
                 </div>
-            </main>
+            </motion.main>
         )
     }
 }
