@@ -4,6 +4,8 @@ import MathQuiz from "./mathquiz";
 import { GlobalLeaders, LocalLeaders } from "./Leaders";
 import GameOver from "./GameOver";
 import { P11, P333, P084 } from "./interfaces";
+import { motion } from "framer-motion";
+import { containerVariant } from "../../variants";
 
 export default function Quiz() {
     useEffect(() => {
@@ -18,9 +20,9 @@ export default function Quiz() {
 
     if (!user) {
         return (
-            <div id="quizContainer" className="container flexCenter">
+            <motion.div id="quizContainer" className="container flexCenter" variants={containerVariant} initial="start" animate="end" exit={'exit'}>
                 <Signup setUser={setUser} />
-            </div>
+            </motion.div>
         )
     }
     else if (!readInstructions) {

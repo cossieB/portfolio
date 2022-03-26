@@ -2,7 +2,7 @@
     align-items: center;
     background: gray;
     background-size: cover;
-    transition: all 500ms ease;
+    transition: background-color 500ms ease;
   }
   
   #quote-box {
@@ -33,31 +33,6 @@
   #new-quote:active {
     transform: scale(0.95);
     background-color: deepskyblue;
-  }
-
-  .anims-enter {
-    opacity: 0;
-    transform: translateX(150px);
-
-  }
-  .anims-enter.anims-enter-active {
-    transform: translateX(0); 
-    opacity: 1;
-    transition:all 200ms ease;
-
-  }
-  .anims-exit {
-    opacity: 1;
-    transform: translateX(0);
-    
-  }
-  .anims-exit.anims-exit-active {
-    opacity: 0;
-    transform: translateX(-150px);
-    transition: all 200ms ease;
-  }
-  .anims-exit-done {
-    opacity: 0;
   }
 
   @media screen and (max-width: 768px) {

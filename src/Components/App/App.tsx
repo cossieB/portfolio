@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, useLocation } from 'react-router-dom';
 import './App.css';
 import Calculator from '../Calculator/calculator';
 import Home from '../Home/Home';
@@ -14,15 +14,16 @@ import Quiz from '../Quiz/Quiz';
 import About from '../About/about';
 import Contact from '../Contact/contact';
 import Memory from '../Memory/Memory';
+import { AnimatePresence } from 'framer-motion';
 
 function App() {
+    const location = useLocation()
   return (
-    <Router >
-      <Switch>
+    <AnimatePresence>
       <Route exact path="/"><Home /></Route>
       <Route path="/"><RouteNavigator /></Route>
-      </Switch>
       <Route path="/projects"><Projects /> </Route>
+      <Switch location={location} key={location.key}>
       <Route path="/pomodoro"><Pomodoro /></Route>
       <Route path="/quotes"><Quotes /></Route>
       <Route path="/soundboard"><Soundboard /></Route>
@@ -33,7 +34,9 @@ function App() {
       <Route path="/about"><About  /></Route>
       <Route path="/contact"><Contact /> </Route>
       <Route path="/memory"><Memory /> </Route>
-    </Router>)
+      </Switch>
+      </AnimatePresence>
+    )
 }
 
 export default App;

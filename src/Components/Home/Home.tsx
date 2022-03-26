@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import './Home.css'
@@ -35,8 +36,9 @@ export default function Home() {
                 </div> 
             </nav>
             <div id="welcome">
-                <h1 id="name">Cossie</h1><hr />
-                <h2 id="title">Full-Stack Developer</h2>
+                <motion.h1 initial={{y: 100, opacity: 0}} animate={{y: 0, opacity: 1}} transition={{delay: 1}} id="name">Cossie</motion.h1>
+                <motion.hr initial={{scale: 0}} animate={{scale: 1}} transition={{duration: 1}} />
+                <motion.h2 initial={{y: -100, opacity: 0}} animate={{y: 0, opacity: 1}} transition={{delay: 1}} id="title">Full-Stack Developer</motion.h2>
             </div>
         </main>
     )

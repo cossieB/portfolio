@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { marked } from 'marked'
 import { initialText } from "./initial";
 import './markdown.css'
+import { motion } from "framer-motion";
+import { containerVariant } from "../../variants";
 
 marked.setOptions({ breaks: true })
 
@@ -13,9 +15,9 @@ export default function Markdown() {
     const [markeddown, setMarkeddown] = useState(marked(initialText))
 
     return (
-        <div id="markedownContainer">
+        <motion.div id="markedownContainer" variants={containerVariant} initial="start" animate="end" exit={'exit'}>
             <textarea id="editor" className="prevAndEdit" value={input} onChange={e => { setInput(e.target.value); setMarkeddown(marked(e.target.value)) }} />
             <div id="preview" className="prevAndEdit" dangerouslySetInnerHTML={{ __html: markeddown }} />
-        </div>
+        </motion.div>
     )
 }

@@ -1,6 +1,8 @@
 import React from "react";
 import SoundButtons from "./soundbuttons";
 import './soundboard.css'
+import { motion } from "framer-motion";
+import { containerVariant } from "../../variants";
 
 interface State {
     volume: number,
@@ -66,7 +68,7 @@ export default class Soundboard extends React.Component<{}, State> {
     }
     render() {
         return (
-            <div id="soundboardContainer" className="container flexCenter">
+            <motion.div id="soundboardContainer" className="container flexCenter" variants={containerVariant} initial="start" animate="end" exit={'exit'}>
                 <div id="drum-machine">
                     <div id="display" >{this.state.disp}</div>
                     <SoundButtons play={this.play} />
@@ -75,7 +77,7 @@ export default class Soundboard extends React.Component<{}, State> {
                         {this.state.volume}
                     </div>
                 </div>
-            </div>
+            </motion.div>
         )
     }
 }

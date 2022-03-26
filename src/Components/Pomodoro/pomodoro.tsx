@@ -1,6 +1,8 @@
+import { motion } from "framer-motion";
 import React from "react";
 import { PomProp, PomState } from "./interfaces";
 import './pomodoro.css'
+import {containerVariant} from '../../variants'
 
 const initialState = { breakMin: 5, sessionMin: 25, seconds: 1500, break: 300, running: false, left: "25:00", breakTime: "05:00", sessionLength: 1500, sound: "" }
 
@@ -90,7 +92,7 @@ export default class Pomodoro extends React.Component<PomProp, PomState> {
     }
     render() {
         return (
-            <main id="pomodoro" className="container flexCenter">
+            <motion.main id="pomodoro" className="container flexCenter" variants={containerVariant} initial="start" animate="end" exit={'exit'}>
                 <div id="outer">
                     <div id="controls">
                         <section >
@@ -130,7 +132,7 @@ export default class Pomodoro extends React.Component<PomProp, PomState> {
                     </div>
                     <audio id="beep" src="https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav" />
                 </div>
-            </main>
+            </motion.main>
         )
     }
 }

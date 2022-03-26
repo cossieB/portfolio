@@ -1,6 +1,8 @@
 import { addDoc, collection } from 'firebase/firestore'
+import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { db } from '../../firestore'
+import { containerVariant } from '../../variants'
 import './contact.css'
 
 interface P {
@@ -122,9 +124,9 @@ export default function Contact() {
     }
 
     return (
-        <div id="contactContainer" className="container flexCenter">
+        <motion.div id="contactContainer" className="container flexCenter" variants={containerVariant} initial="start" animate="end" exit={'exit'}>
             {sent || addedToBD ? <Thanks /> : errors.length > 0 ? <Fail errors={errors} /> : pressed ? <Loading /> : <ContactForm name={name} setName={setName} company={company} setCompany={setCompany} email={email} setEmail={setEmail} msg={msg} setMsg={setMsg} handleSubmit={handleSubmit} pressed={pressed} /> }
-        </div>
+        </motion.div>
     )
 }
 

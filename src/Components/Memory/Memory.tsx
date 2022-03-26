@@ -1,5 +1,7 @@
+import { motion } from "framer-motion"
 import React, { useEffect } from "react"
 import { useState } from "react"
+import { containerVariant } from "../../variants"
 import { Instructions, Signup } from "../Quiz/Quiz"
 import "./memory.css"
 import { GlobalScores, LocalScores } from "./memoryScores"
@@ -25,9 +27,9 @@ export default function Memory() {
     const [readInstructions, setReadInstructions] = useState(false);
     if (!user) {
         return (
-            <div id="memoryContainer" className="container flexCenter">
+            <motion.div id="memoryContainer" className="container flexCenter" variants={containerVariant} initial="start" animate="end" exit={'exit'}>
                 <Signup setUser={setUser} />
-            </div>
+            </motion.div>
         )
     }
     else if (!readInstructions) {
