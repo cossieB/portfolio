@@ -27,12 +27,19 @@
     width: auto;
   }
   #new-quote {
-    background: lightblue;
-    border: 1px solid blue
+    background: none;
+    color: white;
+    font-size: 16px;
+    border: none;
   }
+
+  #new-quote:hover {
+    background: inherit;
+  }
+
   #new-quote:active {
     transform: scale(0.95);
-    background-color: deepskyblue;
+
   }
 
   @media screen and (max-width: 768px) {
