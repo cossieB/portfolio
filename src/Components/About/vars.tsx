@@ -6,82 +6,98 @@ export interface lang {
 export const langs: lang[] = [
     {
         language: "TypeScript",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/512px-Typescript_logo_2020.svg.png"
+        logo: "/logos/typescript.png"
     },
     {
         language: "JavaScript",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/3/3b/Javascript_Logo.png"
+        logo: "/logos/javascript.png"
     },
     {
         language: "Python",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/480px-Python-logo-notext.svg.png"
+        logo: "/logos/python.png"
+    },
+    {
+        language: "C#",
+        logo: '/logos/csharp.png'
     },
     {
         language: "HTML",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/512px-HTML5_logo_and_wordmark.svg.png"
+        logo: "/logos/html.png"
     },
     {
         language: "CSS",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/363px-CSS3_logo_and_wordmark.svg.png"
-    }
+        logo: "/logos/css.png"
+    }, 
 ]
 
 export const frontend: lang[] = [
     {
         language: 'React',
-        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/512px-React-icon.svg.png"
+        logo: "/logos/react.png"
     },
     {
         language: "Next.js",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Nextjs-logo.svg/640px-Nextjs-logo.svg.png"
+        logo: "/logos/next.png"
     },
     {
         language: "jQuery",
-        logo: "https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/JQuery_logo.svg/524px-JQuery_logo.svg.png"
+        logo: "/logos/jquery.png"
     },
     {
         language: "SASS",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Sass_Logo_Color.svg/640px-Sass_Logo_Color.svg.png"
+        logo: "/logos/sass.png"
     },
     {
         language: "Bootstrap",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/512px-Bootstrap_logo.svg.png"
+        logo: "/logos/bootstrap.png"
     }
 ]
 
 export const backend: lang[] = [
     {
         language: 'Node.JS',
-        logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/590px-Node.js_logo.svg.png'
+        logo: '/logos/node.png'
     }, 
     {
         language: "ExpressJS",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/6/64/Expressjs.png"
+        logo: "/logos/express.png"
     },
     {
         language: "MongoDB",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/MongoDB_Logo.svg/512px-MongoDB_Logo.svg.png"
+        logo: "/logos/mongo.png"
     },
     {
         language: "Mongoose",
-        logo: "https://miro.medium.com/max/648/1*iDvsmUwzZQxJSKdL0xzwIA.png"
+        logo: "/logos/mongoose.png"
+    },
+    {
+        language: "MySQL",
+        logo: '/logos/mysql.png'
     },
     {
         language: "JSON Web Token",
-        logo: "https://jwt.io/img/logo-asset.svg"
+        logo: "/logos/jwt.svg"
     }
 ]
 export const misc: lang[] = [
     {
+        language: "Visual Studio Code",
+        logo: "/logos/vscode.png"
+    },
+    {
         language: "Docker",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Docker_%28container_engine%29_logo.svg/610px-Docker_%28container_engine%29_logo.svg.png"
+        logo: "/logos/docker.png"
     },
     {
         language: "Git",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Git-logo.svg/1280px-Git-logo.svg.png"
+        logo: "/logos/git.png"
     },
     {
         language: "Firebase",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/3/37/Firebase_Logo.svg"
+        logo: "/logos/firebase.svg"
+    },
+    {
+        language: "GraphQL",
+        logo: "/logos/graphql.png"
     }
 ]
