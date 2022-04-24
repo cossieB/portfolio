@@ -767,5 +767,13 @@ export const quotes: qt[] = [
   {
     quote: "To iterate is human, to recurse divine.",
     author: "Peter Deutsh"
+  },
+  {
+    quote: "Bitcoin is everything you don't understand about money, combined with everything you don't understand about computers.",
+    author: "John Oliver"
+  },
+  {
+    quote: "Ladies if you follow these instructions exactly you might be able to pull you a rapper, NBA player, man, at least a dude with a car.",
+    author: "Kanye West"
   }
 ]

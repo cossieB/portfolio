@@ -21,21 +21,22 @@ function App() {
   return (
     <AnimatePresence>
       <Switch>
-      <Route exact path="/"><Home /></Route>
-      <Route path="/"><RouteNavigator /></Route>
+      <Route exact path="/" key={"home"} ><Home /></Route>
+      <Route path="/" key={"nav"} ><RouteNavigator /></Route>
       </Switch>
-      <Route path="/projects"><Projects /> </Route>
+      <Route path="/projects" key={"projects"} ><Projects /> </Route>
       <Switch location={location} key={location.key}>
-      <Route path="/pomodoro"><Pomodoro /></Route>
-      <Route path="/quotes"><Quotes /></Route>
-      <Route path="/soundboard"><Soundboard /></Route>
-      <Route path="/calculator"><Calculator /></Route>
-      <Route path="/forum"><Forum /> </Route>
-      <Route path="/markdown-preview"><Markdown />  </Route>
-      <Route path="/quiz"><Quiz  /></Route>
-      <Route path="/about"><About  /></Route>
-      <Route path="/contact"><Contact /> </Route>
-      <Route path="/memory"><Memory /> </Route>
+      <Route path="/pomodoro" key={"pomodoro"} ><Pomodoro /></Route>
+      <Route path="/quotes" key={"quotes"} ><Quotes /></Route>
+      <Route path="/soundboard" key={"soundboard"} ><Soundboard /></Route>
+      <Route path="/calculator" key={"calculator"} ><Calculator /></Route>
+      <Route path="/forum" key={"forum"} ><Forum /> </Route>
+      <Route path="/markdown-preview" key={"markdown"} ><Markdown />  </Route>
+      <Route path="/quiz" key={"quiz"} ><Quiz  /></Route>
+      <Route path="/about" key={"about"} ><About  /></Route>
+      <Route path="/contact" key={"contact"} ><Contact /> </Route>
+      <Route path="/memory" key={"memory"}  ><Memory /> </Route>
+
       </Switch>
       </AnimatePresence>
     )

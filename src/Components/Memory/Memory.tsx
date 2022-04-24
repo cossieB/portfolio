@@ -49,7 +49,7 @@ export default function Memory() {
     else if (finished) {
         return (
             <div id="memoryContainer" className="container flexCenter">
-                <Finished user={user} time={time} setFinished={setFinished} flips={flips} />
+                <Finished user={user} time={time} setUser={setUser} setFinished={setFinished} flips={flips} />
             </div>
         )
     }
@@ -66,6 +66,7 @@ export interface P33532 {
     user: string,
     time: number,
     setFinished: React.Dispatch<React.SetStateAction<boolean>>,
+    setUser: React.Dispatch<React.SetStateAction<string>>,
     flips: number
 }
 
@@ -76,7 +77,7 @@ export interface P335320 {
 }
 
 function Finished(props: P33532) {
-    const { user, time, setFinished, flips } = props
+    const { user, time, setFinished, flips, setUser } = props
 
     return (
         <div id="finished">
@@ -86,6 +87,7 @@ function Finished(props: P33532) {
                 <h4>Total score: {flips + time}</h4>
             </div>
             <button onClick={() => setFinished(false)} style={{width: '50%', alignSelf: 'center'}} className="niceButton">Play Again</button>
+            <button onClick={() => {setUser(""); setFinished(false)}} style={{width: '50%', alignSelf: 'center'}} className="niceButton">Change Name</button>
             <h2 style={{textAlign: 'center'}}>Best Scores</h2>
             <div id="highScores">
                 <LocalScores user={user} time={time} flips={flips} />

@@ -1,58 +1,70 @@
-  #quoteContainer {
+#quoteContainer {
     align-items: center;
     background: gray;
     background-size: cover;
     transition: background-color 500ms ease;
-  }
-  
-  #quote-box {
+}
+
+#quote-box {
     margin: 50px auto;
     background: white;
     width: 50%;
     border-radius: 10px;
-    padding: 1.5rem 1.5rem
-  }
-  #author {
-    color: blue;
+    padding: 1.5rem 1.5rem;
+    transition: all 500ms ease;
+}
+
+#author {
     text-align: right;
-   
-  }
-  #quoteButtons {
+
+}
+
+#quoteButtons {
     height: 50px;
     display: flex;
     justify-content: space-around;
-  }
-  .shareQuotes img{
+}
+
+.shareQuotes img {
     height: 100%;
     width: auto;
-  }
-  #new-quote {
+}
+
+#new-quote {
     background: none;
     color: white;
     font-size: 16px;
     border: none;
-  }
+    transition: all 500ms ease;
+}
 
-  #new-quote:hover {
+#new-quote:hover {
     background: inherit;
-  }
+}
 
-  #new-quote:active {
+#socialButtons svg {
+    transition: all 500ms ease;
+}
+
+#new-quote:active {
     transform: scale(0.95);
 
-  }
+}
 
-  @media screen and (max-width: 768px) {
+@media screen and (max-width: 768px) {
     #quoteContainer {
-      font-size: .8rem;
+        font-size: .8rem;
     }
+
     #quote-box {
-      width: 80%
-    }  
+        width: 80%
+    }
+
     #socialButtons {
-      width: 70%;
+        width: 70%;
     }
+
     .shareQuotes img {
-      padding-left: 3%;
+        padding-left: 3%;
     }
-  }
+}

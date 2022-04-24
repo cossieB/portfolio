@@ -72,11 +72,11 @@ interface P {
 
 function Quote({ quote, author, next, color }: P) {
     return (
-        <div id="quote-box" style={{color}}>
-            <div style={{color}} id="text">
+        <div style={{color}} id="quote-box" >
+            <div id="text">
                 <h1>{quote}</h1>
             </div>
-            <div style={{color}} id="author">
+            <div id="author">
                 <h2>- {author}</h2>
             </div>
             <div id="quoteButtons">

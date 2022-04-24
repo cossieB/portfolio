@@ -1,9 +1,9 @@
-export interface lang {
+export interface Lang {
     language: string,
     logo: string
 }
 
-export const langs: lang[] = [
+export const langs: Lang[] = [
     {
         language: "TypeScript",
         logo: "/logos/typescript.png"
@@ -18,7 +18,7 @@ export const langs: lang[] = [
     },
     {
         language: "C#",
-        logo: '/logos/csharp.png'
+        logo: '/logos/csharp.svg'
     },
     {
         language: "HTML",
@@ -30,7 +30,7 @@ export const langs: lang[] = [
     }, 
 ]
 
-export const frontend: lang[] = [
+export const frontend: Lang[] = [
     {
         language: 'React',
         logo: "/logos/react.png"
@@ -53,7 +53,7 @@ export const frontend: lang[] = [
     }
 ]
 
-export const backend: lang[] = [
+export const backend: Lang[] = [
     {
         language: 'Node.JS',
         logo: '/logos/node.png'
@@ -79,7 +79,7 @@ export const backend: lang[] = [
         logo: "/logos/jwt.svg"
     }
 ]
-export const misc: lang[] = [
+export const misc: Lang[] = [
     {
         language: "Visual Studio Code",
         logo: "/logos/vscode.png"
