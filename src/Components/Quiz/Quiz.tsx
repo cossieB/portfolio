@@ -42,7 +42,7 @@ export default function Quiz() {
     else if (gameOver) {
         return (
             <div id="quizContainer" className="container flexCenter">
-                <GameOver user={user} correct={correct} total={total} setGameOver={setGameOver} setCorrect={setCorrect} setTotal={setTotal} />
+                <GameOver user={user} correct={correct} total={total} setGameOver={setGameOver} setCorrect={setCorrect} setTotal={setTotal} setUser={setUser} />
             </div>
         )
     }

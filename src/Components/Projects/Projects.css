@@ -6,8 +6,9 @@
 #projects {
     display: grid; 
     width: 95%;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 400px));
     grid-gap: 1rem;
+    justify-content: center;
     align-items: center;
     text-align: center;
     font-size: larger;
@@ -20,24 +21,144 @@
 #projects a:hover {
     text-decoration: underline;
 }
-/* .tile {
-    transition: all 250ms ease;
-}
-.tile:hover {
-    transform: scale(1.03);
-    transition: all 250ms ease;
-} */
 
-.tile img {
+.projectTile img {
+    position: relative;
     width: 100%;
     border: 2px solid midnightblue;
     border-radius: 0px 25px;
 }
+.detailsPage {
+    display: flex;
+    flex-direction: column;
+    background-color: #ddd;
+    color: #ddd;
+    z-index: 50;
+    opacity: 0.9;
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: min-content;
+    
+}
+.detailsOuter {
+    display: flex;
+    
+}
+.detailsStack {
+    
+    color: #222;
+    flex: 6;
+}
+.detailsStackLogos {
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 10%;
+}
+.detailsStackLogos img {
+    margin-right: 1rem;
+}
+.detailsStack img {
+    max-height: 150px;
+}
 
-@media (max-width: 720px) { 
+.detailsDesc {
+    
+    font-size: xx-large;
+    padding: 1rem 1rem;
+    background-color: rgb(55, 58, 57);
+    flex: 2;
+    min-height: 100%;
+}
+
+.detailsHeader {
+    height: 100px;
+    background-color: rgb(49, 47, 49);
+    font-size: large;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.detailsHeader svg {
+    fill: #ddd;
+    transition: all 200ms ease
+}
+
+.detailsHeader div a > svg:hover {
+    fill: springgreen;
+    transition: all 200ms ease
+}
+.detailsHeader div:last-child > svg:hover {
+    fill: red;
+    transition: all 200ms ease
+}
+.detailsHeader a {
+    color: #ddd;
+    text-decoration: none;
+}
+.detailsHeader a:hover {
+    text-decoration: underline;
+}
+
+.tileMask {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    z-index: 11;
+    transform: translateY(50%);
+    opacity: 0;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    right: 0%;
+    bottom: 0%;
+    backdrop-filter: blur(10px);
+    transition: all 200ms ease;
+}
+.tileMask.show {
+    opacity: 1;
+    transform: translateY(0%);
+    transition: all 200ms ease;
+}
+
+.tileMask button {
+    border: none;
+    background: none;
+}
+
+@media (max-width: 768px) { 
     #projects {
     display: flex; 
     flex-direction: column;
     padding: 1rem 0rem;
+    }
+    .detailsPage {
+        position: absolute;
+        top: auto;
+        left: auto;
+    }
+    .detailsOuter {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1rem;
+    }
+    .detailsPage img {
+        width: 30%;
+        max-height: unset;
+        height: auto;
+    }
+    .detailsDesc {
+        font-size: large;
+        flex: auto;
+    }
+    .detailsHeader svg {
+        height: 25px;
+        width: 25px;
+    }
+    .detailsHeader h2 {
+        font-size: larger;
     }
 }

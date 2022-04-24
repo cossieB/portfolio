@@ -2,7 +2,7 @@ import { AnimatePresence, motion, Variants } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { containerVariant } from '../../variants'
 import './about.css'
-import { langs, lang, frontend, backend, misc } from './vars'
+import { langs, Lang, frontend, backend, misc } from './vars'
 
 export default function About() {
     useEffect(() => {
@@ -56,7 +56,7 @@ function AboutMain() {
         <div id="aboutMain">
             <div id="aboutNav">
                 {aboutNavBtns.map((item) => 
-                    <button style={page == item ? {backgroundColor: "teal", boxShadow: "none"} : {}} onClick={() => setPage(item)} className='aboutNavBtn'>
+                    <button key={item} style={page == item ? {backgroundColor: "teal", boxShadow: "none"} : {}} onClick={() => setPage(item)} className='aboutNavBtn'>
                         {item}
                     </button>)}
             </div>
@@ -77,7 +77,7 @@ function AboutMe() {
     )
 }
 
-function Languages({arr}: {arr: lang[]}) {
+function Languages({arr}: {arr: Lang[]}) {
     return (
         <>  
             {/* <AnimatePresence exitBeforeEnter> */}

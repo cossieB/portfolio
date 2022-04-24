@@ -5,6 +5,7 @@ export interface P123 {
     setGameOver: React.Dispatch<React.SetStateAction<boolean>>
     setTotal: React.Dispatch<React.SetStateAction<number>>,
     setCorrect: React.Dispatch<React.SetStateAction<number>>,    
+    setUser: React.Dispatch<React.SetStateAction<string>>,    
 }
 
 export interface Scores {
