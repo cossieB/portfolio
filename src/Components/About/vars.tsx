@@ -75,6 +75,10 @@ export const backend: Lang[] = [
         logo: '/logos/mysql.png'
     },
     {
+        language: "ASP.NET",
+        logo: '/logos/aspnet.jpg'
+    },
+    {
         language: "JSON Web Token",
         logo: "/logos/jwt.svg"
     }
