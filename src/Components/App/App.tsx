@@ -36,7 +36,6 @@ function App() {
       <Route path="/about" key={"about"} ><About  /></Route>
       <Route path="/contact" key={"contact"} ><Contact /> </Route>
       <Route path="/memory" key={"memory"}  ><Memory /> </Route>
-
       </Switch>
       </AnimatePresence>
     )
