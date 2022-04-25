@@ -43,6 +43,9 @@ export default class Pomodoro extends React.Component<PomProp, PomState> {
     }
     start() {console.log(this.state.break)
         if (!this.timer) {
+            let beep = document.getElementById("startbeep") as HTMLAudioElement
+            beep.pause(); beep.currentTime = 0;
+            beep.play()
             this.timer = setInterval(this.countdown, 1000)
         }
         else {
@@ -131,6 +134,8 @@ export default class Pomodoro extends React.Component<PomProp, PomState> {
                         </button>
                     </div>
                     <audio id="beep" src="https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav" />
+                    <audio id="startbeep" src="https://www.soundjay.com/buttons/beep-05.wav" />
+
                 </div>
             </motion.main>
         )

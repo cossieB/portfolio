@@ -1,24 +1,24 @@
 import {langs, frontend, backend, misc, Lang} from '../About/vars'
 
-export const stack: {[key: string]: string} = {}
+export const stack: {[key: string]: string} = {
+    "framer motion": "https://pagepro.co/blog/wp-content/uploads/2020/03/framer-motion.png",
+    firestore: "https://res.cloudinary.com/practicaldev/image/fetch/s--VnDDBkku--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/akm5od0383lcbhxvb9zb.png",
+    marked: "https://avatars.githubusercontent.com/u/19886934?v=4",
+    heroku: "https://upload.wikimedia.org/wikipedia/commons/e/ec/Heroku_logo.svg",
+    vercel: "https://logowik.com/content/uploads/images/vercel1868.jpg",
+    "entity framework": "https://i.imgur.com/DU7Cbis.png"
+}
+const arr = [langs, frontend, backend, misc]
 
-function createStack(arr: Lang[]) {
+
+function updateStack(arr: Lang[]) {
     arr.forEach(item => {
         stack[item.language.toLowerCase()] = item.logo
     })
 }
-createStack(langs)
-createStack(frontend)
-createStack(backend)
-createStack(misc)
-
-stack["framer motion"] = "https://pagepro.co/blog/wp-content/uploads/2020/03/framer-motion.png"
-stack["asp.net"] = "https://www.natmarchand.fr/wp-content/uploads/2018/05/asp.net_.jpg"
-stack.firestore = "https://res.cloudinary.com/practicaldev/image/fetch/s--VnDDBkku--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/akm5od0383lcbhxvb9zb.png"
-stack.marked = "https://avatars.githubusercontent.com/u/19886934?v=4"
-stack.heroku = "https://upload.wikimedia.org/wikipedia/commons/e/ec/Heroku_logo.svg"
-stack.vercel = "https://logowik.com/content/uploads/images/vercel1868.jpg"
-stack["entity framework"] = "https://i.imgur.com/DU7Cbis.png"
+arr.forEach(item => {
+    updateStack(item)
+})
 
 export interface Projs {
     title: string,
@@ -56,7 +56,7 @@ export const projectArray: Projs[] = [
         stack: ["c#", "asp.net", "bootstrap", "entity framework"]
     },
     {
-        title: "25 + 5 Clock (Pomodoro)",
+        title: "Pomodoro",
         img: "screenshots/pomodoro.png",
         path: "/pomodoro",
         description: "Timer for the pomodoro technique. You can change the session and the break lengths.",

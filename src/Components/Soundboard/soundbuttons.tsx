@@ -1,6 +1,6 @@
 import React from "react";
 
-interface P {
+interface P606565 {
     play: (e: React.MouseEvent<HTMLButtonElement>) => void
 }
 
@@ -52,13 +52,15 @@ let buttons = [
     }
 ]
 
-export default function SoundButtons(props: P) {
+export default function SoundButtons(props: P606565) {
     return (
         <div id="buttonGrid">
             {buttons.map(item => {
-                return <button onClick={props.play} key={item.id} className="drum-pad" id={item.id}>
-                    {item.childId}<audio className="clip" id={item.childId} src={item.src} ></audio>
-                </button>
+                return (
+                    <button onClick={props.play} key={item.id} className="drum-pad" id={item.id}>
+                        {item.childId}<audio className="clip" id={item.childId} src={item.src} ></audio>
+                    </button>
+                )
             })}
         </div>
     )

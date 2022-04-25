@@ -1,15 +1,8 @@
 import { addDoc, collection, query, orderBy, limit, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "../../firestore";
-import { P335320 } from "./Memory";
-
-interface Times {
-    name: string,
-    date: Date,
-    time: number,
-    flips: number,
-    total: number
-}
+import { P24235, P335320, Times } from "./interfaces";
+import Leaders from "./Leaders";
 
 export function GlobalScores(props: P335320) {
     const { user, time, flips } = props
@@ -49,26 +42,7 @@ export function GlobalScores(props: P335320) {
             console.log(err.message)
         }
     }
-    return (
-        <div className="leaderboardContainer">
-            {globalLeaders.length > 0 && <h4>Around The World</h4>}
-            {globalLeaders.length > 0 &&
-                <div className="leaderboard">
-                    {globalLeaders.map(item =>
-                        <div key={item.date.toString()} className="leadership">
-                            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                <strong>{item.name}</strong>
-                            </div>
-                                <div className="memScores">
-                                    <div>Time: {item.time} </div>
-                                    <div>Flips: {item.flips} </div>
-                                    <div>Total: {item.total}</div>
-                                </div>
-                            <div>{item.date.toLocaleString('en-za', { day: "2-digit", month: 'short', year: 'numeric' }) + " " + item.date.toLocaleTimeString('en-za')}</div>
-                        </div>)}
-                </div>}
-        </div>
-    )
+    return <Leaders leaders={globalLeaders} header="Around The World" />
 }
 
 export function LocalScores(props: P335320) {
@@ -102,24 +76,5 @@ export function LocalScores(props: P335320) {
         setLocalLeaders(leaders)
 
     }
-    return (
-        <div className="leaderboardContainer">
-            {locallLeaders.length > 0 && <h4>On This Device</h4>}
-            {locallLeaders.length > 0 &&
-                <div className="leaderboard">
-                    {locallLeaders.map(item =>
-                        <div key={item.date.toString()} className="leadership">
-                            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                <strong>{item.name}</strong>
-                            </div>
-                                <div className="memScores">
-                                    <div>Time: {item.time} </div>
-                                    <div>Flips: {item.flips} </div>
-                                    <div>Total: {item.total}</div>
-                                </div>
-                            <div>{item.date.toLocaleString('en-za', { day: "2-digit", month: 'short', year: 'numeric' }) + " " + item.date.toLocaleTimeString('en-za')}</div>
-                        </div>)}
-                </div>}
-        </div>
-    )
+    return <Leaders leaders={locallLeaders} header="On This Device" />
 }

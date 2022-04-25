@@ -83,10 +83,13 @@
     }
     #aboutContent {
         flex-direction: column;
-        height: 70%;
+        height: 100%;
         width: 50%;
-        align-items: center;
-        justify-content: space-between;
+        align-items: flex-start;
+        justify-content: center;
+    }
+    #aboutContent div {
+        margin-bottom: 2rem;
     }
     #aboutMain {
         height: 100%;

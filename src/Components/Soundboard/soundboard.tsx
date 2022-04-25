@@ -46,7 +46,7 @@ export default class Soundboard extends React.Component<{}, State> {
     }
     handleKeyup (e: KeyboardEvent) {
         let keys = ["Q","W","E","A","S","D","Z","X","C"]
-        if (!keys.includes(e.key.toUpperCase())) {return}
+        if (!keys.includes(e.key.toUpperCase())) return
         let audioElem = document.getElementById(e.key.toUpperCase()) as HTMLAudioElement
         if (audioElem.parentElement) {
             audioElem.parentElement.style.background = "indigo"

@@ -21,7 +21,9 @@
 #projects a:hover {
     text-decoration: underline;
 }
-
+.projectTile {
+    overflow: hidden;
+}
 .projectTile img {
     position: relative;
     width: 100%;
@@ -36,7 +38,7 @@
     z-index: 50;
     opacity: 0.9;
     position: absolute;
-    top: 10%;
+    /* top: 10%; */
     left: 10%;
     width: 80%;
     height: min-content;

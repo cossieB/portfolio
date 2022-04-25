@@ -18,15 +18,7 @@ export function LocalLeaders(props?: any) {
     }, [])
     return (
         <div id="localLeaders" className="leaderboard">
-            {leaders && <h4>Local Leaders</h4>}
-            {leaders && leaders.slice(0, 5).map((item, idx) =>
-                <div className="leadership" key={idx}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                        <strong>{item.name}</strong>
-                        <span style={{ fontSize: 'large' }}>{item.score}</span>
-                    </div>
-                    {item.date.toLocaleString('en-za', { day: "2-digit", month: 'short', year: 'numeric' }) + " " + item.date.toLocaleTimeString('en-za')}<br />
-                </div>)}
+            <Leaders header="Local Leaders" leaders={leaders} />
         </div>
     )
 }
@@ -43,20 +35,9 @@ export function GlobalLeaders(props?: any) {
                     let score = Number(doc.data().score);
                     let date = new Date(doc.data().date.seconds * 1000);
                     let name = doc.data().name
-                    return {score, name, date}
-                })
-                setLeaders(resArr)
-
-            {/*}    let response = await fetch('https://boilerplate-mongomongoose-2.cossie.repl.co/scores')
-                let data = await response.json()
-                let resArr: any[] = data.data;
-                resArr = resArr.map(item => {
-                    let score = Number(item.score);
-                    let date = new Date(item.date);
-                    let name = item.name
                     return { score, name, date }
                 })
-            setLeaders(resArr)  */}
+                setLeaders(resArr)
             }
             catch (e: any) {
                 console.log(e.message)
@@ -66,7 +47,20 @@ export function GlobalLeaders(props?: any) {
 
     return (
         <div id="globalLeaders" className="leaderboard">
-            {leaders && <h4>Global Leaders</h4>}
+            <Leaders leaders={leaders} header="Global Leaders" />
+        </div>
+    )
+}
+
+interface P434443{
+    leaders?: Scores[],
+    header: string
+}
+
+function Leaders({leaders, header}: P434443) {
+    return (
+        <>
+            {leaders && <h4>{header}</h4>}
             {leaders && leaders.slice(0, 5).map((item, idx) =>
                 <div className="leadership" key={idx}>
                     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -74,7 +68,8 @@ export function GlobalLeaders(props?: any) {
                         <span style={{ fontSize: 'large' }}>{item.score}</span>
                     </div>
                     {item.date.toLocaleString('en-za', { day: "2-digit", month: 'short', year: 'numeric' }) + " " + item.date.toLocaleTimeString('en-za')}<br />
-                </div>)}
-        </div>
+                </div>)
+            }
+        </>
     )
 }
