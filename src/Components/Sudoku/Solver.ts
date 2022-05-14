@@ -13,7 +13,7 @@ export default class Solver {
 
     constructor(puzzleString: string) {
         const validation = Solver.validate(puzzleString)
-        if (validation[0] == false ) throw new Error(validation[1])
+        if (validation[0] == false) throw new Error(validation[1])
         this.puzzleString = puzzleString
         this.array = this.getArray()
     }
@@ -58,13 +58,46 @@ export default class Solver {
             num = Number(cell.value) + 1
         }
         while (num <= 9) {
-            const checkColumn = this.array.filter(item => item.column == cell.column).every(item => item.value != String(num))
-            const checkRow = this.array.filter(item => item.row == cell.row).every(item => item.value != String(num))
-            const checkRegion = this.array.filter(item => item.region == cell.region).every(item => item.value != String(num))
+            const checkColumn = this.array
+                .filter(item => item.column == cell.column)
+                .every(item => item.value != String(num))
+            const checkRow = this.array
+                .filter(item => item.row == cell.row)
+                .every(item => item.value != String(num))
+            const checkRegion = this.array
+                .filter(item => item.region == cell.region)
+                .every(item => item.value != String(num))
             if (checkColumn && checkRegion && checkRow) return String(num);
             num++
         }
         return '.'
+    }
+    check() {
+        const answers = this.array.filter(item => !item.frozen && item.value != '.')
+        let clashes: { [key in 'row' | 'column' | 'region']: Set<Cell> } = {
+            row: new Set<Cell>(),
+            column: new Set<Cell>(),
+            region: new Set<Cell>()
+        }
+        answers.forEach(cell => {
+            
+            const checkColumn = this.array
+                .filter(item => item.column == cell.column && item.cellNumber != cell.cellNumber)
+                .every(item => item.value != cell.value)
+
+            const checkRow = this.array
+                .filter(item => item.row == cell.row && item.cellNumber != cell.cellNumber)
+                .every(item => item.value != cell.value)
+
+            const checkRegion = this.array
+                .filter(item => item.region == cell.region && item.cellNumber != cell.cellNumber)
+                .every(item => item.value != cell.value)
+
+            !checkColumn && clashes.column.add(cell)
+            !checkRow && clashes.row.add(cell)
+            !checkRegion && clashes.region.add(cell)
+        })
+        return clashes
     }
     solve() {
         this.array.forEach(cell => {
@@ -75,7 +108,7 @@ export default class Solver {
         let direction = 1
         while (true) {
             let cell = blanks[position];
-            let result = this.placeNumber(cell.cellNumber, direction)            
+            let result = this.placeNumber(cell.cellNumber, direction)
             direction = result === '.' ? -1 : 1
             cell.value = result;
             position += direction;

@@ -14,3 +14,25 @@
     height: 75px;
     font-size: x-large;
 }
+.sudoBtn {
+    font-size: 25px;
+    padding: 1rem;
+    background: none;
+}
+.sudoBtn:hover {
+    background-color: black;
+    color: #8d008d;
+}
+@media (max-width: 768px) {
+    #sudokuContainer {
+        --unit: calc(95% / 9);
+    }
+    #sudoku {
+        --unit: calc(95% / 9);
+        width: 95%;
+        grid-template-columns: repeat(9, calc(var(--unit)));
+    }
+    .sudoBlock {
+        
+    }
+}
