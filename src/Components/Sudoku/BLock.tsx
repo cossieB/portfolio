@@ -5,7 +5,7 @@ interface P34534 {
     cell: Cell,
     selected: Cell | undefined,
     setSelected: React.Dispatch<React.SetStateAction<Cell | undefined>>,
-    clashes: {[key in 'row' | 'column' | 'region']: Set<Cell>} | undefined
+    clashes?: {[key in 'row' | 'column' | 'region']: Set<Cell>} | undefined
 }
 
 export default function Block({ cell, selected, setSelected, clashes }: P34534) {
