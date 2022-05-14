@@ -15,6 +15,7 @@ import About from '../About/about';
 import Contact from '../Contact/contact';
 import Memory from '../Memory/Memory';
 import { AnimatePresence } from 'framer-motion';
+import Sudoku from '../Sudoku/Sudoku';
 
 function App() {
     const location = useLocation()
@@ -25,7 +26,7 @@ function App() {
       <Route path="/" key={"nav"} ><RouteNavigator /></Route>
       </Switch>
       <Route path="/projects" key={"projects"} ><Projects /> </Route>
-      <Switch location={location} key={location.key}>
+      <Switch location={location} key={location.pathname}>
       <Route path="/pomodoro" key={"pomodoro"} ><Pomodoro /></Route>
       <Route path="/quotes" key={"quotes"} ><Quotes /></Route>
       <Route path="/soundboard" key={"soundboard"} ><Soundboard /></Route>
@@ -36,6 +37,7 @@ function App() {
       <Route path="/about" key={"about"} ><About  /></Route>
       <Route path="/contact" key={"contact"} ><Contact /> </Route>
       <Route path="/memory" key={"memory"}  ><Memory /> </Route>
+      <Route path="/sudoku" key={"sudoku"}  ><Sudoku /> </Route>
       </Switch>
       </AnimatePresence>
     )

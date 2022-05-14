@@ -701,7 +701,7 @@ export const quotes: qt[] = [
     author: "Paul R. Ehrlich"
   },
   {
-    quote: "The good thing about computers is that they do what you tell them to do. The bad news is that they do what you tell them to do.",
+    quote: "The good thing about computers is that they do what you tell them to do. The bad thing is that they do what you tell them to do.",
     author: "Ted Nelson"
   },
   {
@@ -775,5 +775,17 @@ export const quotes: qt[] = [
   {
     quote: "Ladies if you follow these instructions exactly you might be able to pull you a rapper, NBA player, man, at least a dude with a car.",
     author: "Kanye West"
+  },
+  {
+    quote: "He's spending a year dead for tax reasons.",
+    author: "Douglas Adams"
+  },
+  {
+    quote: "If I were not an atheist, I think I would have to be a Catholic because if it wasn't the forces of natural selection that designed fish, it must have been an Italian.",
+    author: "Douglas Adams"
+  },
+  {
+    quote: "There is a feeling which persists in England that making a sandwich interesting, attractive or pleasant to eat is something sinful that only foreigners do.",
+    author: "Douglas Adams"
   }
 ]

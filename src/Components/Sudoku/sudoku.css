@@ -1,0 +1,16 @@
+#sudokuContainer {
+    background-color: #8d008d88;
+}
+
+#sudoku {
+    display: grid;
+    grid-template-columns: repeat(9, 75px);
+    border: 5px solid black;
+}
+
+.sudoBlock {
+    display: flex;
+    border: 1px solid black;
+    height: 75px;
+    font-size: x-large;
+}
