@@ -24,7 +24,7 @@ let paths: T[] = [
 paths = paths.concat(arr)
 let index = paths.findIndex(item => item.title == "Internet Games Database")
 
-paths[index].title = "IGDB"
+paths[index] = {...paths[index], title: "IGDB"}
 
 export default function RouteNavigator() {
     const navWrapper = useRef<HTMLElement>(null)

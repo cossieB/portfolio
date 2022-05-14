@@ -6,9 +6,10 @@ export const stack: {[key: string]: string} = {
     marked: "https://avatars.githubusercontent.com/u/19886934?v=4",
     heroku: "https://upload.wikimedia.org/wikipedia/commons/e/ec/Heroku_logo.svg",
     vercel: "https://logowik.com/content/uploads/images/vercel1868.jpg",
-    "entity framework": "https://i.imgur.com/DU7Cbis.png"
+    "entity framework": "https://i.imgur.com/DU7Cbis.png",
+    pug: "https://miro.medium.com/max/1012/1*XQrm5n6_iX2mY93lT4d4cA.png"
 }
-const arr = [langs, frontend, backend, misc]
+const sections = [langs, frontend, backend, misc]
 
 
 function updateStack(arr: Lang[]) {
@@ -16,7 +17,7 @@ function updateStack(arr: Lang[]) {
         stack[item.language.toLowerCase()] = item.logo
     })
 }
-arr.forEach(item => {
+sections.forEach(item => {
     updateStack(item)
 })
 
@@ -36,8 +37,8 @@ export const projectArray: Projs[] = [
         img: "screenshots/memes.png",
         path: "https://mememachine.vercel.app/",
         external: true,
-        description: "CRUD application for posting and viewing memes. Features a JWT based authentication system. Uses MongoDB Atlas as a database. Also ported to MySQL",
-        stack: ["typescript", "next.js", "node.js", "mongodb", "mongoose", "json web token", "vercel", "mysql"]
+        description: "Full-stack CRUD application for posting and viewing memes. Features a JWT based authentication system. Uses MongoDB Atlas as a database. Also ported to MySQL",
+        stack: ["typescript", "next.js", "react", "node.js", "mongodb", "mongoose", "json web token", "vercel", "mysql"]
     },
     {
         title: "Microservices",
@@ -45,7 +46,7 @@ export const projectArray: Projs[] = [
         path: "https://cossie.herokuapp.com/",
         external: true,
         description: "Various REST APIs including header parser, file metadata and timestamp microservices. Deployed on Heroku.",
-        stack: ["typescript", "node.js", "expressjs", "mongodb", "mongoose", "heroku"]
+        stack: ["typescript", "node.js", "expressjs", "mongodb", "mongoose", "pug", "heroku"]
     },
     {
         title: "Internet Games Database",
