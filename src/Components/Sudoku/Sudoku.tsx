@@ -1,12 +1,14 @@
 import React, { CSSProperties, useEffect, useState } from "react"
-import Block from "./BLock"
+import Block from "./Block"
 import Solver, { Cell } from "./Solver"
 import './sudoku.css'
 
 export default function Sudoku() {
-    const [puzzle, setPuzzle] = useState(new Solver('1.5..2.84..63.12.7.2..5.....9..1....8.2.3674.3.7.2..9.47...8..1..16....926914.37.'))
+    const [mode, setMode] = useState<'play' | 'create'>('play')
+    const [puzzle, setPuzzle] = useState(new Solver('.................................................................................'))
     const [selected, setSelected] = useState<Cell>()
     const [_rerender, triggerRerender] = useState(true)
+    const [clashes, setClashes] = useState<{[key in 'row' | 'column' | 'region']: Set<Cell>}>()
 
     useEffect(() => {
         document.addEventListener('keydown', handleKeypress)
@@ -14,6 +16,7 @@ export default function Sudoku() {
     },[selected])
 
     function handleKeypress(e: KeyboardEvent) {
+        setClashes(undefined)
         if (!selected) return
         
         const increment = (num: number) => {
@@ -42,18 +45,31 @@ export default function Sudoku() {
     }
     
     function solve() {    
+        setClashes(undefined)
         puzzle.solve()
         triggerRerender(prev => !prev)
     }
+    function check() {
+        setClashes(puzzle.check())
+
+    }
 
     return (
-        <div id="sudokuContainer" className="container flexCenter flexColumn">
+        <div id="sudokuContainer" className="container flexCenter flexColumn" onClickCapture={() => setSelected(undefined)}>
             <div id="sudoku">
-                {puzzle.array.map(cell => <Block key={cell.cellNumber} cell={cell} selected={selected} setSelected={setSelected} />)}
+                {puzzle.array.map(cell => <Block key={cell.cellNumber} cell={cell} selected={selected} setSelected={setSelected} clashes={clashes} />)}
             </div>
-            <button style={{marginTop: '1rem'}} className="niceButton"  onClick={solve}>
-                Solve
-            </button>
+            <div style={{marginTop: '1rem'}}  >
+                <button className="sudoBtn"  onClick={solve}>
+                    Solve
+                </button>
+                <button className="sudoBtn"  onClick={check}>
+                    Check
+                </button>
+                <button className="sudoBtn" >
+                    {mode == 'play' ? 'Create' : 'Play'}
+                </button>
+            </div>
         </div>
     )
 }
