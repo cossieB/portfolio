@@ -24,15 +24,22 @@
     color: #8d008d;
 }
 @media (max-width: 768px) {
-    #sudokuContainer {
-        --unit: calc(95% / 9);
+    .sudoBtn {
+        height: auto;
+        font-size: 1rem;
     }
     #sudoku {
-        --unit: calc(95% / 9);
         width: 95%;
-        grid-template-columns: repeat(9, calc(var(--unit)));
     }
-    .sudoBlock {
-        
+    .mobileBtns button {
+        border: none;
+        background: none;
+        font-size: 2rem;
+        margin-left: 1rem;
+    }
+}
+@media (min-width: 768px) {
+    .mobileBtns {
+        display: none;
     }
 }

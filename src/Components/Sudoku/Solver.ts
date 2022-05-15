@@ -100,7 +100,10 @@ export default class Solver {
         return clashes
     }
     solve(): Promise<boolean> {
-        return new Promise((resolve) => {
+        return new Promise((resolve, reject) => {
+            setTimeout(() =>{
+                reject("Couldn't solve puzzle")
+            }, 10000)
             this.array.forEach(cell => {
                 if (!cell.frozen) cell.value = '.'
             })
