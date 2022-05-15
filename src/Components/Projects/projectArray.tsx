@@ -55,8 +55,13 @@ export const projectArray: Projs[] = [
         external: true,
         description: "CRUD application for adding information about games and the gaming industry.",
         stack: ["c#", "asp.net", "bootstrap", "entity framework"]
-    },
-    {
+    }, {
+        title: "Sudoku",
+        img: 'screenshots/sudoku.png',
+        path: "/sudoku",
+        description: "Play sudoku. Features clash highlighting and custom puzzle creator. It can also solve most puzzles using the backtracking algorithm.",
+        stack: ["typescript", "react", "firebase", "framer motion"]
+    }, {
         title: "Pomodoro",
         img: "screenshots/pomodoro.png",
         path: "/pomodoro",
