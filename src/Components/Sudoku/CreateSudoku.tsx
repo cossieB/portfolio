@@ -11,7 +11,11 @@ export default function ({setPuzzleString, setMode}: Props) {
     const [puzzle] = useState(new Solver('.................................................................................'))
     const [selected, setSelected] = useState<Cell>()
     const [_rerender, triggerRerender] = useState(false)
-    const [clashes, setClashes] = useState<{[key in 'row' | 'column' | 'region']: Set<Cell>}>()
+    const [clashes, setClashes] = useState<{[key in 'row' | 'column' | 'region']: Set<Cell>}>({
+        row: new Set<Cell>(),
+        column: new Set<Cell>(),
+        region: new Set<Cell>(),
+    })
 
     useEffect(() => {
         document.addEventListener('keydown', handleKeypress)
@@ -46,7 +50,13 @@ export default function ({setPuzzleString, setMode}: Props) {
         setClashes(clashes)
     }
     function validate() {
-
+        if (clashes.column.size + clashes.region.size + clashes.row.size > 0) return
+        let puzzleString = ""
+        puzzle.array.forEach(cell => {
+            puzzleString += cell.value
+        })
+        setPuzzleString(puzzleString)
+        setMode(true)
     }
 
 
