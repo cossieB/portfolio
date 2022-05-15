@@ -99,20 +99,24 @@ export default class Solver {
         })
         return clashes
     }
-    solve() {
-        this.array.forEach(cell => {
-            if (!cell.frozen) cell.value = '.'
+    solve(): Promise<boolean> {
+        return new Promise((resolve) => {
+            this.array.forEach(cell => {
+                if (!cell.frozen) cell.value = '.'
+            })
+            const blanks = this.array.filter(item => !item.frozen)
+            let position = 0;
+            let direction = 1
+            while (true) {
+                let cell = blanks[position];
+                let result = this.placeNumber(cell.cellNumber, direction)
+                direction = result === '.' ? -1 : 1
+                cell.value = result;
+                position += direction;
+                if (position < 0 || position >= blanks.length) break
+            }
+            if (this.array.some(item => item.value == '.')) return resolve(false)
+            else return resolve(true)
         })
-        const blanks = this.array.filter(item => !item.frozen)
-        let position = 0;
-        let direction = 1
-        while (true) {
-            let cell = blanks[position];
-            let result = this.placeNumber(cell.cellNumber, direction)
-            direction = result === '.' ? -1 : 1
-            cell.value = result;
-            position += direction;
-            if (position < 0 || position >= blanks.length) break
-        }
     }
 }

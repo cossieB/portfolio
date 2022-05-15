@@ -4,11 +4,13 @@ import Solver, { Cell } from "./Solver"
 
 interface Props {
     puzzleString: string,
+    setPuzzleString: React.Dispatch<React.SetStateAction<string>>
     setMode: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export default function PlaySudoku(props: Props) {
-    const {puzzleString, setMode} = props
+    const {puzzleString, setMode, setPuzzleString} = props
+    console.log(puzzleString)
     const [puzzle] = useState(new Solver(puzzleString))
     const [selected, setSelected] = useState<Cell>()
     const [_rerender, triggerRerender] = useState(true)
@@ -47,10 +49,15 @@ export default function PlaySudoku(props: Props) {
         triggerRerender(prev => !prev)
 
     }
-    
-    function solve() {    
+    function reset() {
+        puzzle.array.forEach(cell => {
+            if (!cell.frozen) cell.value = '.'
+        })
+        triggerRerender(prev => !prev)
+    }
+    async function solve() {    
         setClashes(undefined)
-        puzzle.solve()
+        await puzzle.solve()
         triggerRerender(prev => !prev)
     }
     function check() {
@@ -67,8 +74,14 @@ export default function PlaySudoku(props: Props) {
                 <button className="sudoBtn" onClick={check}  >
                     Check
                 </button>
+                <button className="sudoBtn" onClick={reset}  >
+                    Reset
+                </button>
                 <button className="sudoBtn" onClick={solve}  >
                     Solve
+                </button>
+                <button className="sudoBtn" onClick={() => setMode(false)}  >
+                    Custom Puzzle
                 </button>
             </div>
         </div>
