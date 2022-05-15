@@ -1,6 +1,9 @@
-import { useEffect, useState } from "react"
+import { motion } from "framer-motion"
+import { useEffect, useRef, useState } from "react"
+import { containerVariant } from "../../variants"
 import Block from "./Block"
 import Solver, { Cell } from "./Solver"
+import { sudokuVariant } from "./sudokuVariant"
 
 interface Props {
     setMode: React.Dispatch<React.SetStateAction<boolean>>,
@@ -16,6 +19,19 @@ export default function ({setPuzzleString, setMode}: Props) {
         column: new Set<Cell>(),
         region: new Set<Cell>(),
     })
+
+    const divWrapper = useRef<HTMLDivElement>(null)
+
+    useEffect(() => {
+        if (window.innerWidth > 768) return
+        const sudokuWidth = divWrapper.current?.clientWidth!;
+        const width = sudokuWidth / 9;
+        divWrapper.current!.style.gridTemplateColumns = `repeat(9, ${width}px)`
+        const blocks = document.querySelectorAll('.sudoBlock') as NodeListOf<HTMLElement>
+        blocks.forEach(block => {
+            block.style.height = String(width) + 'px'
+        })
+    }, [])
 
     useEffect(() => {
         document.addEventListener('keydown', handleKeypress)
@@ -58,18 +74,45 @@ export default function ({setPuzzleString, setMode}: Props) {
         setPuzzleString(puzzleString)
         setMode(true)
     }
+    function increment(num: number) {
+        if (!selected || selected.frozen) return
+        let old = Number(selected.value) || 0;
+        let sum: number;
+        if (old + num < 1) sum = 9;
+        else if (old + num > 9) sum = 1;
+        else sum = old + num
+        selected.value = String(sum)
+        const clashes = puzzle.check()
+        setClashes(clashes)
+    }
+    function clear() {
+        if (!selected || selected.frozen ) return
+        selected.value = '.'
+        triggerRerender(prev => !prev)
+    }
 
 
     return (
-        <div id="sudokuContainer" className="container flexCenter flexColumn" onClickCapture={() => setSelected(undefined)}>
-            <div id="sudoku">
-                {puzzle.array.map(cell => <Block key={cell.cellNumber} cell={cell} selected={selected} setSelected={setSelected} clashes={clashes} />)}
-            </div>
-            <div style={{marginTop: '1rem'}} >
+        <motion.div id="sudokuContainer" className="container flexCenter flexColumn" variants={sudokuVariant} initial="start" animate="end" exit={'exit'} onAuxClick={() => setSelected(undefined)}>
+            <div style={{marginBottom: '1rem'}} >
                 <button className="sudoBtn" onClick={validate}  >
                     Validate
                 </button>
             </div>
-        </div>
+            <div ref={divWrapper} id="sudoku">
+                {puzzle.array.map(cell => <Block key={cell.cellNumber} cell={cell} selected={selected} setSelected={setSelected} clashes={clashes} />)}
+            </div>
+            <div className="mobileBtns">
+                <button disabled={selected == undefined} onClick={() => increment(1)}  >
+                    ↑
+                </button>
+                <button disabled={selected == undefined} onClick={() => increment(-1)} >
+                    ↓
+                </button>
+                <button disabled={selected == undefined} onClick={clear} >
+                    ←
+                </button>
+            </div>
+        </motion.div>
     )
 }

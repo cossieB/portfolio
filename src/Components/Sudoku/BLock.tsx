@@ -14,9 +14,7 @@ export default function Block({ cell, selected, setSelected, clashes }: P34534) 
     if (!cell.frozen) style.color = 'white'
     if (cell.row == 2 || cell.row == 5) style.borderBottom = '3px solid black'
     if (cell.column == 2 || cell.column == 5) style.borderRight = '3px solid black'
-    if (clashes?.row?.has(cell)) style.backgroundColor = 'red'
-    if (clashes?.column?.has(cell)) style.backgroundColor = 'red'
-    if (clashes?.region?.has(cell)) style.backgroundColor = 'red'
+    if (clashes?.row?.has(cell) || clashes?.column?.has(cell) || clashes?.region?.has(cell) ) style.backgroundColor = 'red'
     if (selected == cell) style.borderColor = 'white'
     
     return (
