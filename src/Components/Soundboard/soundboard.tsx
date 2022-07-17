@@ -1,6 +1,6 @@
 import React from "react";
 import SoundButtons from "./soundbuttons";
-import './soundboard.css'
+import './soundboard.scss'
 import { motion } from "framer-motion";
 import { containerVariant } from "../../variants";
 

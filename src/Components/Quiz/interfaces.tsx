@@ -1,10 +1,12 @@
-export interface P123 {
+export interface P333 {
     user: string,
-    correct: number,
     total: number,
-    setGameOver: React.Dispatch<React.SetStateAction<boolean>>
+    correct: number,
     setTotal: React.Dispatch<React.SetStateAction<number>>,
-    setCorrect: React.Dispatch<React.SetStateAction<number>>,    
+    setCorrect: React.Dispatch<React.SetStateAction<number>>,
+    setGameOver: React.Dispatch<React.SetStateAction<boolean>>
+}
+export interface P123 extends P333 {
     setUser: React.Dispatch<React.SetStateAction<string>>,    
 }
 
@@ -16,14 +18,6 @@ export interface Scores {
 
 export interface P11 {
     setReadInstructions: React.Dispatch<React.SetStateAction<boolean>>
-}
-export interface P333 {
-    user: string,
-    total: number,
-    correct: number,
-    setTotal: React.Dispatch<React.SetStateAction<number>>,
-    setCorrect: React.Dispatch<React.SetStateAction<number>>,
-    setGameOver: React.Dispatch<React.SetStateAction<boolean>>
 }
 export interface P084 {
     user: string,

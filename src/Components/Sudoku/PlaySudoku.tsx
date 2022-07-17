@@ -1,6 +1,5 @@
 import { motion } from "framer-motion"
 import { useState, useEffect, useRef } from "react"
-import { containerVariant } from "../../variants"
 import Block from "./Block"
 import Solver, { Cell } from "./Solver"
 import { sudokuVariant } from "./sudokuVariant"
@@ -54,7 +53,7 @@ export default function PlaySudoku(props: Props) {
         setSelected(puzzle.array[newCellNumber])
 
         if (selected.frozen) return
-        if (/[1-9]/.test(e.key)) {
+        if (/^[1-9]$/.test(e.key)) {
             selected.value = e.key
         }
         if (/\.|0/.test(e.key)) {
@@ -64,6 +63,7 @@ export default function PlaySudoku(props: Props) {
 
     }
     function reset() {
+        setClashes(undefined)
         puzzle.array.forEach(cell => {
             if (!cell.frozen) cell.value = '.'
         })
@@ -71,14 +71,15 @@ export default function PlaySudoku(props: Props) {
     }
     async function solve() {
         setClashes(undefined)
-        await puzzle.solve()
+        const result = await puzzle.solve().catch(() => false)
         triggerRerender(prev => !prev)
     }
     function check() {
         setClashes(puzzle.check())
     }
     function increment(num: number) {
-        if (!selected || selected.frozen) return
+        setClashes(undefined)
+        if (!selected || selected.frozen) return;
         let old = Number(selected.value) || 0;
         let sum: number;
         if (old + num < 1) sum = 9;
@@ -88,13 +89,14 @@ export default function PlaySudoku(props: Props) {
         triggerRerender(prev => !prev)
     }
     function clear() {
-        if (!selected || selected.frozen ) return
+        setClashes(undefined)
+        if (!selected || selected.frozen ) return;
         selected.value = '.'
         triggerRerender(prev => !prev)
     }
 
     return (
-        <motion.div id="sudokuContainer" className="container flexCenter flexColumn" variants={sudokuVariant} initial="start" animate="end" exit={'exit'} onAuxClick={() => setSelected(undefined)}>
+        <motion.div  className="sudoGame container flexCenter flexColumn" variants={sudokuVariant} initial="start" animate="end" exit={'exit'} onAuxClick={() => setSelected(undefined)}>
             <div style={{ marginBottom: '1rem' }} >
                 <button className="sudoBtn" onClick={check}  >
                     Check

@@ -1,27 +1,43 @@
 #quizContainer {
     display: flex;
-    background-color: darksalmon;
+    background: rgba($color: #000000, $alpha: .3) url('../../../public/image.jpg');
+    background-position: center;
+    background-blend-mode: darken;
+    animation: bgRotate 10s ease infinite alternate;
+    background-size: cover;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: black;
+    color: white;
 }
+@keyframes bgRotate {
+    0% {
+        background-position: center top;
+    }
+    100% {
+        background-position: center bottom;
+    }
+}
+
 #mathGameButtons {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(4, 1fr);
-	height: 400px;
+    height: 400px;
     width: calc(3/4*400px);
+
+    button {
+        background-color: ivory;
+        font-size: x-large;
+        color: black;
+    }
 }
-#mathGameButtons button {
-    background-color: ivory;
-    font-size: x-large;
-    color: black
-}
+
 #gameContainer {
     min-height: 100vh;
     width: 100vw;
     display: grid;
     grid-template-columns: 25% 1fr 25%;
 }
+
 .gamePanels {
     display: flex;
     flex-direction: column;
@@ -29,35 +45,58 @@
     align-items: center;
     padding: 1rem;
 }
+
 .quizDiv {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
 #backBtn {
     grid-area: 4 / 1 / 5 / 2;
 }
+
 .importantGame {
     height: 2rem;
     padding: 0.5rem;
     text-align: center;
     font-size: x-large;
 }
+
 .leadership {
+    background: linear-gradient(lavender, #6f6fa1);
+    display: grid;
+    grid-template-columns: auto auto;
     padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: 5%;
+    color: black;
+
+    > :nth-child(2) {
+        display: flex;
+        width: 5rem;
+        align-items: center;
+        justify-content: center;
+        grid-area: 1 / 2 / 3 / 3;
+        font-size: clamp(2rem, 100%, 5rem);
+    }
 }
+
 .leaderboard {
     height: 50%;
     align-self: center;
     justify-content: center;
 }
-#gameStats div{
+
+#gameStats div {
     padding: 1rem;
 }
+
 .gameButtons {
     border-radius: 50%;
 }
+
 #gameOver {
     display: flex;
     flex-direction: column;
@@ -65,19 +104,23 @@
     align-items: center;
     font-size: large;
 }
+
 @media (max-width: 768px) {
     #quizContainer {
         flex-direction: column;
     }
+
     #gameContainer {
         display: flex;
         flex-direction: column;
     }
+
     #mathGameButtons {
         width: 80vw;
         height: calc(80vw * 4 / 3);
     }
-    #gameStats div{
+
+    #gameStats div {
         padding: 0.2rem;
     }
 }
