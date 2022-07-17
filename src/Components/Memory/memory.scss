@@ -2,83 +2,99 @@
     background: rgb(22, 22, 97);
     color: white;
     font-size: large;
+
+    button {
+        color: white;
+        background-color: white;
+
+        &:hover {
+            color: black;
+        }
+    }
+
+    svg {
+        color: black;
+    }
+    input {
+        background: white;
+    }
 }
-#memoryContainer button {
-    color: white;
-    background-color: white!;
-}
-#memoryContainer button:hover {
-    color: black
-}
-#memoryContainer svg {
-    color: black
-}
+
 #memoryBlock {
     width: 500px;
     height: 500px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
+
 .memoryCard {
     background-color: thistle;
     display: flex;
     border: 1px solid white;
     font-size: xx-large;
     transition: background-color 500ms ease;
+
+    &.hide {
+        background-color: black;
+    }
+
+    &.matched {
+        background-color: green;
+    }
+
+    svg {
+        transform: scale(3);
+    }
 }
-.memoryCard.hide {
-    background-color: black;
-}
-.memoryCard.matched {
-    background-color: green;
-}
-.memoryCard svg {
-    transform: scale(3);
-}
+
 #highScores {
     display: flex;
     align-items: flex-start;
     justify-content: space-around;
     width: 100%;
 }
+
 #finished {
     display: flex;
     flex-direction: column;
     width: 90%;
     height: 100%;
 }
+
 .datesAndTimes {
     display: flex;
     justify-content: space-between;
 }
+
 .leaderboardContainer {
     width: 33%;
 }
-#memoryContainer input{
-    background: white;
-}
+
 .memScores {
     display: flex;
     justify-content: space-between;
 }
+
 @media (max-width: 768px) {
     #highScores {
         flex-direction: column-reverse;
         align-items: center;
         width: 100%;
     }
-    .leaderboard {
-        width: 100%;
-    }
+
+    .leaderboard,
     .leadership {
         width: 100%;
     }
+
     .leaderboardContainer {
         width: 90%;
     }
+
     .datesAndTimes {
         width: 100%;
     }
+
     #memoryBlock {
         width: 90%;
     }

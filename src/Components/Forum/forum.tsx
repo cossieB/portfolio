@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 import Users from "./users";
-import './forum.css'
+import './forum.scss'
 import Board from "./Board";
 import { motion } from "framer-motion";
 import { containerVariant } from "../../variants";

@@ -2,10 +2,11 @@ import { motion } from "framer-motion"
 import React, { useEffect } from "react"
 import { useState } from "react"
 import { containerVariant } from "../../variants"
-import { Instructions, Signup } from "../Quiz/Quiz"
+import { Instructions } from "../Quiz/Quiz"
 import Finished from "./Finished"
 import GameStart from "./GameStart"
-import "./memory.css"
+import { Signup } from "../Quiz/Signup"
+import "./memory.scss"
 
 export default function Memory() {
     useEffect(() => {

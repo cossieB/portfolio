@@ -80,7 +80,7 @@ export default class Solver {
             region: new Set<Cell>()
         }
         answers.forEach(cell => {
-            
+
             const checkColumn = this.array
                 .filter(item => item.column == cell.column && item.cellNumber != cell.cellNumber)
                 .every(item => item.value != cell.value)
@@ -99,27 +99,25 @@ export default class Solver {
         })
         return clashes
     }
-    solve(): Promise<boolean> {
-        return new Promise((resolve, reject) => {
-            setTimeout(() =>{
-                reject("Couldn't solve puzzle")
-            }, 10000)
-            this.array.forEach(cell => {
-                if (!cell.frozen) cell.value = '.'
-            })
-            const blanks = this.array.filter(item => !item.frozen)
-            let position = 0;
-            let direction = 1
-            while (true) {
-                let cell = blanks[position];
-                let result = this.placeNumber(cell.cellNumber, direction)
-                direction = result === '.' ? -1 : 1
-                cell.value = result;
-                position += direction;
-                if (position < 0 || position >= blanks.length) break
-            }
-            if (this.array.some(item => item.value == '.')) return resolve(false)
-            else return resolve(true)
+    async solve() {
+        setTimeout(() => {
+            Promise.reject("Couldn't solve puzzle")
+        }, 10000)
+        this.array.forEach(cell => {
+            if (!cell.frozen) cell.value = '.'
         })
+        const blanks = this.array.filter(item => !item.frozen)
+        let position = 0;
+        let direction = 1
+        while (true) {
+            let cell = blanks[position];
+            let result = this.placeNumber(cell.cellNumber, direction)
+            direction = result === '.' ? -1 : 1
+            cell.value = result;
+            position += direction;
+            if (position < 0 || position >= blanks.length) break
+        }
+        if (this.array.some(item => item.value == '.')) return false
+        else return true;
     }
 }

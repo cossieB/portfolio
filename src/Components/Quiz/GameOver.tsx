@@ -2,10 +2,10 @@ import { useEffect } from "react";
 import { P123, Scores } from "./interfaces";
 import { GlobalLeaders, LocalLeaders } from "./Leaders";
 import { db } from "../../firestore";
-import { collection, addDoc, getDoc, getDocs } from "firebase/firestore"
+import { collection, addDoc } from "firebase/firestore"
 
-export default function GameOver({ user, correct, total, setGameOver, setCorrect, setTotal, setUser }: P123) {
-
+export default function GameOver(props: P123) {
+    const { user, correct, total, setGameOver, setCorrect, setTotal, setUser } = props;
     useEffect(() => {
         setGlobal()
         setLocal();

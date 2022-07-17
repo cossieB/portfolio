@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import React from "react";
 import { containerVariant } from "../../variants";
-import './calculator.css'
+import './calculator.scss'
 
 interface S {
     display: string,

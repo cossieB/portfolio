@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import React from "react";
 import { PomProp, PomState } from "./interfaces";
-import './pomodoro.css'
+import './pomodoro.scss'
 import {containerVariant} from '../../variants'
 
 const initialState = { breakMin: 5, sessionMin: 25, seconds: 1500, break: 300, running: false, left: "25:00", breakTime: "05:00", sessionLength: 1500, sound: "" }

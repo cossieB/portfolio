@@ -1,11 +1,11 @@
 import { useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
-import './navigator.css'
+import './navigator.scss'
 import { Projs, projectArray } from '../Projects/projectArray'
 
 type T = Pick<Projs, "path" | "title" | "external">
 
-let arr: T[] = projectArray.slice(3,).concat(projectArray.slice(0, 3))
+let arr: T[] =  [...projectArray.slice(3,), ...projectArray.slice(0,3)] // Reaarrange the projects array so that the first 3 projects are moved to the end.
 let paths: T[] = [
     {
         title: "Home",
@@ -21,9 +21,9 @@ let paths: T[] = [
     }
 ]
 
+// Replace "Internet Games Database" with the acronym "IGDB". I did it this way so as to not mutate the original object.
 paths = paths.concat(arr)
 let index = paths.findIndex(item => item.title == "Internet Games Database")
-
 paths[index] = {...paths[index], title: "IGDB"}
 
 export default function RouteNavigator() {

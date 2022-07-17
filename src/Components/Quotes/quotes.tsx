@@ -1,6 +1,6 @@
 import { CSSProperties, useEffect, useState } from "react";
 import { quotes } from "./quotelist";
-import './quotes.css'
+import './quotes.scss'
 import { motion } from "framer-motion";
 import { containerVariant } from "../../variants";
 

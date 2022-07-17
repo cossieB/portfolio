@@ -27,7 +27,8 @@ export interface Projs {
     path: string,
     external?: boolean,
     description: string,
-    stack: string[]
+    stack: string[],
+    repo: string
 }
 
 
@@ -37,76 +38,86 @@ export const projectArray: Projs[] = [
         img: "screenshots/memes.png",
         path: "https://mememachine.vercel.app/",
         external: true,
-        description: "Full-stack CRUD application for posting and viewing memes. Features a JWT based authentication system. Uses MongoDB Atlas as a database. Also ported to MySQL",
-        stack: ["typescript", "next.js", "react", "node.js", "mongodb", "mongoose", "json web token", "vercel", "mysql"]
-    },
-    {
+        description: "Full-stack CRUD application for posting and viewing memes. Developed with TypeScript, Next.js and React. Features a JWT based authentication system and uses MongoDB Atlas as a database. Also ported to MySQL",
+        stack: ["typescript", "next.js", "react", "node.js", "mongodb", "mongoose", "json web token", "vercel", "mysql", "sass"],
+        repo: 'https://github.com/cossieB/meme-machine'
+    }, {
         title: "Microservices",
         img: "screenshots/microservices.png",
         path: "https://cossie.herokuapp.com/",
         external: true,
         description: "Various REST APIs including header parser, file metadata and timestamp microservices. Deployed on Heroku.",
-        stack: ["typescript", "node.js", "expressjs", "mongodb", "mongoose", "pug", "heroku"]
-    },
-    {
+        stack: ["typescript", "node.js", "expressjs", "mongodb", "mongoose", "pug", "heroku"],
+        repo: 'https://github.com/cossieB/microservices'
+    }, {
         title: "Internet Games Database",
-        img: "screenshots/IGDB.png",
-        path: "http://cossie-001-site1.ftempurl.com/",
+        img: "screenshots/igdb.png",
+        path: "https://internet-games-database.vercel.app/",
         external: true,
         description: "CRUD application for adding information about games and the gaming industry.",
-        stack: ["c#", "asp.net", "bootstrap", "entity framework"]
+        stack: ["typescript", "next.js", "react", "node.js", "mongodb", "mongoose", "vercel", "framer motion", "sass"],
+        repo: "https://github.com/cossieB/internet-games-database"
     }, {
         title: "Sudoku",
         img: 'screenshots/sudoku.png',
         path: "/sudoku",
         description: "Play sudoku. Features clash highlighting and custom puzzle creator. It can also solve most puzzles using the backtracking algorithm.",
-        stack: ["typescript", "react", "firebase", "framer motion"]
+        stack: ["typescript", "react", "firebase", "framer motion"],
+        repo: "https://github.com/cossieB/portfolio/tree/main/src/Components/Sudoku"
     }, {
         title: "Pomodoro",
         img: "screenshots/pomodoro.png",
         path: "/pomodoro",
         description: "Timer for the pomodoro technique. You can change the session and the break lengths.",
-        stack: ["typescript", "react", "firebase", "framer motion"]
+        stack: ["typescript", "react", "firebase", "framer motion"],
+        repo: "https://github.com/cossieB/portfolio/tree/main/src/Components/Pomodoro"
     }, {
         title: "Calculator",
         img: "screenshots/calculator.png",
         path: "/calculator",
         description: "Non-scientific calculator.",
-        stack: ["typescript", "react", "firebase", "framer motion"]
+        stack: ["typescript", "react", "firebase", "framer motion"],
+        repo: "https://github.com/cossieB/portfolio/tree/main/src/Components/Calculator"
     }, {
         title: 'Quiz',
         path: '/quiz',
         img: 'screenshots/quiz.png',
         description: "Quiz that tests your mental math skills. High scores stored in Firestore and local storage.",
-        stack: ["typescript", "react", "firebase", "framer motion", "firestore"]
+        stack: ["typescript", "react", "firebase", "framer motion", "firestore"],
+        repo: "https://github.com/cossieB/portfolio/tree/main/src/Components/Quiz"
     }, {
         title: 'Memory Game',
         path: '/memory',
         img: "/screenshots/memory.png",
         description: "Quiz that tests your memory. High scores stored in Firestore and local storage.",
-        stack: ["typescript", "react", "firebase", "framer motion", "firestore"]
+        stack: ["typescript", "react", "firebase", "framer motion", "firestore"],
+        repo: "https://github.com/cossieB/portfolio/tree/main/src/Components/Memory"
     }, {
         title: "Random Quote Machine",
         path: "/quotes",
         img: "screenshots/quotes.png",
         description: "Some lighthearted quotes from across the ages.",
-        stack: ["typescript", "react", "firebase", "framer motion"]
+        stack: ["typescript", "react", "firebase", "framer motion"],
+        repo: "https://github.com/cossieB/portfolio/tree/main/src/Components/Quotes"
     }, {
         title: "Markdown Preview",
         path: "markdown-preview",
         img: "screenshots/markdown.png",
         description: "This neat little tool allows you to type markdown code and instantly see the output. Useful for git README.md files.",
-        stack: ["typescript", "react", "firebase", "framer motion", "marked"]
+        stack: ["typescript", "react", "firebase", "framer motion", "marked"],
+        repo: "https://github.com/cossieB/portfolio/tree/main/src/Components/Markdown"
     }, {
         title: "Soundboard",
         img: "screenshots/soundboard.png",
         path: "/soundboard",
         description: "Press a button and play a sound. Features a volume slider",
-        stack: ["typescript", "react", "firebase", "framer motion"]
+        stack: ["typescript", "react", "firebase", "framer motion"],
+        repo: "https://github.com/cossieB/portfolio/tree/main/src/Components/Soundboard"
     }, {
         title: "Message Board",
         path: "/forum",
         img: "screenshots/forum.png",
         description: "User interface for a message board. Messages aren't stored.",
-        stack: ["typescript", "react", "firebase", "framer motion"]
+        stack: ["typescript", "react", "firebase", "framer motion"],
+        repo: "https://github.com/cossieB/portfolio/tree/main/src/Components/Forum"
     }]

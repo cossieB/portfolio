@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { marked } from 'marked'
 import { initialText } from "./initial";
-import './markdown.css'
+import './markdown.scss'
 import { motion } from "framer-motion";
 import { containerVariant } from "../../variants";
 

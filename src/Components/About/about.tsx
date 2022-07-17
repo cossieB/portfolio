@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { useEffect } from 'react'
 import { containerVariant } from '../../variants'
-import './about.css'
+import './about.scss'
 import AboutMain from './AboutMain'
 
 export default function About() {

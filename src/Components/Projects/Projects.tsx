@@ -1,8 +1,8 @@
-import FramerMotion, { motion } from "framer-motion";
+import FramerMotion, { AnimatePresence, motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import Details from "./Details";
 import { projectArray, Projs, stack } from "./projectArray";
-import './Projects.css'
+import './Projects.scss'
 import ProjectTile from "./ProjectTile";
 
 const parentVariant: FramerMotion.Variants = {
@@ -34,11 +34,21 @@ export default function Projects() {
 
     return (
         <main id="projectContainer" className="container flexCenter" >
-            {selected &&
-                <>
-                    <div style={{ opacity: 1, background: "none", zIndex: 25, backdropFilter: 'blur(10px) grayscale(0.5)' }} className="mask" onClick={() => setSelected(null)} ></div>
-                    <Details proj={selected} setSelected={setSelected} wrapper={wrapper} />
-                </>}
+            <AnimatePresence>
+                {selected &&
+                    <>
+                        <motion.div
+                            style={{ opacity: 1, background: "none", zIndex: 25, backdropFilter: 'blur(10px) grayscale(0.5)' }}
+                            className="mask"
+                            onClick={() => setSelected(null)} 
+                            initial={{opacity: 0}}
+                            animate={{opacity: 1}}
+                            exit={{opacity: 0}}
+                            transition={{ duration: 0.5, type: 'spring', }}
+                            />
+                        <Details proj={selected} setSelected={setSelected} wrapper={wrapper} />
+                    </>}
+            </AnimatePresence>
             <motion.div id="projects" variants={parentVariant} initial='initial' animate='end'>
                 {projectArray.map(proj =>
                     <ProjectTile

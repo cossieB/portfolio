@@ -16,7 +16,6 @@
 
 #author {
     text-align: right;
-
 }
 
 #quoteButtons {
@@ -36,10 +35,10 @@
     font-size: 16px;
     border: none;
     transition: all 500ms ease;
-}
 
-#new-quote:hover {
-    background: inherit;
+    &:hover {
+        background: inherit;
+    }
 }
 
 #socialButtons svg {
@@ -48,7 +47,6 @@
 
 #new-quote:active {
     transform: scale(0.95);
-
 }
 
 @media screen and (max-width: 768px) {
@@ -57,7 +55,7 @@
     }
 
     #quote-box {
-        width: 80%
+        width: 80%;
     }
 
     #socialButtons {

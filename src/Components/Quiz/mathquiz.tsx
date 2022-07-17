@@ -1,6 +1,7 @@
 import React from "react";
 import { P, P71, S } from "./interfaces";
 import MathLogic from "./Logic";
+import styles from "./quiz.module.scss";
 
 const startTime = 5
 
@@ -37,13 +38,13 @@ export default class MathQuiz extends React.Component<P, S> {
         this.setState(prev => ({userInput: prev.userInput.slice(0,-1)}))
     }
     countdown() {
-        if (this.state.time > 0) {
-            this.setState(prev => ({ time: prev.time - 1 }))
-        }
-        else {
-            this.setState({ time: startTime, userInput: "" })
-            this.props.setTotal(c => c + 1)
-        }
+        // if (this.state.time > 0) {
+        //     this.setState(prev => ({ time: prev.time - 1 }))
+        // }
+        // else {
+        //     this.setState({ time: startTime, userInput: "" })
+        //     this.props.setTotal(c => c + 1)
+        // }
     }
     next(q: string, a: number) {
         this.setState({ question: q, answer: a })
@@ -72,12 +73,12 @@ export default class MathQuiz extends React.Component<P, S> {
     }
     render() {
         return (
-            <div id="mathQuiz" className="quizDiv">
+            <div id="mathQuiz" className={styles.quizDiv}>
                 <MathLogic total={this.props.total} next={this.next} />
                 <div>
-                    <div className="importantGame">Time: {this.state.time}</div>
-                    <div className="importantGame">Question: {this.state.question}</div>
-                    <div className="importantGame"> {this.state.userInput}</div>
+                    <div className={styles.importantGame}>Time: {this.state.time}</div>
+                    <div className={styles.importantGame}>Question: {this.state.question}</div>
+                    <div className={styles.importantGame}> {this.state.userInput}</div>
                 </div>
                 <Buttons handleEnter={this.handleEnter} handleClick={this.handleClick} handleDelete={this.handleDelete} />
             </div>
@@ -92,10 +93,10 @@ function Buttons({ handleClick, handleEnter, handleDelete }: P71) {
     }
     buttons.push(0)
     return (
-        <div id="mathGameButtons">
-            {buttons.map(btn => <button key={btn} className="gameButtons" value={btn} onClick={handleClick} >{btn}</button>)}
-            <button id="backBtn" onClick={handleDelete} className="gameButtons">←</button>
-            <button onClick={handleEnter} className="gameButtons">Go</button>
+        <div id={styles.mathGameButtons}>
+            {buttons.map(btn => <button key={btn} className={styles.gameButtons} value={btn} onClick={handleClick} >{btn}</button>)}
+            <button id={styles.backBtn} onClick={handleDelete} className={styles.gameButtons}>←</button>
+            <button onClick={handleEnter} className={styles.gameButtons}>Go</button>
         </div>
     )
 }

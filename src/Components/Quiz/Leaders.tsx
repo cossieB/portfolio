@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { Scores } from "./interfaces"
 import { query, orderBy, limit, collection, getDocs } from "firebase/firestore";
 import { db } from "../../firestore";
+import styles from "./quiz.module.scss";
 
 export function LocalLeaders(props?: any) {
     const [leaders, setLeaders] = useState<Scores[]>()
@@ -17,7 +18,7 @@ export function LocalLeaders(props?: any) {
         }
     }, [])
     return (
-        <div id="localLeaders" className="leaderboard">
+        <div id={styles.localLeaders} className={styles.leaderboard}>
             <Leaders header="Local Leaders" leaders={leaders} />
         </div>
     )
@@ -46,28 +47,26 @@ export function GlobalLeaders(props?: any) {
     }, [])
 
     return (
-        <div id="globalLeaders" className="leaderboard">
+        <div id={styles.globalLeaders} className={styles.leaderboard}>
             <Leaders leaders={leaders} header="Global Leaders" />
         </div>
     )
 }
 
-interface P434443{
+interface P434443 {
     leaders?: Scores[],
     header: string
 }
 
-function Leaders({leaders, header}: P434443) {
+function Leaders({ leaders, header }: P434443) {
     return (
         <>
             {leaders && <h4>{header}</h4>}
             {leaders && leaders.slice(0, 5).map((item, idx) =>
-                <div className="leadership" key={idx}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                        <strong>{item.name}</strong>
-                        <span style={{ fontSize: 'large' }}>{item.score}</span>
-                    </div>
-                    {item.date.toLocaleString('en-za', { day: "2-digit", month: 'short', year: 'numeric' }) + " " + item.date.toLocaleTimeString('en-za')}<br />
+                <div className={styles.leadership} key={idx}>
+                    <div><strong>{item.name}</strong></div>
+                    <div>{item.score}</div>
+                    <div>{item.date.toLocaleString('en-za', { day: "2-digit", month: 'short', year: 'numeric' }) + " " + item.date.toLocaleTimeString('en-za')}</div>
                 </div>)
             }
         </>
