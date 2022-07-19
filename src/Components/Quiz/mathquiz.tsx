@@ -38,13 +38,13 @@ export default class MathQuiz extends React.Component<P, S> {
         this.setState(prev => ({userInput: prev.userInput.slice(0,-1)}))
     }
     countdown() {
-        // if (this.state.time > 0) {
-        //     this.setState(prev => ({ time: prev.time - 1 }))
-        // }
-        // else {
-        //     this.setState({ time: startTime, userInput: "" })
-        //     this.props.setTotal(c => c + 1)
-        // }
+        if (this.state.time > 0) {
+            this.setState(prev => ({ time: prev.time - 1 }))
+        }
+        else {
+            this.setState({ time: startTime, userInput: "" })
+            this.props.setTotal(c => c + 1)
+        }
     }
     next(q: string, a: number) {
         this.setState({ question: q, answer: a })
@@ -73,7 +73,7 @@ export default class MathQuiz extends React.Component<P, S> {
     }
     render() {
         return (
-            <div id="mathQuiz" className={styles.quizDiv}>
+            <div id={styles.mathQuiz} className={styles.quizDiv}>
                 <MathLogic total={this.props.total} next={this.next} />
                 <div>
                     <div className={styles.importantGame}>Time: {this.state.time}</div>

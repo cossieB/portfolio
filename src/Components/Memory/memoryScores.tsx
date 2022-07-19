@@ -8,7 +8,7 @@ export function GlobalScores(props: P335320) {
     const { user, time, flips } = props
     const [globalLeaders, setGlobalLeaders] = useState<Times[]>([])
     useEffect(() => {
-        addGlobal()
+        // addGlobal()
     }, [])
 
     async function addGlobal() {
