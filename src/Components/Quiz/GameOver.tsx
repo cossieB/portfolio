@@ -6,7 +6,7 @@ import { collection, addDoc } from "firebase/firestore";
 import styles from "./quiz.module.scss";
 
 export default function GameOver(props: P123) {
-    const { user, correct, total, setGameOver, setCorrect, setTotal, setUser } = props;
+    const { user, correct, total, setGameOver, setCorrect, setTotal, setUser, difficulty } = props;
     useEffect(() => {
         setGlobal()
         setLocal();
@@ -16,12 +16,12 @@ export default function GameOver(props: P123) {
         let localLeaders = localStorage.getItem('leaders');
         if (localLeaders) {
             let leaders: Scores[] = JSON.parse(localLeaders)
-            leaders.push({ name: user, date: new Date(), score: correct })
+            leaders.push({ name: user, date: new Date(), score: correct, difficulty })
             leaders.sort((a, b) => b.score - a.score).slice(0, 1000);
             localStorage.setItem('leaders', JSON.stringify(leaders))
         }
         else {
-            let leaders: Scores[] = [{ name: user, date: new Date(), score: correct }]
+            let leaders: Scores[] = [{ name: user, date: new Date(), score: correct, difficulty }]
             localStorage.setItem('leaders', JSON.stringify(leaders))
         }
     }
