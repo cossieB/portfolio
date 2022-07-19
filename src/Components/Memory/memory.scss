@@ -5,7 +5,6 @@
 
     button {
         color: white;
-        background-color: white;
 
         &:hover {
             color: black;
@@ -59,6 +58,10 @@
     flex-direction: column;
     width: 90%;
     height: 100%;
+    button:hover {
+        background-color: white;
+        transform: scale(1.03);
+    }
 }
 
 .datesAndTimes {
@@ -72,7 +75,23 @@
 
 .memScores {
     display: flex;
-    justify-content: space-between;
+    > div:first-child {
+        margin-right: 2rem;
+    }
+}
+.memscorediv {
+    display: grid;
+    grid-template-columns: auto auto;
+    margin-bottom: 1rem;
+    > :last-child {
+        background-color: white;
+        color: #161661;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: x-large;
+        grid-area: 1 / 2 / 3 / 3;
+    }
 }
 
 @media (max-width: 768px) {

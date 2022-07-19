@@ -1,3 +1,5 @@
+@import '../../mixins';
+
 #quizContainer {
     display: flex;
     background: rgba($color: #000000, $alpha: .3) url('../../../public/image.jpg');
@@ -103,6 +105,67 @@
     justify-content: center;
     align-items: center;
     font-size: large;
+
+    button {
+        padding: 0.5rem;
+        font-size: large;
+        border: 1px solid black;
+        
+        &:first-of-type {
+            background-color: springgreen;
+        }
+        &:last-of-type {
+            background-color: aqua;   
+        }
+    }
+}
+.niceButton {
+    border-radius: 10rem;
+    background: none;
+    border: 2px solid;
+    color: springgreen;
+    padding: 0.75rem;
+    font-size: 1.25rem;
+    transition: all 250ms ease;
+    &:hover {
+        background-color: springgreen;
+        color: black;
+    }
+}
+.endgameHS {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    width: 50vw;
+    > div {
+        align-self: flex-start;
+    }
+}
+.difficulty {
+    @include flexCenter();
+    color: white;
+    font-size: 1.25rem;
+    width: max-content;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    border: 2px solid white;
+    border-radius: 50rem;
+    position: relative;
+    >div {
+        margin: 0 0.75rem;
+        height: 100%;
+    }
+    button {
+        box-sizing: content-box;
+        font-size: 1.25rem;
+        padding: 0.75rem;
+        width: 1.5rem;
+        background: none;
+        border: none;
+        color: inherit;
+        border-left: 1px solid white;
+        border-right: 1px solid white;
+    }
 }
 
 @media (max-width: 768px) {
@@ -122,5 +185,9 @@
 
     #gameStats div {
         padding: 0.2rem;
+    }
+    .endgameHS {
+        flex-direction: column;
+        width: auto;
     }
 }

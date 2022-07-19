@@ -41,9 +41,6 @@ export const quotes: qt[] = [
     quote: 'Classic, Sinatra. Bad, Phantom of the Opera. Shuffle the deck, I be the queen in the pack. Gotha, Lady Patra.',
     author: 'Iggy Azalea'
   },{
-    quote: 'Mother***er',
-    author: 'Samuel L. Jackson'
-  },{
     quote: "Another dangerous alien onboard. Commander, why don't you just collect stamps like normal people?",
     author: "Jeff 'Joker' Moreau"
   },{
@@ -137,7 +134,7 @@ export const quotes: qt[] = [
     quote: "Don't worry, Shepard, I only forget to recycle the Normandy's oxygen when I've discovered something truly interesting.",
     author: 'EDI'
   },{
-    quote: 'It is out basic human right to be screw-ups. This civilization was founded on screw-ups and that makes me proud.',
+    quote: 'It is our basic human right to be screw-ups. This civilization was founded on screw-ups and that makes me proud.',
     author: 'Gary King'
   },{
     quote: "You know, I have one simple request, and that is to have sharks with frickin' laser beams attached to their heads!",

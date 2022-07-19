@@ -2,7 +2,8 @@ import { useEffect } from "react";
 import { P123, Scores } from "./interfaces";
 import { GlobalLeaders, LocalLeaders } from "./Leaders";
 import { db } from "../../firestore";
-import { collection, addDoc } from "firebase/firestore"
+import { collection, addDoc } from "firebase/firestore";
+import styles from "./quiz.module.scss";
 
 export default function GameOver(props: P123) {
     const { user, correct, total, setGameOver, setCorrect, setTotal, setUser } = props;
@@ -61,23 +62,25 @@ export default function GameOver(props: P123) {
     }
 
     return (
-        <div id="gameOver">
+        <div id={styles.gameOver} style={{paddingBottom: '2rem'}}>
             <h1>Completed</h1>
             <span style={{ fontWeight: 'bold', fontSize: '4rem' }}>{user}</span>
             <div><span style={{ fontSize: '8rem' }}>{correct}</span> <span style={{ fontSize: '6rem' }}>/</span> <span style={{ fontSize: '8rem' }}>{total}</span></div>
             <hr style={{ width: '100%', border: '3px solid black' }} />
             <div style={style}>{percentage} %</div>
             <p>{message}</p>
-            <LocalLeaders rand={Math.random()} />
-            <GlobalLeaders rand={Math.random()} />
-            <button className="niceButton" onClick={() => {
+            <div className={styles.endgameHS} >
+                <LocalLeaders rand={Math.random()} />
+                <GlobalLeaders rand={Math.random()} />
+            </div>
+            <button onClick={() => {
                 setCorrect(0);
                 setTotal(0);
                 setGameOver(false)
             }}>
                 Play Again
             </button>
-            <button className="niceButton" onClick={() => {
+            <button onClick={() => {
                 setCorrect(0);
                 setTotal(0);
                 setGameOver(false);

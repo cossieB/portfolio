@@ -3,6 +3,7 @@ import { Scores } from "./interfaces"
 import { query, orderBy, limit, collection, getDocs } from "firebase/firestore";
 import { db } from "../../firestore";
 import styles from "./quiz.module.scss";
+import Score from "./Score";
 
 export function LocalLeaders(props?: any) {
     const [leaders, setLeaders] = useState<Scores[]>()
@@ -62,12 +63,7 @@ function Leaders({ leaders, header }: P434443) {
     return (
         <>
             {leaders && <h4>{header}</h4>}
-            {leaders && leaders.slice(0, 5).map((item, idx) =>
-                <div className={styles.leadership} key={idx}>
-                    <div><strong>{item.name}</strong></div>
-                    <div>{item.score}</div>
-                    <div>{item.date.toLocaleString('en-za', { day: "2-digit", month: 'short', year: 'numeric' }) + " " + item.date.toLocaleTimeString('en-za')}</div>
-                </div>)
+            {leaders && leaders.slice(0, 5).map((item, idx) => <Score idx={idx} item={item} />)
             }
         </>
     )

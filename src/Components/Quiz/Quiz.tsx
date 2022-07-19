@@ -17,7 +17,8 @@ export default function Quiz() {
     const [readInstructions, setReadInstructions] = useState(false)
     const [gameOver, setGameOver] = useState(false)
     const [correct, setCorrect] = useState(0)
-    const [total, setTotal] = useState(0)
+    const [total, setTotal] = useState(0);
+    const [difficulty, setDifficulty] = useState(1)
 
     if (!user) {
         return (
@@ -34,8 +35,26 @@ export default function Quiz() {
                         <h1>Rules</h1>
                         <h2>This challenge will test your mental math skills. You will have only <strong><em>five</em></strong> seconds to answer each question. 
                         There are 35 questions in total.</h2>
+                        <div className={styles.difficulty}>
+                            Difficulty
+                            <div>
+                                <button
+                                disabled={difficulty==1}
+                                onClick={() => {
+                                    setDifficulty(prev => prev - 1)
+                                }}
+                                >↓</button>
+                                <button
+                                disabled={difficulty==5}
+                                onClick={() => {
+                                    setDifficulty(prev => prev + 1)
+                                }}
+                                >↑</button>
+                            </div>
+                            {difficulty}
+                        </div>
                         <h3>Ready?</h3>
-                        <button style={{color: 'inherit'}} className="niceButton" onClick={() => setReadInstructions(true)}>I'm Ready.</button>
+                        <button className={styles.niceButton} onClick={() => setReadInstructions(true)}>I'm Ready.</button>
                     </div>
                 </Instructions>
             </div>
