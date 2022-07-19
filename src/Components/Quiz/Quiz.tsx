@@ -18,7 +18,7 @@ export default function Quiz() {
     const [gameOver, setGameOver] = useState(false)
     const [correct, setCorrect] = useState(0)
     const [total, setTotal] = useState(0);
-    const [difficulty, setDifficulty] = useState(1)
+    const [difficulty, setDifficulty] = useState(3)
 
     if (!user) {
         return (
@@ -45,7 +45,7 @@ export default function Quiz() {
                                 }}
                                 >↓</button>
                                 <button
-                                disabled={difficulty==5}
+                                disabled={difficulty==10}
                                 onClick={() => {
                                     setDifficulty(prev => prev + 1)
                                 }}
@@ -63,14 +63,14 @@ export default function Quiz() {
     else if (gameOver) {
         return (
             <div id={styles.quizContainer} className="container flexCenter">
-                <GameOver user={user} correct={correct} total={total} setGameOver={setGameOver} setCorrect={setCorrect} setTotal={setTotal} setUser={setUser} />
+                <GameOver user={user} correct={correct} total={total} setGameOver={setGameOver} setCorrect={setCorrect} setTotal={setTotal} setUser={setUser} difficulty={difficulty} />
             </div>
         )
     }
     else {
         return (
             <div id={styles.quizContainer} className="container flexCenter">
-                <Game user={user} total={total} correct={correct} setTotal={setTotal} setCorrect={setCorrect} setGameOver={setGameOver} />
+                <Game user={user} total={total} correct={correct} setTotal={setTotal} setCorrect={setCorrect} setGameOver={setGameOver} difficulty={difficulty} />
             </div>
         )
     }
@@ -84,15 +84,15 @@ export function Instructions({ setReadInstructions, children }: P11 & { children
     )
 }
 
-function Game({ user, total, correct, setTotal, setCorrect, setGameOver }: P333) {
-
+function Game(props: P333) {
+    const { user, total, correct, setTotal, setCorrect, setGameOver, difficulty } = props;
     if (total == 35) {
         setGameOver(true);
     }
     return (
         <div id={styles.gameContainer} >
             <GameStats user={user} correct={correct} total={total} />
-            <MathQuiz setCorrect={setCorrect} setTotal={setTotal} total={total} />
+            <MathQuiz difficulty={difficulty} setCorrect={setCorrect} setTotal={setTotal} total={total} />
             <div id={styles.leftGamePanel} className={styles.gamePanels}>
                 <LocalLeaders />
                 <GlobalLeaders />
@@ -105,10 +105,21 @@ function GameStats({ user, correct, total }: P084) {
     return (
         <div id={styles.gameStats} className={styles.gamePanels}>
             <div style={{ fontSize: 25, fontWeight: 'bold' }}>{user}</div>
-            <div style={{ fontSize: 19 }}>
-                Correct: {correct}
+            <div className={styles.stats}>
+                <div>{correct}</div>
+                <div>Correct</div>
+                <div className={styles.line}/>
             </div>
-            <div style={{ fontSize: 19 }}>Total: {total}</div>
+            <div className={styles.stats}>
+                <div>{total - correct}</div>
+                <div>Incorrect</div>
+                <div className={styles.line}/>
+            </div>
+            <div className={styles.stats}>
+                <div>{total}</div>
+                <div>Total</div>
+                <div className={styles.line}/>
+            </div>
         </div>
     )
 }

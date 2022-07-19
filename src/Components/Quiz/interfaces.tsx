@@ -4,16 +4,18 @@ export interface P333 {
     correct: number,
     setTotal: React.Dispatch<React.SetStateAction<number>>,
     setCorrect: React.Dispatch<React.SetStateAction<number>>,
-    setGameOver: React.Dispatch<React.SetStateAction<boolean>>
+    setGameOver: React.Dispatch<React.SetStateAction<boolean>>,
+    difficulty: number
 }
 export interface P123 extends P333 {
-    setUser: React.Dispatch<React.SetStateAction<string>>,    
+    setUser: React.Dispatch<React.SetStateAction<string>>,
 }
 
 export interface Scores {
     name: string,
     date: Date,
-    score: number
+    score: number,
+    difficulty: number
 }
 
 export interface P11 {
@@ -27,7 +29,8 @@ export interface P084 {
 export interface P {
     setCorrect: React.Dispatch<React.SetStateAction<number>>,
     setTotal: React.Dispatch<React.SetStateAction<number>>,
-    total: number
+    total: number,
+    difficulty: number
 }
 export interface S {
     userInput: string,
@@ -42,5 +45,6 @@ export interface P71 {
 }
 export interface P9155 {
     next: (q: string, a: number) => void,
-    total: number
+    total: number,
+    difficulty: number
 }

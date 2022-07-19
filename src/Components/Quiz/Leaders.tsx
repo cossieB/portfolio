@@ -12,8 +12,8 @@ export function LocalLeaders(props?: any) {
         if (storage) {
             let localLeaders: Scores[] = JSON.parse(storage);
             localLeaders = localLeaders.map(item => {
-                const { name, date, score } = item;
-                return { name, score, date: new Date(date) }
+                const { name, date, score, difficulty } = item;
+                return { name, score, date: new Date(date), difficulty }
             })
             setLeaders(localLeaders)
         }
@@ -37,7 +37,8 @@ export function GlobalLeaders(props?: any) {
                     let score = Number(doc.data().score);
                     let date = new Date(doc.data().date.seconds * 1000);
                     let name = doc.data().name
-                    return { score, name, date }
+                    let difficulty = Number(doc.data().difficulty)
+                    return { score, name, date, difficulty }
                 })
                 setLeaders(resArr)
             }

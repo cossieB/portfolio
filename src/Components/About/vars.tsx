@@ -96,11 +96,6 @@ export const backend: Lang[] = [
         logo: '/logos/aspnet.jpg',
         skill: 1
     },
-    {
-        language: "JSON Web Token",
-        logo: "/logos/jwt.svg",
-        skill: 3
-    }
 ]
 export const misc: Lang[] = [
     {

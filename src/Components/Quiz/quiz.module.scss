@@ -91,8 +91,30 @@
     justify-content: center;
 }
 
-#gameStats div {
-    padding: 1rem;
+#gameStats {
+    height: fit-content;
+    align-self: center;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    >div:first-child {
+        grid-column: 1 / span 3;
+    }
+    >div {
+        @include flexCenter(column);
+        padding: 1rem;
+        position: relative;
+    }
+    .line {
+        position: absolute;
+        width: 100%;
+        height: 40%;
+        border-left: 1px solid white;
+    }
+}
+.stats:last-child {
+    .line {
+        border-right: 1px solid white;
+    }
 }
 
 .gameButtons {
