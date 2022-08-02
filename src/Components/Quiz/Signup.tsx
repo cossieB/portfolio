@@ -1,6 +1,11 @@
 import { useState } from "react"
 
-export function Signup({ setUser }: { setUser: React.Dispatch<React.SetStateAction<string>> }) {
+interface P {
+    className?: string,
+    setUser: React.Dispatch<React.SetStateAction<string>>
+}
+
+export function Signup({ setUser, className }: P) {
     const [tempname, setTempName] = useState("")
     const [errorMsg, setErrorMsg] = useState<string[]>([])
 
@@ -21,7 +26,7 @@ export function Signup({ setUser }: { setUser: React.Dispatch<React.SetStateActi
         setErrorMsg(e)
     }
     return (
-        <div id="signupForm">
+        <div id="signupForm" className={className || ""} >
             <h4>Enter Your Name</h4>
             <input onChange={(e) => { setTempName(e.target.value); setErrorMsg([]) }} /><br />
             <button className="button2" onClick={submit}>Submit </button>

@@ -434,7 +434,7 @@ export const quotes: qt[] = [
     quote: "Rugby is a good occasion for keeping thirty bullies far from the centre of the city.",
     author: "Oscar Wilde"
   },{
-    quote: "Golf - a gentleman's game played by gentlemen. Rugby - a thug's game played by gentlemen. Soccer - a gentleman's game played by thugs. American Football - a thug's game played by thugs.",
+    quote: "Golf - a gentleman's game played by gentlemen. Rugby - a thug's game played by gentlemen. Soccer - a gentleman's game played by thugs. Rugby League - a thug's game played by thugs.",
     author: "Unknown"
   },{
     quote: "People say, 'Since you got rich and famous, you've become insufferable.' I say, 'That's not true. I've always been insufferable.",
@@ -604,5 +604,8 @@ export const quotes: qt[] = [
   },{
     quote: "If I lacked self-awareness, I think I'd know",
     author: "Britta Perry"
+  },{
+    quote: "The best phone call is a text. The second best phone call is an email and the third best is two traded voice mails.",
+    author: "John Oliver"
   }
 ]

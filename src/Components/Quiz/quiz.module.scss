@@ -22,7 +22,7 @@
 #mathGameButtons {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(4, 1fr);
+    // grid-template-rows: repeat(4, 1fr);
     height: 400px;
     width: calc(3/4*400px);
 
@@ -64,16 +64,23 @@
     padding: 0.5rem;
     text-align: center;
     font-size: x-large;
+    
+}
+.NB {
+    width: 100%;
+    border: 1px solid white;
+    @extend .backdrop;
 }
 
 .leadership {
-    background: linear-gradient(lavender, #6f6fa1);
+    @extend .backdrop;
+    border: 1px solid white;
     display: grid;
     grid-template-columns: auto auto;
     padding: 0.5rem;
     margin-bottom: 0.5rem;
     border-radius: 5%;
-    color: black;
+    color: white;
 
     > :nth-child(2) {
         display: flex;
@@ -96,6 +103,8 @@
     align-self: center;
     display: grid;
     grid-template-columns: auto auto auto;
+    border: 1px solid white;
+    @extend .backdrop;
     >div:first-child {
         grid-column: 1 / span 3;
     }
@@ -189,7 +198,9 @@
         border-right: 1px solid white;
     }
 }
-
+.backdrop {
+    backdrop-filter: blur(10px);
+}
 @media (max-width: 768px) {
     #quizContainer {
         flex-direction: column;

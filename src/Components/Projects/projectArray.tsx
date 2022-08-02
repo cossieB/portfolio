@@ -92,7 +92,14 @@ export const projectArray: Projs[] = [
         description: "Quiz that tests your memory. High scores stored in Firestore and local storage.",
         stack: ["typescript", "react", "firebase", "framer motion", "firestore"],
         repo: "https://github.com/cossieB/portfolio/tree/main/src/Components/Memory"
-    }, {
+    },{
+        title: "Tower of Hanoi",
+        path: "/hanoi",
+        img: "/screenshots/hanoi.png",
+        description: "Tower of Hanoi game.",
+        stack: ["typescript", "react", "firebase", "framer motion"],
+        repo: "https://github.com/cossieB/portfolio/tree/main/src/Components/Hanoi"
+    },{
         title: "Random Quote Machine",
         path: "/quotes",
         img: "screenshots/quotes.png",

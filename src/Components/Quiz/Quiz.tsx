@@ -23,7 +23,7 @@ export default function Quiz() {
     if (!user) {
         return (
             <motion.div id={styles.quizContainer} className="container flexCenter" variants={containerVariant} initial="start" animate="end" exit={'exit'}>
-                <Signup setUser={setUser} />
+                <Signup className={styles.backdrop} setUser={setUser} />
             </motion.div>
         )
     }

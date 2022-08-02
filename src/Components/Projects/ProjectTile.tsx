@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { childVariant, P889715 } from "./Projects";
+import { childVariant } from "./framer";
+import { P889715 } from "./Projects";
 
 export default function Tile({ proj, setSelected, setWrapper }: P889715) {
     const ref = useRef<HTMLDivElement>(null)

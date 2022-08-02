@@ -1,29 +1,10 @@
 import FramerMotion, { AnimatePresence, motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import Details from "./Details";
+import { parentVariant } from "./framer";
 import { projectArray, Projs, stack } from "./projectArray";
 import './Projects.scss'
 import ProjectTile from "./ProjectTile";
-
-const parentVariant: FramerMotion.Variants = {
-    end: {
-        transition: {
-            staggerChildren: 0.1
-        }
-    }
-}
-
-export const childVariant: FramerMotion.Variants = {
-    initial: {
-        x: '-100vw'
-    },
-    end: {
-        x: 0,
-        transition: {
-
-        }
-    }
-}
 
 export default function Projects() {
     useEffect(() => {

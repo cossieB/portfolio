@@ -74,7 +74,7 @@ export default class Solver {
     }
     check() {
         const answers = this.array.filter(item => !item.frozen && item.value != '.')
-        let clashes: { [key in 'row' | 'column' | 'region']: Set<Cell> } = {
+        let clashes = {
             row: new Set<Cell>(),
             column: new Set<Cell>(),
             region: new Set<Cell>()
