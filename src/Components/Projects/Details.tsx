@@ -3,11 +3,11 @@ import { useRef, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { stack } from "./projectArray"
 import { P889715 } from "./Projects"
+import styles from './Projects.module.scss'
 
 export default function Details({ proj, setSelected, wrapper }: P889715) {
     const divWrapper = useRef<HTMLDivElement>(null)
     useEffect(() => {
-        const rect = wrapper?.current?.getBoundingClientRect()!
         if (window.innerWidth < 768) {
             divWrapper.current!.style.top = `${window.scrollY + 50}px`
         }
@@ -15,13 +15,13 @@ export default function Details({ proj, setSelected, wrapper }: P889715) {
     return (
         <motion.div
             ref={divWrapper}
-            className="detailsPage"
+            className={styles.detailsPage}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             exit={{scale: 0.5, opacity: 0, }}
             transition={{ duration: 0.5, type: 'spring', }}
         >
-            <div className="detailsHeader"  >
+            <div className={styles.detailsHeader}  >
                 {proj.external ?
                     <a href={proj.path} target="_blank" rel="norefferer">
                         <h2>{proj.title}</h2>
@@ -55,14 +55,14 @@ export default function Details({ proj, setSelected, wrapper }: P889715) {
                     </svg>
                 </div>
             </div>
-            <div className="detailsOuter">
-                <div className="detailsDesc" >
+            <div className={styles.detailsOuter}>
+                <div className={styles.detailsDesc} >
                     <p > {proj.description} </p>
 
                 </div>
-                <div className="detailsStack">
+                <div className={styles.detailsStack}>
                     <h3 style={{ textAlign: "center", fontSize: 25 }} >Stack</h3>
-                    <div className="detailsStackLogos">
+                    <div className={styles.detailsStackLogos}>
                         {proj.stack.map(item =>
                             <img key={item} src={stack[item]} title={item} />
                         )}

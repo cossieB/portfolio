@@ -8,7 +8,6 @@ interface P {
 }
 export default function TowerPiece({ width, max, handleDragEnd, handleDragStart }: P) {
 
-    const id = 'towerPiece' + width
     return (
         <div
             className={styles.piece}

@@ -7,10 +7,10 @@ export const stack: {[key: string]: string} = {
     heroku: "https://upload.wikimedia.org/wikipedia/commons/e/ec/Heroku_logo.svg",
     vercel: "https://logowik.com/content/uploads/images/vercel1868.jpg",
     "entity framework": "https://i.imgur.com/DU7Cbis.png",
-    pug: "https://miro.medium.com/max/1012/1*XQrm5n6_iX2mY93lT4d4cA.png"
+    pug: "https://miro.medium.com/max/1012/1*XQrm5n6_iX2mY93lT4d4cA.png",
+    "json web token": "/logos/jwt.svg"
 }
 const sections = [langs, frontend, backend, misc]
-
 
 function updateStack(arr: Lang[]) {
     arr.forEach(item => {

@@ -4,7 +4,7 @@ import HanoiGame from "./HanoiGame"
 import { Win } from "./Win"
 
 export default function Hanoi() {
-    const [numberOfPieces, setNumberOfPieces] = useState(15)
+    const [numberOfPieces, setNumberOfPieces] = useState(3)
     const [win, setWin] = useState(false)
     const [moves, setMoves] = useState(0)
 
