@@ -1,9 +1,13 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import styles from "./Hanoi.module.scss"
 import HanoiGame from "./HanoiGame"
 import { Win } from "./Win"
 
 export default function Hanoi() {
+    useEffect(() => {
+        document.title = "Tower of Hanoi"
+    },[])
+    
     const [numberOfPieces, setNumberOfPieces] = useState(3)
     const [win, setWin] = useState(false)
     const [moves, setMoves] = useState(0)

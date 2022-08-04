@@ -30,7 +30,7 @@ export function Win({ setWin, moves, minMoves, oneUp, setMoves }: Props) {
                     It took you {moves} moves to complete this puzzle which is exactly the smallest possible number of moves. Well Done!
                 </p> :
                 <p>
-                    It took you {moves} moves to complete this puzzle. The minimum number of moves to complete this puzzle is {minMoves}.
+                    It took you {moves} moves to complete this puzzle. The minimum number of moves to complete it is {minMoves}.
                 </p>}
             <button onClick={levelUp} >
                 Next Level

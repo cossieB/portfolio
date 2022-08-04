@@ -2,6 +2,7 @@ import { HanoiBoundaries, recalculateBoundaries } from "./Boundaries";
 import TowerPiece from "./TowerPiece";
 import styles from "./Hanoi.module.scss"
 import { useRef, useEffect, useState } from "react";
+import { throttle } from "../../utils/throttle";
 
 interface Props {
     pieces: any[]
@@ -9,6 +10,14 @@ interface Props {
     setWin: React.Dispatch<React.SetStateAction<boolean>>
     setMoves: React.Dispatch<React.SetStateAction<number>>
 }
+
+const positionUpdater = throttle((e: React.TouchEvent<HTMLDivElement>) => {
+    const elem = e.currentTarget
+    if (elem.previousSibling != null) return
+    elem.style.position = 'fixed'
+    elem.style.top = e.changedTouches[0].clientY + 'px';
+    elem.style.left = e.targetTouches[0].clientX + 'px'
+}, 100)
 
 export default function HanoiGame(props: Props) {
     const { pieces, numberOfPieces, setWin, setMoves } = props
@@ -24,8 +33,8 @@ export default function HanoiGame(props: Props) {
         return () => window.removeEventListener('reize', () => recalculateBoundaries(firstDiv, middleDiv, lastDiv, setBoundaries))
     }, [])
 
-    function handleDragStart(e: React.DragEvent<HTMLDivElement>) {
-        const elem = e.currentTarget
+    function handleDragStart(e: React.DragEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) {
+        const elem = e.currentTarget || e.target
         const { previousSibling } = e.currentTarget
         if (previousSibling != null) {
             elem.classList.add(styles.invalid)
@@ -35,7 +44,7 @@ export default function HanoiGame(props: Props) {
             elem.classList.add(styles.active)
         }
     }
-    function handleDragEnd(e: React.DragEvent<HTMLDivElement>) {
+    function handleDragEnd(e: React.DragEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) {
         setMoves(prev => prev + 1)
         const elem = e.currentTarget
         elem.classList.remove(styles.invalid, styles.active)
@@ -44,7 +53,15 @@ export default function HanoiGame(props: Props) {
             return
         };
         legalMove = true;
-        const position = e.clientX
+
+        let position: number;
+        if ('clientX' in e) {
+            position = e.clientX
+        }
+        else {
+            position = e.changedTouches[0].clientX
+            elem.style.position = 'initial'
+        }
 
         let ref: React.RefObject<HTMLDivElement>
 
@@ -70,6 +87,9 @@ export default function HanoiGame(props: Props) {
             }, 500)
         }
     }
+    function hanldeTouchMove(e: React.TouchEvent<HTMLDivElement>) {
+        positionUpdater(e)
+    }
     return (
         <div className={styles.sections}>
             <div className={styles.section} ref={firstDiv} >
@@ -78,9 +98,10 @@ export default function HanoiGame(props: Props) {
                     <TowerPiece
                         width={idx + 1}
                         key={idx + 1}
-                        max={numberOfPieces}
+                        max={(firstDiv.current?.clientWidth || 1) / numberOfPieces }
                         handleDragEnd={handleDragEnd}
                         handleDragStart={handleDragStart}
+                        handleTouchMove={hanldeTouchMove}
                     />
                 ))}
             </div>
