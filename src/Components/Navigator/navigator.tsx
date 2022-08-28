@@ -5,7 +5,11 @@ import { Projs, projectArray } from '../Projects/projectArray'
 
 type T = Pick<Projs, "path" | "title" | "external">
 
-let arr: T[] =  [...projectArray.slice(3,), ...projectArray.slice(0,3)] // Reaarrange the projects array so that the first 3 projects are moved to the end.
+// Reaarrange the projects array so that the externally hosted projects are at the end of the array
+let arr: T[] = [
+    ...projectArray.filter(item => !item.external),
+    ...projectArray.filter(item => item.external)
+] 
 let paths: T[] = [
     {
         title: "Home",

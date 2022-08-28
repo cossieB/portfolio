@@ -1,5 +1,6 @@
 import {langs, frontend, backend, misc, Lang} from '../About/vars'
 
+
 export const stack: {[key: string]: string} = {
     "framer motion": "https://pagepro.co/blog/wp-content/uploads/2020/03/framer-motion.png",
     firestore: "https://res.cloudinary.com/practicaldev/image/fetch/s--VnDDBkku--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/akm5od0383lcbhxvb9zb.png",
@@ -8,7 +9,8 @@ export const stack: {[key: string]: string} = {
     vercel: "https://logowik.com/content/uploads/images/vercel1868.jpg",
     "entity framework": "https://i.imgur.com/DU7Cbis.png",
     pug: "https://miro.medium.com/max/1012/1*XQrm5n6_iX2mY93lT4d4cA.png",
-    "json web token": "/logos/jwt.svg"
+    "json web token": "/logos/jwt.svg",
+    prisma: "https://cdn.worldvectorlogo.com/logos/prisma-2.svg"
 }
 const sections = [langs, frontend, backend, misc]
 
@@ -38,26 +40,34 @@ export const projectArray: Projs[] = [
         img: "screenshots/memes.png",
         path: "https://mememachine.vercel.app/",
         external: true,
-        description: "Full-stack CRUD application for posting and viewing memes. Developed with TypeScript, Next.js and React. Features a JWT based authentication system and uses MongoDB Atlas as a database. Also ported to MySQL",
+        description: "Full-stack CRUD application for posting and viewing memes. Developed with TypeScript, Next.js and React. Features a JWT based authentication system and uses MongoDB Atlas as a database. Also made a MySQL version, the code for which can be found on the 'using-mysql' branch of the repo.",
         stack: ["typescript", "next.js", "react", "node.js", "mongodb", "mongoose", "json web token", "vercel", "mysql", "sass"],
         repo: 'https://github.com/cossieB/meme-machine'
-    }, {
-        title: "Microservices",
-        img: "screenshots/microservices.png",
-        path: "https://cossie.herokuapp.com/",
-        external: true,
-        description: "Various REST APIs including header parser, file metadata and timestamp microservices. Deployed on Heroku.",
-        stack: ["typescript", "node.js", "expressjs", "mongodb", "mongoose", "pug", "heroku"],
-        repo: 'https://github.com/cossieB/microservices'
     }, {
         title: "Internet Games Database",
         img: "screenshots/igdb.png",
         path: "https://internet-games-database.vercel.app/",
         external: true,
-        description: "CRUD application for adding information about games and the gaming industry.",
-        stack: ["typescript", "next.js", "react", "node.js", "mongodb", "mongoose", "vercel", "framer motion", "sass"],
+        description: "CRUD application for adding information about games and the gaming industry. Developed with TypeScript, Next.js, React and SASS. Uses Heroku Postgres as a database and Prisma ORM to interact with the database.",
+        stack: ["typescript", "next.js", "react", "node.js", "postgresql", "prisma", "mongodb","heroku", "mongoose", "vercel", "framer motion", "sass"],
         repo: "https://github.com/cossieB/internet-games-database"
     }, {
+        title: "Microservices",
+        img: "screenshots/microservices.png",
+        path: "https://cossie.herokuapp.com/",
+        external: true,
+        description: "Various REST APIs including header parser, file metadata, timestamp microservices and issue and exercise tracker. Deployed on Heroku.",
+        stack: ["typescript", "node.js", "expressjs", "mongodb", "mongoose", "pug", "heroku"],
+        repo: 'https://github.com/cossieB/microservices'
+    }, {
+        title: "GraphQL API",
+        img: "screenshots/graphql.png",
+        path: "https://cossie.herokuapp.com/graphql",
+        external: true,
+        description: "GraphQL API to get data from my Internet Games Database project. Uses express-graphql middleware and the data is stored in Heroku Postgres. Additionally I ported select services from the REST API project to this GraphQL one.",
+        stack: ['typescript', 'node.js', 'expressjs', 'postgresql', 'prisma', 'mongodb', 'mongoose', 'pug', 'heroku'],
+        repo: "repo: 'https://github.com/cossieB/microservices'"
+    },{
         title: "Sudoku",
         img: 'screenshots/sudoku.png',
         path: "/sudoku",

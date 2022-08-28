@@ -1,9 +1,9 @@
-interface qt {
-  quote: string,
-  author: string
+interface Quote {
+  readonly quote: string,
+  readonly author: string
 }
 
-export const quotes: qt[] = [
+export const quotes: Quote[] = [
   {
     quote: 'Sometimes, we screw things up for the better.',
     author: 'Nate Heywood'
