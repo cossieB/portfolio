@@ -607,5 +607,23 @@ export const quotes: Quote[] = [
   },{
     quote: "The best phone call is a text. The second best phone call is an email and the third best is two traded voice mails.",
     author: "John Oliver"
+  },{
+    quote: "This is the day you will always remember as the day you almost caught Captain Jack Sparrow.",
+    author: "Jack Sparrow"
+  },{
+    quote: "I'm dishonest, and a dishonest man you can always trust to be dishonest. Honestly. It's the honest ones you want to watch out for, because you can never predict when they're going to do somthing incredibly stupid.",
+    author: "Jack Sparrow"
+  },{
+    quote: `Some people, when confronted with a problem, think "I know, I'll use regular expressions." Now they have two problems.`,
+    author: "Jamie Zawinski"
+  },{
+    quote: "C makes it easy to shoot yourself in the foot; C++ makes it harder, but wheen you do it blows your whole leg off",
+    author: "Bjarne Stroustrup"
+  },{
+    quote: "A turbo is god's way of saying there isn't enough cylinders",
+    author: "The American"
+  },{
+    quote: "The strength of JavaScript is that you can do anything. The weakness is that you will.",
+    author: "Reg Braithwaite"
   }
 ]
