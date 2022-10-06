@@ -28,11 +28,23 @@ export default function Projects() {
         else {
             newPage = Math.min(page - num, paginatedProjects.length - 1)
         }
-        setPage(p => newPage)
+        setPage(newPage)
     }
 
     return (
-        <main id={styles.projectContainer} className="container flexCenter" >
+        <main id={styles.projectContainer} className="container" >
+            <div className={styles.btns}>
+                <div className={page == 0 ? `${styles.pageBtn} ${styles.disabled} ${styles.prevBtn}` : `${styles.pageBtn} ${styles.prevBtn}`}
+                    onClick={() => changePage(1)}
+                >
+                    &#171;
+                </div>
+                <div className={page == paginatedProjects.length - 1 ? `${styles.pageBtn} ${styles.disabled} ${styles.nextBtn}` : `${styles.pageBtn} ${styles.nextBtn}`}
+                    onClick={() => changePage(-1)}
+                >
+                    &#187;
+                </div>
+            </div>
             <h2>Projects</h2>
             <AnimatePresence>
                 {selected &&
@@ -40,29 +52,24 @@ export default function Projects() {
                         <motion.div
                             style={{ opacity: 1, background: "none", zIndex: 25, backdropFilter: 'blur(10px) grayscale(0.5)' }}
                             className="mask"
-                            onClick={() => setSelected(null)} 
-                            initial={{opacity: 0}}
-                            animate={{opacity: 1}}
-                            exit={{opacity: 0}}
+                            onClick={() => setSelected(null)}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
                             transition={{ duration: 0.5, type: 'spring', }}
-                            />
+                        />
                         <Details proj={selected} setSelected={setSelected} wrapper={wrapper} />
                     </>}
             </AnimatePresence>
             <div className={styles.main} >
-                <div className={page == 0 ? `${styles.pageBtn} ${styles.disabled} ${styles.prevBtn}` : `${styles.pageBtn} ${styles.prevBtn}`}
-                onClick={() => changePage(1)}
-                >
-                &#171;
-                </div>
                 <AnimatePresence custom={direction} >
-                    <motion.div id={styles.projects} 
-                    variants={parentVariant} 
-                    initial='initial' 
-                    animate='end' 
-                    exit='exit' 
-                    key={page}
-                    custom={direction}>
+                    <motion.div id={styles.projects}
+                        variants={parentVariant}
+                        initial='initial'
+                        animate='end'
+                        exit='exit'
+                        key={page}
+                        custom={direction}>
                         {paginatedProjects[page].map(proj =>
                             <ProjectTile
                                 key={proj.path}
@@ -72,11 +79,6 @@ export default function Projects() {
                             />)}
                     </motion.div>
                 </AnimatePresence>
-                <div className={page == paginatedProjects.length - 1 ? `${styles.pageBtn} ${styles.disabled} ${styles.nextBtn}` : `${styles.pageBtn} ${styles.nextBtn}`} 
-                onClick={() => changePage(-1)  }
-                >
-                &#187;
-                </div>
             </div>
         </main>
     )

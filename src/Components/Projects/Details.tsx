@@ -11,7 +11,7 @@ export default function Details({ proj, setSelected, wrapper }: P889715) {
         if (window.innerWidth < 768) {
             divWrapper.current!.style.top = `${window.scrollY + 50}px`
         }
-        // divWrapper.current!.style.top = `${window.scrollY + 50}px`
+        divWrapper.current!.style.top = `${window.scrollY + 50}px`
     }, [])
     return (
         <motion.div
