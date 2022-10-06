@@ -75,7 +75,7 @@ export default function RouteNavigator() {
                                 </svg>
                             </div>
                         </a> :
-                        <NavLink activeStyle={{ color: "springgreen", fontStyle: "italic" }} key={item.path} exact to={item.path}><div className="linkdiv">{item.title}</div></NavLink>
+                        item.path &&<NavLink activeStyle={{ color: "springgreen", fontStyle: "italic" }} key={item.path} exact to={item.path}><div className="linkdiv">{item.title}</div></NavLink>
                 )}
             </nav>
         </div>

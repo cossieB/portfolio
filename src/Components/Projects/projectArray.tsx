@@ -26,7 +26,7 @@ sections.forEach(item => {
 export interface Projs {
     title: string,
     img: string,
-    path: string,
+    path?: string,
     external?: boolean,
     description: string,
     stack: string[],
@@ -36,6 +36,12 @@ export interface Projs {
 
 export const projectArray: Projs[] = [
     {
+        title: "Spaza Game Store",
+        img: "screenshots/spaza.png",
+        description: "Full-stack ecommerce website. Developed with TypeScript, React on the frontend and C#, ASP.NET, Entity Framework and Postgres on the backend. Features a JsonWebToken based authentication system. To view a working demo, please clone the repo and run docker-compose up in your terminal.",
+        stack: ["typescript", "react", "c#", "postgresql", "entity framework", "asp.net", "bootstrap", "json web token", "docker"],
+        repo: "https://github.com/cossieB/spaza-ecommerce"
+    },{
         title: "Meme Machine",
         img: "screenshots/memes.png",
         path: "https://mememachine.vercel.app/",

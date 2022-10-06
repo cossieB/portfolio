@@ -1,5 +1,5 @@
 import { motion } from "framer-motion"
-import { useRef, useEffect } from "react"
+import { useRef, useEffect, useLayoutEffect } from "react"
 import { Link } from "react-router-dom"
 import { stack } from "./projectArray"
 import { P889715 } from "./Projects"
@@ -7,10 +7,11 @@ import styles from './Projects.module.scss'
 
 export default function Details({ proj, setSelected, wrapper }: P889715) {
     const divWrapper = useRef<HTMLDivElement>(null)
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (window.innerWidth < 768) {
             divWrapper.current!.style.top = `${window.scrollY + 50}px`
         }
+        // divWrapper.current!.style.top = `${window.scrollY + 50}px`
     }, [])
     return (
         <motion.div
@@ -26,9 +27,13 @@ export default function Details({ proj, setSelected, wrapper }: P889715) {
                     <a href={proj.path} target="_blank" rel="norefferer">
                         <h2>{proj.title}</h2>
                     </a> :
+                    proj.path ? 
                     <Link to={proj.path} >
                         <h2> {proj.title} </h2>
-                    </Link>
+                    </Link> : 
+                    <div>
+                        <h2> {proj.title} </h2>
+                    </div>
                 }
                 <div style={{ height: '60%', alignItems: 'center', display: 'flex' }} >
                     <a href={proj.repo} target="_blank" rel="noreferrer" >
@@ -43,7 +48,7 @@ export default function Details({ proj, setSelected, wrapper }: P889715) {
                                 <path fillRule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z" />
                             </svg>
                         </a> :
-                        <Link to={proj.path}  >
+                        proj.path && <Link to={proj.path}  >
                             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="springgreen" className="bi bi-arrow-bar-right" viewBox="0 0 16 16">
                                 <path fillRule="evenodd" d="M6 8a.5.5 0 0 0 .5.5h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L12.293 7.5H6.5A.5.5 0 0 0 6 8zm-2.5 7a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5z" />
                             </svg>
