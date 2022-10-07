@@ -6,11 +6,21 @@
     left: 0px;
     transition: 200ms ease;
     z-index: 99;
+    overflow-y: scroll;
     
     a {
         text-decoration: none;
         color: #ddd;
         font-size: large;
+    }
+    
+    /* IE and Edge */
+    scrollbar-width: none;
+
+    /* Firefox */
+
+    &::-webkit-scrollbar {
+      display: none;
     }
 }
 

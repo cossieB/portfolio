@@ -71,7 +71,7 @@ export const projectArray: Projs[] = [
         path: "https://cossie.herokuapp.com/graphql",
         external: true,
         description: "GraphQL API to get data from my Internet Games Database project. Uses express-graphql middleware and the data is stored in Heroku Postgres. Additionally I ported select services from the REST API project to this GraphQL one.",
-        stack: ['typescript', 'node.js', 'expressjs', 'postgresql', 'prisma', 'mongodb', 'mongoose', 'pug', 'heroku'],
+        stack: ['typescript', 'node.js', 'expressjs', 'postgresql', 'prisma', 'mongodb', 'mongoose', 'pug', 'heroku', 'graphql'],
         repo: "https://github.com/cossieB/microservices/tree/main/src/graphql"
     },{
         title: "Sudoku",

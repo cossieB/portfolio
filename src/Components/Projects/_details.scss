@@ -1,15 +1,23 @@
 .detailsPage {
     display: flex;
     flex-direction: column;
+    background-color: none;
+    z-index: 50;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+}
+.detail {
+    display: flex;
+    flex-direction: column;
     background-color: #ddd;
     color: #ddd;
     z-index: 50;
     opacity: 0.9;
+    width: 80%;
     position: absolute;
 
-    /* top: 10%; */
-    left: 10%;
-    width: 80%;
+
     height: min-content;
 }
 
@@ -19,7 +27,7 @@
 
 .detailsStack {
     color: #222;
-    flex: 6;
+    flex: 2;
 
     img {
         max-height: 150px;
@@ -43,8 +51,7 @@
     font-size: 1.25rem;
     padding: 1rem 1rem;
     background-color: #373a39;
-    flex: 2;
-    min-height: 100%;
+    flex: 1;
 }
 
 .detailsHeader {
@@ -94,10 +101,11 @@
 }
 
 @media (max-width: 768px) {
-    .detailsPage {
+    .detail {
         position: absolute;
         top: auto;
         left: auto;
+        width: 100%;
 
         img {
             width: 30%;
@@ -126,5 +134,12 @@
         h2 {
             font-size: larger;
         }
+    }
+}
+
+@media (min-width: 768px) {
+    .detailsPage {
+        justify-content: center;
+        align-items: center;
     }
 }

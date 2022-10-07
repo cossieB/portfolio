@@ -1,75 +1,146 @@
+@use '../../mixins';
 @import url('https://fonts.googleapis.com/css2?family=Stick+No+Bills:wght@600&display=swap');
 
+$clr1: #00e1ff;
+$clr2: #ddd;
+$clr3: #0051ff;
+$navHeight: 50px;
+
 #homeContainer {
-  flex-direction: column;
-  color: white;
-  height: 100vh;
+    flex-direction: column;
+    color: white;
+    height: 100vh;
+
+    svg,
+    img {
+        fill: $clr1;
+        color: $clr1;
+
+        &:hover {
+            fill: $clr3;
+            color: $clr3;
+        }
+    }
 }
 
-#name, #title {
-  font-family: 'Stick No Bills', sans-serif;
+#name,
+#title {
+    font-family: 'Stick No Bills', sans-serif;
 }
 
 hr {
-  width: 25%;
+    width: 25%;
 }
 
 #navbar {
-  width: 100%;
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  top: 0px;
-  left: 0px;
-  background-color: black;
-
-  a {
-    color: red;
-    font-size: 20px;
-  }
-}
-
-.homepageLinks {
-  margin: 0 5%;
-}
-
-#welcome {
-  height: 100%;
-  background: linear-gradient(45deg, red, black);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-bottom: 2px solid white;
-}
-
-@media (max-width: 768px) {
-  #navbar {
-    width: 100vw;
-    height: 5rem;
-    justify-content: left;
-    overflow-x: scroll;
-    -ms-overflow-style: none;
-
-    /* IE and Edge */
-    scrollbar-width: none;
-
-    /* Firefox */
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
+    width: 100%;
+    height: $navHeight;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    top: 0px;
+    left: 0px;
 
     a {
-      font-size: 16px;
+        color: $clr2;
+        font-size: 20px;
+        text-decoration: none;
     }
-  }
 
-  .homepageLinks {
-    height: fit-content;
+    svg {
+        height: 2rem;
+        width: 2rem;
+    }
+}
+
+.navDiv {
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+    position: relative;
+    padding-bottom: 0.5rem;
+    margin-top: 0.5rem;
+
+    &::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        width: 0%;
+        border-bottom: 2px solid $clr1;
+        transition: width 200ms ease;
+    }
+    &:hover {
+        &::before {
+            width: 100%;
+        }
+        svg {
+            fill: $clr3 !important;
+            color: $clr3;
+        }
+    }
+}
+
+.homepageLinks {
+    padding-right: 2rem;
+}
+
+#welcome {
+    position: relative;
+    height: calc(100vh - $navHeight);
+    background: #141b26;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.socials {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    >a {
+        margin-top: 1rem;
+    }
+
+    svg {
+        height: 3rem;
+        width: 3rem;
+    }
+}
+
+.lineV {
+    border-left: $clr1 2px solid;
+    height: 100%;
+}
+
+@media (max-width: 768px) {
+    #navbar {
+        width: 100vw;
+        height: 5rem;
+        overflow-x: scroll;
+        -ms-overflow-style: none;
+
+        /* IE and Edge */
+        scrollbar-width: none;
+
+        /* Firefox */
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        a {
+            font-size: 16px;
+        }
+
+        span {
+            display: none;
+        }
+    }
 }
