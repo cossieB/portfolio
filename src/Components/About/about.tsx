@@ -10,10 +10,6 @@ export default function About() {
     }, [])
     return (
         <motion.div id="aboutContainer" variants={containerVariant} initial="start" animate="end" exit={'exit'}>
-            <div id="nameAndPic">
-                <img id="myPic" src="/me.jpg" alt="Myself" />
-                <h1>Buntu Cossie</h1>
-            </div>
             <AboutMain />
         </motion.div>
     )

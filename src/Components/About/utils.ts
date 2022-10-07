@@ -1,12 +1,14 @@
 import { Variants } from "framer-motion"
+import { backendSvg, frontendSvg, languageSvg, miscSvg, questionMarkSvg } from "../../svgs"
 
 export const aboutNavBtns = [
-    "About",
-    "Languages",
-    "Front-End",
-    "Back-End",
-    "Misc"
-]
+    ["About", questionMarkSvg],
+    ["Languages", languageSvg],
+    ["Front-End", frontendSvg],
+    ["Back-End", backendSvg],
+    ["Misc", miscSvg]
+] as const
+ 
 
 export const variant: Variants = {
     start: {

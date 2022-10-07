@@ -1,8 +1,6 @@
-@use '../../mixins';
+@import '../../mixins', '../../variables';
 @import url('https://fonts.googleapis.com/css2?family=Stick+No+Bills:wght@600&display=swap');
 
-$clr1: #00e1ff;
-$clr2: #ddd;
 $clr3: #0051ff;
 $navHeight: 50px;
 
@@ -13,8 +11,8 @@ $navHeight: 50px;
 
     svg,
     img {
-        fill: $clr1;
-        color: $clr1;
+        fill: $neonblue;
+        color: $neonblue;
 
         &:hover {
             fill: $clr3;
@@ -42,7 +40,7 @@ hr {
     left: 0px;
 
     a {
-        color: $clr2;
+        color: $grayishhwhite;
         font-size: 20px;
         text-decoration: none;
     }
@@ -67,7 +65,7 @@ hr {
         position: absolute;
         bottom: 0;
         width: 0%;
-        border-bottom: 2px solid $clr1;
+        border-bottom: 2px solid $neonblue;
         transition: width 200ms ease;
     }
     &:hover {
@@ -88,7 +86,7 @@ hr {
 #welcome {
     position: relative;
     height: calc(100vh - $navHeight);
-    background: #141b26;
+    background: $bgClr;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -115,7 +113,7 @@ hr {
 }
 
 .lineV {
-    border-left: $clr1 2px solid;
+    border-left: $neonblue 2px solid;
     height: 100%;
 }
 

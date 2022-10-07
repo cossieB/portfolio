@@ -23,7 +23,7 @@ export const langs: Lang[] = [
     {
         language: "C#",
         logo: '/logos/csharp.svg',
-        skill: 4
+        skill: 5
     },
     {
         language: "HTML",
@@ -99,7 +99,7 @@ export const backend: Lang[] = [
     {
         language: "ASP.NET",
         logo: '/logos/aspnet.jpg',
-        skill: 3
+        skill: 4
     },
 ]
 export const misc: Lang[] = [
