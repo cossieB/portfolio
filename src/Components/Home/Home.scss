@@ -15,8 +15,7 @@ $navHeight: 50px;
         color: $neonblue;
 
         &:hover {
-            fill: $clr3;
-            color: $clr3;
+            text-shadow: 0 0 10px 10px $neonblue;
         }
     }
 }
@@ -86,7 +85,6 @@ hr {
 #welcome {
     position: relative;
     height: calc(100vh - $navHeight);
-    background: $bgClr;
     display: flex;
     flex-direction: column;
     justify-content: center;

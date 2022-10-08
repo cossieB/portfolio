@@ -7,6 +7,8 @@ import './Home.scss'
 export default function Home() {
     useEffect(() => {
         document.title = "Cossie"
+        const body = document.querySelector('body')
+        body!.style.overflow = 'auto'
     }, [])
     return (
         <main id="homeContainer" className="container">

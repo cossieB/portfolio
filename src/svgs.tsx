@@ -58,23 +58,23 @@ export const freeCCSvg = <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="htt
     <g>
         <g>
             <g>
-                <use fill-opacity="1" opacity="1" xlinkHref="#f2jrM5bTZu" />
+                <use fillOpacity="1" opacity="1" xlinkHref="#f2jrM5bTZu" />
                 <g>
-                    <use fill-opacity="0" stroke="#000" stroke-opacity="0" stroke-width="1" opacity="1"
+                    <use fillOpacity="0" stroke="#000" strokeOpacity="0" stroke-width="1" opacity="1"
                         xlinkHref="#f2jrM5bTZu" />
                 </g>
             </g>
             <g>
-                <use fill-opacity="1" opacity="1" xlinkHref="#fePvRWSP7" />
+                <use fillOpacity="1" opacity="1" xlinkHref="#fePvRWSP7" />
                 <g>
-                    <use fill-opacity="0" stroke="#000" stroke-opacity="0" stroke-width="1" opacity="1"
+                    <use fillOpacity="0" stroke="#000" strokeOpacity="0" stroke-width="1" opacity="1"
                         xlinkHref="#fePvRWSP7" />
                 </g>
             </g>
             <g>
-                <use fill-opacity="1" opacity="1" xlinkHref="#a1dIEIC07z" />
+                <use fillOpacity="1" opacity="1" xlinkHref="#a1dIEIC07z" />
                 <g>
-                    <use fill-opacity="0" stroke="#000" stroke-opacity="0" stroke-width="1" opacity="1"
+                    <use fillOpacity="0" stroke="#000" strokeOpacity="0" stroke-width="1" opacity="1"
                         xlinkHref="#a1dIEIC07z" />
                 </g>
             </g>
