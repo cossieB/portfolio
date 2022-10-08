@@ -1,36 +1,46 @@
+import titleCase from "../../utils/titleCase"
+import { FormState } from "./contact"
+import { FormAction } from "./contactReducer"
+
 interface P6265451 {
-    name: string,
-    setName: React.Dispatch<React.SetStateAction<string>>
-    company: string,
-    setCompany: React.Dispatch<React.SetStateAction<string>>
-    email: string,
-    setEmail: React.Dispatch<React.SetStateAction<string>>
-    msg: string,
-    setMsg: React.Dispatch<React.SetStateAction<string>>,
-    handleSubmit(e: React.FormEvent<HTMLFormElement>): void,
-    pressed: boolean
+    state: FormState
+    dispatch: React.Dispatch<FormAction>
+    handleSubmit(e: React.FormEvent<HTMLFormElement>): void
 }
 
 export default function ContactForm(props: P6265451) {
-    const { name, setName, company, setCompany, email, setEmail, msg, setMsg, handleSubmit, pressed } = props
+    const { state, dispatch, handleSubmit } = props;
     return (
         <>
             <h1>Contact Me</h1>
             <form id='contactForm' className="flexColumn flexCenter" onSubmit={handleSubmit}>
                 <div>
-                    <Input id="contactName" input={name} label="Name" setInput={setName} />
+                    <Input id="contactName" input={state.name} label="name" dispatch={dispatch} />
                 </div>
                 <div>
-                    <Input id="contactOrg" input={company} label="Organization" setInput={setCompany} />
+                    <Input id="contactOrg" input={state.organization} label="organization" dispatch={dispatch} />
                 </div>
                 <div>
-                    <Input id="contactEmail" input={email} label="Email" setInput={setEmail} />
+                    <Input id="contactEmail" input={state.email} label="email" dispatch={dispatch} />
                 </div>
                 <div>
                     <label htmlFor='contactMessage' >Message</label>
-                    <textarea onChange={(e) => setMsg(e.target.value)} value={msg} id='contactMessage' required minLength={10} maxLength={500} name="message" placeholder="Message" />
+                    <textarea
+                        onChange={(e) => dispatch({
+                            type: 'UPDATE_STRING',
+                            payload: {
+                                name: 'message',
+                                value: e.target.value
+                            }
+                        })}
+                        value={state.message}
+                        id='contactMessage'
+                        required
+                        minLength={10}
+                        maxLength={500}
+                        name="message" placeholder="Message" />
                 </div>
-                <button type="submit" disabled={pressed} >Submit</button>
+                <button type="submit" disabled={state.submitted} >Submit</button>
             </form>
         </>
     )
@@ -38,17 +48,23 @@ export default function ContactForm(props: P6265451) {
 
 interface P743346 {
     id: string,
-    label: string,
+    label: keyof FormState,
     input: string,
-    setInput: React.Dispatch<React.SetStateAction<string>>
+    dispatch: React.Dispatch<FormAction>
 }
 
 function Input(props: P743346) {
-    const { id, label, input, setInput } = props
+    const { id, label, input, dispatch } = props
     return (
         <div>
-            <label htmlFor={id} > {label} </label>
-            <input onChange={e => setInput(e.target.value)} value={input} id={id} required name={label} placeholder={label} />
+            <label htmlFor={id} > {titleCase(label)} </label>
+            <input
+                onChange={e => dispatch({ type: 'UPDATE_STRING', payload: { name: label, value: e.target.value } })}
+                value={input}
+                id={id}
+                required
+                name={label}
+                placeholder={label} />
         </div>
     )
 }
