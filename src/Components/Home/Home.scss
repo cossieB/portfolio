@@ -107,6 +107,9 @@ hr {
     svg {
         height: 3rem;
         width: 3rem;
+        &:hover {
+            fill: $clr3 !important;
+        }
     }
 }
 

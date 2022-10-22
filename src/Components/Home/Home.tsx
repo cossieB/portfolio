@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { puzzleSvg, questionMarkSvg, phoneSvg, freeCCSvg, githubSvg, dockerSvg } from "../../svgs";
+import { puzzleSvg, questionMarkSvg, phoneSvg, freeCCSvg, githubSvg, dockerSvg, linkedInSvg } from "../../svgs";
 import './Home.scss'
 
 export default function Home() {
@@ -38,14 +38,17 @@ export default function Home() {
                 <motion.h2 initial={{ y: -100, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 1 }} id="title">Full-Stack Developer</motion.h2>
             </div>
             <div className="socials">
-                <a href="https://www.freecodecamp.org/cossie" target="_blank" rel="noreferrer" title="freeCodeCamp">
-                    {freeCCSvg}
-                </a>
                 <a href="https://github.com/cossieB" target="_blank" rel="noreferrer" title="GitHub">
                     {githubSvg}
                 </a>
+                <a href="https://www.linkedin.com/in/cossieb/" target="_blank" rel="noreferrer" title="LinkedIn">
+                    {linkedInSvg}
+                </a>
                 <a href="https://hub.docker.com/u/cossie" target="_blank" rel="noreferrer" title="Docker Hub">
                     {dockerSvg}
+                </a>
+                <a href="https://www.freecodecamp.org/cossie" target="_blank" rel="noreferrer" title="freeCodeCamp">
+                    {freeCCSvg}
                 </a>
                 <div className="lineV"/>
             </div>

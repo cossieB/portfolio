@@ -60,21 +60,21 @@ export const freeCCSvg = <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="htt
             <g>
                 <use fillOpacity="1" opacity="1" xlinkHref="#f2jrM5bTZu" />
                 <g>
-                    <use fillOpacity="0" stroke="#000" strokeOpacity="0" stroke-width="1" opacity="1"
+                    <use fillOpacity="0" stroke="#000" strokeOpacity="0" strokeWidth="1" opacity="1"
                         xlinkHref="#f2jrM5bTZu" />
                 </g>
             </g>
             <g>
                 <use fillOpacity="1" opacity="1" xlinkHref="#fePvRWSP7" />
                 <g>
-                    <use fillOpacity="0" stroke="#000" strokeOpacity="0" stroke-width="1" opacity="1"
+                    <use fillOpacity="0" stroke="#000" strokeOpacity="0" strokeWidth="1" opacity="1"
                         xlinkHref="#fePvRWSP7" />
                 </g>
             </g>
             <g>
                 <use fillOpacity="1" opacity="1" xlinkHref="#a1dIEIC07z" />
                 <g>
-                    <use fillOpacity="0" stroke="#000" strokeOpacity="0" stroke-width="1" opacity="1"
+                    <use fillOpacity="0" stroke="#000" strokeOpacity="0" strokeWidth="1" opacity="1"
                         xlinkHref="#a1dIEIC07z" />
                 </g>
             </g>
@@ -139,4 +139,8 @@ export const miscSvg = <svg xmlns="http://www.w3.org/2000/svg" width="16" height
 export const stackSvg = <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-stack" viewBox="0 0 16 16">
 <path d="m14.12 10.163 1.715.858c.22.11.22.424 0 .534L8.267 15.34a.598.598 0 0 1-.534 0L.165 11.555a.299.299 0 0 1 0-.534l1.716-.858 5.317 2.659c.505.252 1.1.252 1.604 0l5.317-2.66zM7.733.063a.598.598 0 0 1 .534 0l7.568 3.784a.3.3 0 0 1 0 .535L8.267 8.165a.598.598 0 0 1-.534 0L.165 4.382a.299.299 0 0 1 0-.535L7.733.063z"/>
 <path d="m14.12 6.576 1.715.858c.22.11.22.424 0 .534l-7.568 3.784a.598.598 0 0 1-.534 0L.165 7.968a.299.299 0 0 1 0-.534l1.716-.858 5.317 2.659c.505.252 1.1.252 1.604 0l5.317-2.659z"/>
+</svg>
+
+export const linkedInSvg = <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-linkedin" viewBox="0 0 16 16">
+<path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
 </svg>
