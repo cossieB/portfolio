@@ -1,5 +1,5 @@
 import { motion } from "framer-motion"
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useLayoutEffect, useRef, useState } from "react"
 import { containerVariant } from "../../variants"
 import Block from "./Block"
 import Solver, { Cell } from "./Solver"
@@ -22,7 +22,7 @@ export default function ({setPuzzleString, setMode}: Props) {
 
     const divWrapper = useRef<HTMLDivElement>(null)
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (window.innerWidth > 768) return
         const sudokuWidth = divWrapper.current?.clientWidth!;
         const width = sudokuWidth / 9;

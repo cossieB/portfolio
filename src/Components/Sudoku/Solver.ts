@@ -58,17 +58,25 @@ export default class Solver {
             num = Number(cell.value) + 1
         }
         while (num <= 9) {
-            const checkColumn = this.array
-                .filter(item => item.column == cell.column)
-                .every(item => item.value != String(num))
-            const checkRow = this.array
-                .filter(item => item.row == cell.row)
-                .every(item => item.value != String(num))
-            const checkRegion = this.array
-                .filter(item => item.region == cell.region)
-                .every(item => item.value != String(num))
-            if (checkColumn && checkRegion && checkRow) return String(num);
-            num++
+            let checkColumn = true;
+            let checkRow = true;
+            let checkRegion = true;
+
+            for (let item of this.array) {
+                if (item.column == cell.column && item.value == num.toString()) {
+                    checkColumn = false;
+                }
+                if (item.row == cell.row && item.value == num.toString()) {
+                    checkRow = false;
+                }
+                if (item.region == cell.region && item.value == num.toString()) {
+                    checkRegion = false;
+                }
+            }
+            if (checkColumn && checkRegion && checkRow) {
+                return num.toString();
+            }
+            num++;
         }
         return '.'
     }
@@ -100,24 +108,33 @@ export default class Solver {
         return clashes
     }
     async solve() {
-        setTimeout(() => {
-            Promise.reject("Couldn't solve puzzle")
-        }, 10000)
-        this.array.forEach(cell => {
-            if (!cell.frozen) cell.value = '.'
-        })
-        const blanks = this.array.filter(item => !item.frozen)
+        await Promise.resolve();
+        this.reset();
+        const blanks = this.array.filter(item => !item.frozen);
         let position = 0;
-        let direction = 1
-        while (true) {
+        let direction = 1;
+        let counter = 0
+        while (counter < 3000000) {
             let cell = blanks[position];
-            let result = this.placeNumber(cell.cellNumber, direction)
-            direction = result === '.' ? -1 : 1
+            let result = this.placeNumber(cell.cellNumber, direction);
+            direction = result === '.' ? -1 : 1;
             cell.value = result;
             position += direction;
-            if (position < 0 || position >= blanks.length) break
+            counter++
+            if (position < 0 || position >= blanks.length)
+                break;
         }
-        if (this.array.some(item => item.value == '.')) return false
-        else return true;
+        if (this.array.some(item => item.value == '.')){
+            this.reset();
+            return false;
+        }
+        else
+            return true;
+    }
+    reset() {
+        this.array.forEach(cell => {
+            if (!cell.frozen)
+                cell.value = '.';
+        });
     }
 }

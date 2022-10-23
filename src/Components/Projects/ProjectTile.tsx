@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { external } from "../../svgs";
-import { childVariant } from "./framer";
 import { P889715 } from "./Projects";
 import styles from './Projects.module.scss'
 
@@ -12,12 +11,13 @@ export default function Tile({ proj, setSelected, setWrapper }: P889715) {
     return (
         <motion.div
             ref={ref}
+            key={proj.img}
             onMouseOverCapture={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
-            key={proj.path}
             whileHover={{ scale: 1.03 }}
             transition={{ type: 'spring', stiffness: 500 }}
-            className={styles.projectTile}>
+            className={styles.projectTile}
+        >
             {proj.external ?
                 <>
                     <img src={proj.img} alt={proj.path} />
@@ -29,14 +29,14 @@ export default function Tile({ proj, setSelected, setWrapper }: P889715) {
                 <>
                     <img src={proj.img} alt={proj.path} />
                     {proj.path ?
-                    <Link to={proj.path} >
-                        {proj.title}
-                    </Link> : 
-                    <div >
-                        {proj.title}
-                    </div>
-                    
-                }
+                        <Link to={proj.path} >
+                            {proj.title}
+                        </Link> :
+                        <div >
+                            {proj.title}
+                        </div>
+
+                    }
                 </>
             }
             <div className={hovered ? `${styles.tileMask} ${styles.show}` : styles.tileMask} >

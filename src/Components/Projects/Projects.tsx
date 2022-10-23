@@ -63,13 +63,15 @@ export default function Projects() {
             </AnimatePresence>
             <div className={styles.main} >
                 <AnimatePresence custom={direction} >
-                    <motion.div id={styles.projects}
+                    <motion.div
+                        id={styles.projects}
                         variants={parentVariant}
                         initial='initial'
                         animate='end'
                         exit='exit'
                         key={page}
-                        custom={direction}>
+                        custom={direction}
+                    >
                         {paginatedProjects[page].map(proj =>
                             <ProjectTile
                                 key={proj.path}

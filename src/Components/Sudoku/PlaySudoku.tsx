@@ -16,6 +16,7 @@ export default function PlaySudoku(props: Props) {
     const [_rerender, triggerRerender] = useState(true)
     const [clashes, setClashes] = useState<{ [key in 'row' | 'column' | 'region']: Set<Cell> }>()
     const divWrapper = useRef<HTMLDivElement>(null)
+    const [error, setError] = useState(false)
 
     useEffect(() => {
         if (window.innerWidth > 768) return
@@ -35,12 +36,13 @@ export default function PlaySudoku(props: Props) {
 
 
     function handleKeypress(e: KeyboardEvent) {
+        setError(false);
         setClashes(undefined)
         if (!selected) return
 
         const increment = (num: number) => {
             let old = selected.cellNumber
-            if (old + num < 0) return old;
+            if (old + num < 0 || old + num > 80) return old;
             else if (old + num > 80) return old
             else return old + num
         }
@@ -64,18 +66,25 @@ export default function PlaySudoku(props: Props) {
     }
     function reset() {
         setClashes(undefined)
-        puzzle.array.forEach(cell => {
-            if (!cell.frozen) cell.value = '.'
-        })
+        puzzle.reset();
+        setError(false)
         triggerRerender(prev => !prev)
     }
     async function solve() {
+        setError(false);
         setClashes(undefined)
-        const result = await puzzle.solve().catch(() => false)
-        triggerRerender(prev => !prev)
+        // await puzzle.solve();
+        const result = await puzzle.solve()
+        if (result) {
+            triggerRerender(prev => !prev)
+        }
+        else {
+            setError(true)
+        }
     }
     function check() {
         setClashes(puzzle.check())
+        setError(false);
     }
     function increment(num: number) {
         setClashes(undefined)
@@ -97,6 +106,7 @@ export default function PlaySudoku(props: Props) {
 
     return (
         <motion.div  className="sudoGame container flexCenter flexColumn" variants={sudokuVariant} initial="start" animate="end" exit={'exit'} onAuxClick={() => setSelected(undefined)}>
+            { error && <div style={{fontSize: '5rem', position: 'absolute', background: 'red'}}>Could not solve puzzle.</div>}
             <div style={{ marginBottom: '1rem' }} >
                 <button className="sudoBtn" onClick={check}  >
                     Check
