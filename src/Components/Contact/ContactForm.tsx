@@ -14,15 +14,9 @@ export default function ContactForm(props: P6265451) {
         <>
             <h1>Contact Me</h1>
             <form id='contactForm' className="flexColumn flexCenter" onSubmit={handleSubmit}>
-                <div>
                     <Input id="contactName" input={state.name} label="name" dispatch={dispatch} />
-                </div>
-                <div>
                     <Input id="contactOrg" input={state.organization} label="organization" dispatch={dispatch} />
-                </div>
-                <div>
                     <Input id="contactEmail" input={state.email} label="email" dispatch={dispatch} />
-                </div>
                 <div>
                     <label htmlFor='contactMessage' >Message</label>
                     <textarea
@@ -64,7 +58,7 @@ function Input(props: P743346) {
                 id={id}
                 required
                 name={label}
-                placeholder={label} />
+                placeholder={titleCase(label)} />
         </div>
     )
 }
