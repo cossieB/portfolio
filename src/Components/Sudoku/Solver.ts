@@ -76,14 +76,13 @@ export default class Solver {
         return arr
     }
     check() {
-        const answers = this.array.filter(item => !item.frozen && item.value != '.')
+        const nonBlanks = this.array.filter(item => item.value != '.')
         let clashes = {
             row: new Set<Cell>(),
             column: new Set<Cell>(),
             region: new Set<Cell>()
         }
-        answers.forEach(cell => {
-
+        nonBlanks.forEach(cell => {
             const checkColumn = this.array
                 .filter(item => item.column == cell.column && item.cellNumber != cell.cellNumber)
                 .every(item => item.value != cell.value)
@@ -140,7 +139,7 @@ export default class Solver {
         let position = 0;
         let direction = 1;
         let counter = 0
-        while (true) {
+        while (counter < 10000000) {
             let cell = blanks[position];
             let result = this.placeNumber(cell.cellNumber);
             direction = result === '.' ? -1 : 1;
@@ -148,7 +147,6 @@ export default class Solver {
             position += direction;
             counter++
             if (position < 0 || position >= blanks.length) {
-                let x = 5
                 break;
             }
         }

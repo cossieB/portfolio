@@ -91,7 +91,6 @@ export default function ({setPuzzleString, setMode}: Props) {
         triggerRerender(prev => !prev)
     }
 
-
     return (
         <motion.div  className="sudoGame container flexCenter flexColumn" variants={sudokuVariant} initial="start" animate="end" exit={'exit'} onAuxClick={() => setSelected(undefined)}>
             <div style={{marginBottom: '1rem'}} >
