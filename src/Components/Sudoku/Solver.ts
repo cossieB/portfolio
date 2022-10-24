@@ -4,7 +4,9 @@ export interface Cell {
     readonly column: number,
     readonly region: number,
     readonly frozen: boolean,
-    readonly cellNumber: number
+    readonly cellNumber: number,
+    possibleValues: string[],
+    current: number
 }
 
 export default class Solver {
@@ -13,7 +15,7 @@ export default class Solver {
 
     constructor(puzzleString: string) {
         const validation = Solver.validate(puzzleString)
-        if (validation[0] == false) throw new Error(validation[1])
+        if (validation[0] == false) throw new Error(validation[1]);
         this.puzzleString = puzzleString
         this.array = this.getArray()
     }
@@ -42,43 +44,36 @@ export default class Solver {
             else if (row < 9 && column < 6) region = 7
             else region = 8
 
-            arr.push({ value, row, column, region, frozen: value !== '.', cellNumber: i })
+            arr.push({
+                value,
+                row,
+                column,
+                region,
+                frozen: value !== '.',
+                cellNumber: i,
+                possibleValues: [],
+                current: 0
+            })
+        }
+        for (let cell of arr) {
+            let allValues = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
+            if (cell.frozen) {
+                cell.possibleValues = [cell.value]
+                continue
+            }
+
+            let neighbors = arr.filter(item =>
+                (item.column == cell.column ||
+                    item.region == cell.region ||
+                    item.row == cell.row)
+                && item.value != '.'
+            ).map(item => item.value)
+
+            const impossibleValues = new Set(neighbors)
+            const possibleValues = allValues.filter(item => !impossibleValues.has(item))
+            cell.possibleValues = possibleValues;
         }
         return arr
-    }
-    private placeNumber(cellNumber: number, direction: number) {
-
-        const cell = this.array[cellNumber]
-        let num: number;
-
-        if (direction == 1) {
-            num = 1
-        }
-        else {
-            num = Number(cell.value) + 1
-        }
-        while (num <= 9) {
-            let checkColumn = true;
-            let checkRow = true;
-            let checkRegion = true;
-
-            for (let item of this.array) {
-                if (item.column == cell.column && item.value == num.toString()) {
-                    checkColumn = false;
-                }
-                if (item.row == cell.row && item.value == num.toString()) {
-                    checkRow = false;
-                }
-                if (item.region == cell.region && item.value == num.toString()) {
-                    checkRegion = false;
-                }
-            }
-            if (checkColumn && checkRegion && checkRow) {
-                return num.toString();
-            }
-            num++;
-        }
-        return '.'
     }
     check() {
         const answers = this.array.filter(item => !item.frozen && item.value != '.')
@@ -107,24 +102,57 @@ export default class Solver {
         })
         return clashes
     }
+    private placeNumber(cellNumber: number) {
+
+        const cell = this.array[cellNumber]
+
+        while (cell.current < cell.possibleValues.length) {
+            let isValid = true;
+            const val = cell.possibleValues[cell.current]
+
+            for (let item of this.array) {
+                const checkColumn = item.column == cell.column && item.value == val;
+                const checkRow = item.row == cell.row && item.value == val;
+                const checkRegion = item.region == cell.region && item.value == val;
+                
+                if (checkColumn || checkRegion || checkRow) {
+                    isValid = false;
+                    break;
+                }
+            }
+            if (isValid) {
+                return val.toString();
+            }
+            cell.current++;
+        }
+        cell.current = 0;
+        return '.'
+    }
     async solve() {
         await Promise.resolve();
         this.reset();
-        const blanks = this.array.filter(item => !item.frozen);
+        const blanks = this.array
+            .filter(item => !item.frozen)
+            .sort((a, b) => {
+                if (a.possibleValues.length < b.possibleValues.length) return -1
+                else return 1
+            });
         let position = 0;
         let direction = 1;
         let counter = 0
-        while (counter < 3000000) {
+        while (true) {
             let cell = blanks[position];
-            let result = this.placeNumber(cell.cellNumber, direction);
+            let result = this.placeNumber(cell.cellNumber);
             direction = result === '.' ? -1 : 1;
             cell.value = result;
             position += direction;
             counter++
-            if (position < 0 || position >= blanks.length)
+            if (position < 0 || position >= blanks.length) {
+                let x = 5
                 break;
+            }
         }
-        if (this.array.some(item => item.value == '.')){
+        if (this.array.some(item => item.value == '.')) {
             this.reset();
             return false;
         }
