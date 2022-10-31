@@ -814,7 +814,7 @@ export const quotes: Quote[] = [
     author: "Jack Sparrow",
     tags: ["humor"]
   }, {
-    quote: "I'm dishonest, and a dishonest man you can always trust to be dishonest. Honestly. It's the honest ones you want to watch out for, because you can never predict when they're going to do somthing incredibly stupid.",
+    quote: "I'm dishonest, and a dishonest man you can always trust to be dishonest. Honestly. It's the honest ones you want to watch out for, because you can never predict when they're going to do something incredibly stupid.",
     author: "Jack Sparrow",
     tags: ["humor"]
   }, {
@@ -834,12 +834,16 @@ export const quotes: Quote[] = [
     author: "Reg Braithwaite",
     tags: ["humor"]
   }, {
-    quote: "One morning I shot an elephant in my pajamas. How he got in my pagamas, I don't know.",
+    quote: "One morning I shot an elephant in my pajamas. How he got in my pajamas, I don't know.",
     author: "Captain Spaulding",
     tags: ["humor"]
   }, {
     quote: "It depends on what the meaning of 'is' is.",
     author: "Bill Clinton",
+    tags: ["humor"]
+  }, {
+    quote: "For every complex problem there is an answer that is clear, simple, and wrong.",
+    author: "H.L. Mencken",
     tags: ["humor"]
   }
 ]
