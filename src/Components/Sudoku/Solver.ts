@@ -63,10 +63,7 @@ export default class Solver {
             }
 
             let neighbors = arr.filter(item =>
-                (item.column == cell.column ||
-                    item.region == cell.region ||
-                    item.row == cell.row)
-                && item.value != '.'
+                item.value != '.' && ( item.column == cell.column || item.region == cell.region || item.row == cell.row )
             ).map(item => item.value)
 
             const impossibleValues = new Set(neighbors)
@@ -113,7 +110,7 @@ export default class Solver {
                 const checkColumn = item.column == cell.column && item.value == val;
                 const checkRow = item.row == cell.row && item.value == val;
                 const checkRegion = item.region == cell.region && item.value == val;
-                
+
                 if (checkColumn || checkRegion || checkRow) {
                     isValid = false;
                     break;
