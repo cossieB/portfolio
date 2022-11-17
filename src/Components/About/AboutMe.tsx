@@ -13,7 +13,7 @@ export default function AboutMe() {
                 exit={{ opacity: 0 }}
                 style={{ fontSize: 16 }} >
                 <p>I am Buntu Cossie, a self-taught full-stack developer based in South Africa. I'm mainly a MERN stack and
-                    TypeScript developer but I am also comfortable with Python, C# and MySQL.</p>
+                    TypeScript developer but I am also comfortable with Python, C# and PostgreSQL.</p>
                 <p>I'm a diligent and highly intelligent individual with an avid interest in technology and computer
                     programming. I'm a fast learner and meticulous worker who enjoys challenges and problem solving. </p>
                 <p>Select a tab {window.innerWidth > 768 ? "on the left" : "at the top of the page"} to view my proficiencies.</p>

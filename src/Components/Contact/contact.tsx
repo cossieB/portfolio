@@ -1,7 +1,7 @@
 import { addDoc, collection } from 'firebase/firestore'
 import { motion } from 'framer-motion'
 import { useEffect, useReducer, useState } from 'react'
-import { db } from '../../firestore'
+import { db } from '../../firebase'
 import { containerVariant } from '../../variants'
 import Loading from '../Loading/Loading'
 import './contact.scss'

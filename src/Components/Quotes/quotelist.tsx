@@ -1,7 +1,9 @@
+type Tag = "humor" | "motivational"
+
 interface Quote {
   readonly quote: string,
   readonly author: string,
-  readonly tags: string[]
+  readonly tags: Tag[]
 }
 
 export const quotes: Quote[] = [
@@ -844,6 +846,22 @@ export const quotes: Quote[] = [
   }, {
     quote: "For every complex problem there is an answer that is clear, simple, and wrong.",
     author: "H.L. Mencken",
+    tags: ["humor"]
+  }, {
+    quote: "I feel bad for our country, but this is tremendous content.",
+    author: "Darren Rovell",
+    tags: ["humor"]
+  }, {
+    quote: 'issuing correction on a previous post of mine, regarding the terror group ISIL. you do not, under any circumstances, "gotta give it to them"',
+    author: "dril",
+    tags: ["humor"]
+  }, {
+    quote: "im not owned! im not owned!!, i continue to insist as i slowly shrink and transform into a corn cob",
+    author: "dril",
+    tags: ["humor"]
+  }, {
+    quote: "and another thing: im not mad. please dont put in the newspaper that i got mad",
+    author: "dril",
     tags: ["humor"]
   }
 ]

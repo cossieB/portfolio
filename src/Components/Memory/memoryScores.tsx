@@ -1,6 +1,6 @@
 import { addDoc, collection, query, orderBy, limit, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { db } from "../../firestore";
+import { db } from "../../firebase";
 import { P24235, P335320, Times } from "./interfaces";
 import Leaders from "./Leaders";
 

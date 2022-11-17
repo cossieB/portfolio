@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { Scores } from "./interfaces"
 import { query, orderBy, limit, collection, getDocs } from "firebase/firestore";
-import { db } from "../../firestore";
+import { db } from "../../firebase";
 import styles from "./quiz.module.scss";
 import Score from "./Score";
 

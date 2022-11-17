@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { P123, Scores } from "./interfaces";
 import { GlobalLeaders, LocalLeaders } from "./Leaders";
-import { db } from "../../firestore";
+import { db } from "../../firebase";
 import { collection, addDoc } from "firebase/firestore";
 import styles from "./quiz.module.scss";
 
