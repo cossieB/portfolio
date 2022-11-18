@@ -33,41 +33,66 @@ export default function Game2048() {
         const key = e.key as Key
 
         if (key == 'ArrowLeft' || key == 'ArrowRight') {
-            // const factor = key == 'ArrowLeft' ? 1 : -1
+
             const sorted = [...array].sort((a, b) => {
                 if (a.left < b.left) return -1
                 else return 1
             })
-            
+
             for (let row = 0; row < 4; row++) {
                 const arr = sorted.filter(x => x.top == row);
                 if (arr.length == 0) continue;
                 arr.forEach((val, i) => {
                     const item = array.find(x => x.id == val.id)!;
-                    if (key == 'ArrowLeft') 
+                    if (key == 'ArrowLeft')
                         item.left = i;
                     else
                         item.left = 4 - arr.length + i
-                })                
+                })
+            }
+        }
+        if (key == 'ArrowUp' || key == 'ArrowDown') {
+
+            const sorted = [...array].sort((a, b) => {
+                if (a.top < b.top) return -1
+                else return 1
+            })
+
+            for (let column = 0; column < 4; column++) {
+                const arr = sorted.filter(x => x.left == column);
+                if (arr.length == 0) continue;
+                arr.forEach((val, i) => {
+                    const item = array.find(x => x.id == val.id)!;
+                    if (key == 'ArrowUp')
+                        item.top = i;
+                    else
+                        item.top = 4 - arr.length + i
+                })
             }
         }
         rerender(prev => !prev)
     }
     function move(direction: 'up' | 'down' | 'left' | 'right') {
-        if (direction == 'left' || direction == 'right') {
-            const factor = direction == 'left' ? 1 : -1
-            const sorted = [...array].sort((a, b) => {
-                if (factor * a.left < factor * b.left) return -1
-                else return 1
-            })
-            sorted.forEach(item => {
+        const sorted = [...array].sort((a, b) => {
+            if (a.left < b.left) return -1
+            else return 1
+        })
 
+        for (let row = 0; row < 4; row++) {
+            const arr = sorted.filter(x => x.top == row);
+            if (arr.length == 0) continue;
+            arr.forEach((val, i) => {
+                const item = array.find(x => x.id == val.id)!;
+                if (key == 'ArrowLeft')
+                    item.left = i;
+                else
+                    item.left = 4 - arr.length + i
             })
         }
     }
     function createBlock(count?: number) {
         if (array.length == 16) return;
-        const empties = numbers.filter(num => !array.map(t => 4 * t.top + t.left ).includes(num))
+        const empties = numbers.filter(num => !array.map(t => 4 * t.top + t.left).includes(num))
         const tempIndex = Math.floor(Math.random() * empties.length);
         const index = empties[tempIndex]
         const top = Math.floor(index / 4)
@@ -115,7 +140,7 @@ function ControlElem({ top, left, value, id }: P) {
         <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{duration: 0.1}}
+            transition={{ duration: 0.1 }}
             ref={ref}
             className={styles.controlElem}
         >
