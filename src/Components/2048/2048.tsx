@@ -31,65 +31,53 @@ export default function Game2048() {
         type Key = typeof validKeys[number];
         if (!validKeys.includes(e.key as Key)) return;
         const key = e.key as Key
-
-        if (key == 'ArrowLeft' || key == 'ArrowRight') {
-
-            const sorted = [...array].sort((a, b) => {
-                if (a.left < b.left) return -1
-                else return 1
-            })
-
-            for (let row = 0; row < 4; row++) {
-                const arr = sorted.filter(x => x.top == row);
-                if (arr.length == 0) continue;
-                arr.forEach((val, i) => {
-                    const item = array.find(x => x.id == val.id)!;
-                    if (key == 'ArrowLeft')
-                        item.left = i;
-                    else
-                        item.left = 4 - arr.length + i
-                })
-            }
-        }
-        if (key == 'ArrowUp' || key == 'ArrowDown') {
-
-            const sorted = [...array].sort((a, b) => {
-                if (a.top < b.top) return -1
-                else return 1
-            })
-
-            for (let column = 0; column < 4; column++) {
-                const arr = sorted.filter(x => x.left == column);
-                if (arr.length == 0) continue;
-                arr.forEach((val, i) => {
-                    const item = array.find(x => x.id == val.id)!;
-                    if (key == 'ArrowUp')
-                        item.top = i;
-                    else
-                        item.top = 4 - arr.length + i
-                })
-            }
+        
+        switch (key) {
+            case 'ArrowDown':
+                move('down')
+                break;
+            case 'ArrowUp':
+                move('up')
+                break;
+            case 'ArrowLeft':
+                move('left')
+                break;
+            case 'ArrowRight':
+                move('right')
+                break;
         }
         rerender(prev => !prev)
     }
     function move(direction: 'up' | 'down' | 'left' | 'right') {
+        let sortKey: keyof P
+        let key: keyof P;
+        if (direction == 'left' || direction == 'right') {
+            sortKey = 'left';
+            key = 'top'
+        }
+        else {
+            sortKey = 'top'
+            key = 'left'
+        }
+
         const sorted = [...array].sort((a, b) => {
-            if (a.left < b.left) return -1
+            if (a[sortKey] < b[sortKey]) return -1
             else return 1
         })
 
-        for (let row = 0; row < 4; row++) {
-            const arr = sorted.filter(x => x.top == row);
+        for (let iter = 0; iter < 4; iter++) {
+            const arr = sorted.filter(x => x[key] == iter);
             if (arr.length == 0) continue;
             arr.forEach((val, i) => {
                 const item = array.find(x => x.id == val.id)!;
-                if (key == 'ArrowLeft')
-                    item.left = i;
+                if (direction == 'left' || direction == 'up')
+                    item[sortKey] = i;
                 else
-                    item.left = 4 - arr.length + i
+                    item[sortKey] = 4 - arr.length + i
             })
         }
     }
+
     function createBlock(count?: number) {
         if (array.length == 16) return;
         const empties = numbers.filter(num => !array.map(t => 4 * t.top + t.left).includes(num))
