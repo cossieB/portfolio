@@ -4,7 +4,7 @@ import { splitArray } from "../../utils/splitArray";
 import Details from "./Details";
 import { parentVariant } from "./framer";
 import { projectArray, Projs, stack } from "./projectArray";
-import styles from './Projects.module.scss'
+import styles from "./Projects.module.scss";
 import ProjectTile from "./ProjectTile";
 
 const paginatedProjects = splitArray(projectArray, 6)
