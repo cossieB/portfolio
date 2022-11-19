@@ -15,7 +15,7 @@ import Memory from '../Memory/Memory';
 import { AnimatePresence } from 'framer-motion';
 import Sudoku from '../Sudoku/Sudoku';
 import Hanoi from '../Hanoi/Hanoi';
-import Game2048 from "../2048/Logic2048";
+import Game2048 from "../2048/2048";
 
 function App() {
     const location = useLocation()

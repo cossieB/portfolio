@@ -1,7 +1,23 @@
-import { motion } from 'framer-motion';
-import React, { useLayoutEffect, useRef } from 'react';
+import { useState } from "react";
+import { Signup } from "../Quiz/Signup";
+import Logic2048 from "./Logic2048";
 import styles from './2048.module.scss';
-import { Block } from './Board';
 
-export const numbers = new Array(16).fill(0).map((_, i) => i)
-
+export default function Game2048() {
+    const [name, setName] = useState("");
+    const [score, setScore] = useState(0);
+    if (!name) return (
+        <div className={styles.container}>
+            <Signup setUser={setName} />
+        </div>
+    )
+    else return (
+        <div className={styles.container}>
+            <div className={styles.score}> {score} </div>
+            <Logic2048 setScore={setScore} />
+            <div className={styles.leadersPanel}>
+                
+            </div>
+        </div>
+    )
+}

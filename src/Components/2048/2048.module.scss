@@ -1,7 +1,7 @@
 @import '../../mixins';
 
 $hgtwdth: 7.5rem; // USED IN JAVASCRIPT. DO NOT CHANGE!!!!!!!
-.container2048 {
+.container {
     height: 100vh;
     width: 100vw;
     background-color: #3b4b50;
@@ -38,6 +38,18 @@ $hgtwdth: 7.5rem; // USED IN JAVASCRIPT. DO NOT CHANGE!!!!!!!
     font-size: 10rem;
     top: 40%;
     left: 10%;
+}
+.gameOver {
+    position: absolute;
+    backdrop-filter: blur(10px);
+    height: 100vh;
+    width: 100vw;
+    @include flexCenter;
+    top: 0;
+    left: 0;
+    h3 {
+        font-size: 10rem;
+    }
 }
 
 @media (max-width: 768px) {

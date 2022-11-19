@@ -1,12 +1,16 @@
 import { AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import { numbers } from './2048';
 import styles from './2048.module.scss';
 import { Props2048, ControlElem } from './ControlElem';
 
-export default function Logic2048() {
+export const numbers = new Array(16).fill(0).map((_, i) => i)
+
+interface P {
+    setScore: React.Dispatch<React.SetStateAction<number>>
+}
+
+export default function Logic2048({ setScore }: P) {
     const [array, setArray] = useState<Props2048[]>([]);
-    const [score, setScore] = useState(0);
     const [gameOver, setGameOver] = useState(false);
     useEffect(() => {
         createBlock(true);
@@ -40,7 +44,9 @@ export default function Logic2048() {
         }
         setArray(array.filter(x => !x.deleted));
         createBlock();
-
+        if (array.length == 16 && checkGameOver()) {
+            setGameOver(true);
+        }
     }
     function move(direction: 'up' | 'down' | 'left' | 'right') {
         let sortKey: 'left' | 'top';
@@ -114,7 +120,26 @@ export default function Logic2048() {
             createBlock();
     }
     function checkGameOver() {
-
+        array.sort((a, b) => {
+            if (4 * a.top + a.left < 4 * b.top + b.left) return -1
+            else return 1;
+        })
+        for (let i = 0; i < array.length; i++) {
+            const elem = array[i];
+            if ((i + 1) % 4 != 0) {
+                if (array[i + 1].value == elem.value) {
+                    console.log(elem, i)
+                    return false;
+                }
+            }
+            if (i + 4 < array.length) {
+                if (array[i + 4].value == elem.value) {
+                    console.log(elem, i)
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     return (
@@ -131,7 +156,6 @@ export default function Logic2048() {
                     )}
                 </AnimatePresence>
             </div>
-            <div className={styles.score}>{score}</div>
             {gameOver &&
                 <div className={styles.gameOver}>
                     <h3>GAME OVER</h3>

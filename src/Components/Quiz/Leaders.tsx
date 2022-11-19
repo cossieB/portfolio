@@ -5,7 +5,7 @@ import { db } from "../../firebase";
 import styles from "./quiz.module.scss";
 import Score from "./Score";
 
-export function LocalLeaders(props?: any) {
+export function LocalLeaders() {
     const [leaders, setLeaders] = useState<Scores[]>()
     useEffect(() => {
         let storage = localStorage.getItem('leaders')
@@ -25,7 +25,7 @@ export function LocalLeaders(props?: any) {
     )
 }
 
-export function GlobalLeaders(props?: any) {
+export function GlobalLeaders() {
     const [leaders, setLeaders] = useState<Scores[]>()
     useEffect(() => {
         (async function () {
