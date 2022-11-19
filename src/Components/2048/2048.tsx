@@ -10,7 +10,7 @@ interface P {
     left: number
     value: number
     id: string
-    index: number
+    deleted?: true
 }
 
 export default function Game2048() {
@@ -45,6 +45,7 @@ export default function Game2048() {
                 move('right')
                 break;
         }
+        setArray(array.filter(x => !x.deleted))
         createBlock()
     }
     function move(direction: 'up' | 'down' | 'left' | 'right') {
@@ -68,28 +69,41 @@ export default function Game2048() {
             const arr = sorted.filter(x => x[key] == iter);
             if (arr.length == 0) continue;
 
-            arr.forEach((val, i) => {
-                const item = array.find(x => x.id == val.id)!;
+            arr.forEach((cell, i) => {
+
                 if (direction == 'left' || direction == 'up') {
-                    item[sortKey] = i;
-                    if (i != 0 && arr[i].value == arr[i - 1].value) {
-                        collide(arr[i - 1].id, arr[i].id)
+                    if (i == 0) {
+                        cell[sortKey] = i;
+                    }    
+                    else {
+                        cell[sortKey] = arr[i - 1][sortKey] + 1;
+                    }
+                    if (i != 0 && arr[i].value == arr[i - 1].value && !arr[i - 1].deleted) {
+                        collide(arr[i - 1], arr[i])
                     }
                 }
                 else {
-                    item[sortKey] = 3 - i
-                    if (i != arr.length - 1 && arr[i].value == arr[i + 1].value) {
-                        collide(arr[i].id, arr[i + 1].id)
+                    if (i == 0) {
+                        cell[sortKey] = 3 - i
+                    }
+                    else {
+                        cell[sortKey] = arr[i - 1][sortKey] - 1
+                    }
+                    if (i != 0 && arr[i].value == arr[i - 1].value && !arr[i - 1].deleted) {
+                        collide(arr[i - 1], arr[i])
                     }
                 }
             })
+
         }
     }
-    function collide(idToIncrease: string, idToDelete: string) {
-        const itemToIncrease = array.find(x => x.id == idToIncrease)
-        itemToIncrease!.value *= 2;
-        const newArr = array.filter(x => x.id != idToDelete)
-        setArray(newArr)
+    function collide(toIncrease: P, toDelete: P) {
+        toIncrease.value *= 2;
+        toDelete.left = toIncrease.left;
+        toDelete.top = toIncrease.top;
+        toDelete.value = toIncrease.value;
+        toDelete.deleted = true;
+        return
     }
     function createBlock(initialRender?: true) {
         if (array.length == 16) return;
@@ -100,7 +114,7 @@ export default function Game2048() {
         const left = index % 4
         const id = crypto.randomUUID()
         const value = Math.random() < 0.75 ? 2 : 4;
-        setArray(prev => [...prev, { id, value, top, left, index }])
+        setArray(prev => [...prev, { id, value, top, left }])
         if (initialRender) createBlock()
     }
 
@@ -115,7 +129,6 @@ export default function Game2048() {
                     {array.map(item =>
                         <ControlElem
                             id={item.id}
-                            index={item.index}
                             value={item.value}
                             key={item.id}
                             top={item.top}
