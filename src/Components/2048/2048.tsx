@@ -9,7 +9,7 @@ interface P {
     top: number
     left: number
     value: number
-    id: number
+    id: string
     index: number
 }
 
@@ -17,8 +17,7 @@ export default function Game2048() {
     const [array, setArray] = useState<P[]>([])
     const [render, rerender] = useState(false)
     useEffect(() => {
-        createBlock(0)
-        createBlock(1)
+        createBlock(true)
     }, [])
 
     useEffect(() => {
@@ -31,7 +30,7 @@ export default function Game2048() {
         type Key = typeof validKeys[number];
         if (!validKeys.includes(e.key as Key)) return;
         const key = e.key as Key
-        
+
         switch (key) {
             case 'ArrowDown':
                 move('down')
@@ -46,11 +45,11 @@ export default function Game2048() {
                 move('right')
                 break;
         }
-        rerender(prev => !prev)
+        createBlock()
     }
     function move(direction: 'up' | 'down' | 'left' | 'right') {
-        let sortKey: keyof P
-        let key: keyof P;
+        let sortKey: 'left' | 'top'; 
+        let key: typeof sortKey;
         if (direction == 'left' || direction == 'right') {
             sortKey = 'left';
             key = 'top'
@@ -59,36 +58,50 @@ export default function Game2048() {
             sortKey = 'top'
             key = 'left'
         }
-
+        const factor = direction == 'left' || direction == 'up' ? 1 : -1
         const sorted = [...array].sort((a, b) => {
-            if (a[sortKey] < b[sortKey]) return -1
+            if (a[sortKey] * factor < b[sortKey] * factor) return -1
             else return 1
         })
 
         for (let iter = 0; iter < 4; iter++) {
             const arr = sorted.filter(x => x[key] == iter);
             if (arr.length == 0) continue;
+
             arr.forEach((val, i) => {
                 const item = array.find(x => x.id == val.id)!;
-                if (direction == 'left' || direction == 'up')
+                if (direction == 'left' || direction == 'up') {
                     item[sortKey] = i;
-                else
-                    item[sortKey] = 4 - arr.length + i
+                    if (i != 0 && arr[i].value == arr[i - 1].value) {
+                        collide(arr[i - 1].id, arr[i].id)
+                    }
+                }
+                else {
+                    item[sortKey] = 3 - i
+                    if (i != arr.length - 1 && arr[i].value == arr[i + 1].value) {
+                        collide(arr[i].id, arr[i + 1].id)
+                    }
+                }
             })
         }
     }
-
-    function createBlock(count?: number) {
+    function collide(idToIncrease: string, idToDelete: string) {
+        const itemToIncrease = array.find(x => x.id == idToIncrease)
+        itemToIncrease!.value *= 2;
+        const newArr = array.filter(x => x.id != idToDelete)
+        setArray(newArr)
+    }
+    function createBlock(initialRender?: true) {
         if (array.length == 16) return;
         const empties = numbers.filter(num => !array.map(t => 4 * t.top + t.left).includes(num))
         const tempIndex = Math.floor(Math.random() * empties.length);
         const index = empties[tempIndex]
         const top = Math.floor(index / 4)
         const left = index % 4
-        const id = count ?? Math.max(...array.map(elem => elem.id)) + 1
+        const id = crypto.randomUUID()
         const value = Math.random() < 0.75 ? 2 : 4;
         setArray(prev => [...prev, { id, value, top, left, index }])
-        console.log(array)
+        if (initialRender) createBlock()
     }
 
     return (
@@ -128,7 +141,7 @@ function ControlElem({ top, left, value, id }: P) {
         <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.1 }}
+            transition={{ duration: 0.1, delay: 0.15 }}
             ref={ref}
             className={styles.controlElem}
         >
