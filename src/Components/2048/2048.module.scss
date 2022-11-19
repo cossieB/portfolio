@@ -1,6 +1,6 @@
 @import '../../mixins';
 
-$hgtwdth: 7.5rem;
+$hgtwdth: 7.5rem; // USED IN JAVASCRIPT. DO NOT CHANGE!!!!!!!
 .container2048 {
     height: 100vh;
     width: 100vw;
@@ -31,4 +31,29 @@ $hgtwdth: 7.5rem;
     width: $hgtwdth;
     background-color: green;
     transition: all 250ms ease;
+}
+.score {
+    position: absolute;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 10rem;
+    top: 40%;
+    left: 10%;
+}
+
+@media (max-width: 768px) {
+    $hgtwdth: 4rem; // USED IN JAVASCRIPT. DO NOT CHANGE!!!!!!!
+    $gap: 0.25rem;
+    .board {
+        grid-template-columns: repeat(4, $hgtwdth);
+        gap: $gap;
+        padding: $gap;
+
+        .block {
+            height: $hgtwdth;
+        }
+    }
+    .controlElem {
+        height: $hgtwdth;
+        width: $hgtwdth;
+    }
 }
