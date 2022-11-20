@@ -46,9 +46,8 @@ export default function Logic2048(props: P) {
                 move('right');
                 break;
         }
-        setArray(array.filter(x => !x.deleted));
-        createBlock();
     }
+
     function move(direction: 'up' | 'down' | 'left' | 'right') {
         let sortKey: 'left' | 'top';
         let key: typeof sortKey;
@@ -97,6 +96,8 @@ export default function Logic2048(props: P) {
                 }
             });
         }
+        setArray(array.filter(x => !x.deleted));
+        createBlock();
     }
     function collide(toIncrease: Props2048, toDelete: Props2048) {
         toIncrease.value *= 2;
@@ -144,6 +145,6 @@ export default function Logic2048(props: P) {
     }
 
     return (
-        <Board array={array} />
+        <Board array={array} move={move} />
     );
 }

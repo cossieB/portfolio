@@ -38,7 +38,7 @@ export default function Game2048() {
     else return (
         <div className={styles.container} >
             <div className={styles.score}>
-                {score > 0 ? <span> {score } </span>: <aside> Use the arrow buttons to smash two blocks of the same value together. </aside>}
+                {score > 0 ? <span> {score } </span>: <aside> {window.matchMedia("(pointer: coarse)").matches ? "Swipe across the screen " : "Use the arrow buttons"}  to smash two blocks of the same value together. </aside>}
             </div>
             <Logic2048
                 setScore={setScore}
