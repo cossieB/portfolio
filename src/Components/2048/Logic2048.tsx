@@ -1,22 +1,26 @@
-import { AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import styles from './2048.module.scss';
-import { Props2048, ControlElem } from './ControlElem';
+import { Board } from './Board';
+import { Props2048 } from './ControlElem';
 
 export const numbers = new Array(16).fill(0).map((_, i) => i)
 
 interface P {
     setScore: React.Dispatch<React.SetStateAction<number>>
+    setGameOver: React.Dispatch<React.SetStateAction<boolean>>
+    setArray: React.Dispatch<React.SetStateAction<Props2048[]>>
+    array: Props2048[]
 }
 
-export default function Logic2048({ setScore }: P) {
-    const [array, setArray] = useState<Props2048[]>([]);
-    const [gameOver, setGameOver] = useState(false);
+export default function Logic2048(props: P) {
+    const { setScore, setGameOver, setArray, array } = props;
     useEffect(() => {
         createBlock(true);
     }, []);
 
     useEffect(() => {
+        if (array.length == 16) {
+            setGameOver(checkGameOver())
+        }
         document.addEventListener('keydown', handleKeyPress);
         return () => document.removeEventListener('keydown', handleKeyPress);
     }, [array.length]);
@@ -44,9 +48,6 @@ export default function Logic2048({ setScore }: P) {
         }
         setArray(array.filter(x => !x.deleted));
         createBlock();
-        if (array.length == 16 && checkGameOver()) {
-            setGameOver(true);
-        }
     }
     function move(direction: 'up' | 'down' | 'left' | 'right') {
         let sortKey: 'left' | 'top';
@@ -117,7 +118,7 @@ export default function Logic2048({ setScore }: P) {
         const value = Math.random() < 0.75 ? 2 : 4;
         setArray(prev => [...prev, { id, value, top, left }]);
         if (initialRender)
-            createBlock();
+            createBlock()
     }
     function checkGameOver() {
         array.sort((a, b) => {
@@ -143,23 +144,6 @@ export default function Logic2048({ setScore }: P) {
     }
 
     return (
-        <div className={styles.container2048}>
-            <div className={styles.board}>
-                {new Array(16).fill(0).map((_, i) => <div className={styles.block} key={i} />)}
-                <AnimatePresence>
-                    {array.map(item => <ControlElem
-                        id={item.id}
-                        value={item.value}
-                        key={item.id}
-                        top={item.top}
-                        left={item.left} />
-                    )}
-                </AnimatePresence>
-            </div>
-            {gameOver &&
-                <div className={styles.gameOver}>
-                    <h3>GAME OVER</h3>
-                </div>}
-        </div>
+        <Board array={array} />
     );
 }

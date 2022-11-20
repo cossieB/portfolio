@@ -70,8 +70,8 @@ export default function GameOver(props: P123) {
             <div style={style}>{percentage} %</div>
             <p>{message}</p>
             <div className={styles.endgameHS} >
-                <LocalLeaders rand={Math.random()} />
-                <GlobalLeaders rand={Math.random()} />
+                <LocalLeaders  />
+                <GlobalLeaders />
             </div>
             <button onClick={() => {
                 setCorrect(0);
