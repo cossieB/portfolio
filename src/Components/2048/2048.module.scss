@@ -1,52 +1,38 @@
 @import '../../mixins';
 
-$hgtwdth: 7.5rem; // USED IN JAVASCRIPT. DO NOT CHANGE!!!!!!!
+$boardColor: #c8dd0f;
 .container {
-    height: 100vh;
-    width: 100vw;
-    top: 0;
-    left: 0;
     background-color: #3b4b50;
-    @include flexCenter;
+    width: 100vw;
 }
 
 .board {
-    $boardColor: #c8dd0f;
     position: relative;
     display: grid;
-    gap: 0.5rem;
-    padding: 0.5rem;
-    grid-template-columns: repeat(4, $hgtwdth);
     background-color: $boardColor;
 
     .block {
-        height: $hgtwdth;
         background-color: darken($color: $boardColor, $amount: 15);
     }
 }
 
 .controlElem {
     @include flexCenter;
-    font-size: 3.5rem;
     position: absolute;
-    height: $hgtwdth;
-    width: $hgtwdth;
     background-color: green;
     transition: all 250ms ease;
 }
+
 .score {
-    position: absolute;
     font-family: 'Orbitron', sans-serif;
-    font-size: 10rem;
-    top: 40%;
-    left: 1%;
-    width: 25%;
     @include flexCenter;
-    > aside {
+
+    >aside {
         color: #c8dd0f;
         font-size: 1rem;
     }
 }
+
 .gameOver {
     position: absolute;
     font-family: 'Orbitron', sans-serif;
@@ -58,62 +44,84 @@ $hgtwdth: 7.5rem; // USED IN JAVASCRIPT. DO NOT CHANGE!!!!!!!
     left: 0;
     color: #c8dd0f;
     z-index: 50;
-    > div:first-child{
+
+    >div:first-child {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
+
     h3 {
-        font-size: 10rem;
         justify-self: flex-end;
         padding: 0;
         margin: 0;
+        text-align: center;
     }
+
     h4 {
-        font-size: 8rem;
         justify-self: flex-start;
         padding: 0;
         margin: 0;
+        text-align: center;
+    }
+
+    .buttons {
+        @include flexCenter(row);
+        width: fit-content;
+        gap: 0.5rem;
+
+        >button {
+            height: 2rem;
+            border: none;
+        }
+
+        button:first-child {
+            background-color: springgreen;
+        }
+
+        button:last-child {
+            background-color: aqua;
+        }
     }
 }
-.buttons {
-    @include flexCenter(row);
-    width: fit-content;
-    gap: 0.5rem;
-    > button {
-        height: 2rem;
-        border: none;
-    }
-    button:first-child {
-        background-color: springgreen;
-    }
-    button:last-child {
-        background-color: aqua;
-    }
-}
+
 .leadersPanel {
-    position: absolute;
     color: #c8dd0f;
-    right: 0;
-    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    margin-right: 1rem;
 }
+
 .leaderboard {
-    height: 50%;
     align-self: center;
     justify-content: center;
 }
+
 .signup {
     color: white;
 }
 
 @media (max-width: 768px) {
+    .container {
+        @include flexCenter(column);
+        // justify-content: flex-start;
+        min-height: 100vh;
+    }
+
+    .score {
+        width: 80%;
+        height: 15rem;
+        margin-bottom: 1rem;
+
+        span {
+            font-size: 5rem;
+        }
+    }
+
     $hgtwdth: 4rem; // USED IN JAVASCRIPT. DO NOT CHANGE!!!!!!!
     $gap: 0.25rem;
+
     .board {
         grid-template-columns: repeat(4, $hgtwdth);
         gap: $gap;
@@ -123,13 +131,83 @@ $hgtwdth: 7.5rem; // USED IN JAVASCRIPT. DO NOT CHANGE!!!!!!!
             height: $hgtwdth;
         }
     }
+
     .controlElem {
         height: $hgtwdth;
         width: $hgtwdth;
     }
+
+    .leadersPanel {
+        width: 90%;
+    }
+
+    .leaderboard {
+        width: 100%;
+    }
+    .gameOver {
+        h3 {
+            font-size: 5rem;
+        }
+        h4 {
+            font-size: 4rem;
+        }
+    }
 }
+
 @media (min-width: 768px) {
+    $hgtwdth: 7.5rem; // USED IN JAVASCRIPT. DO NOT CHANGE!!!!!!!
+
     .container {
         overflow: hidden;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        @include flexCenter;
+    }
+
+    .board {
+        gap: 0.5rem;
+        padding: 0.5rem;
+        grid-template-columns: repeat(4, $hgtwdth);
+
+        .block {
+            height: $hgtwdth;
+        }
+    }
+
+    .controlElem {
+        font-size: 3.5rem;
+        height: $hgtwdth;
+        width: $hgtwdth;
+    }
+
+    .score {
+        position: absolute;
+        font-size: 10rem;
+        top: 40%;
+        left: 1%;
+        width: 25%;
+    }
+
+    .leadersPanel {
+        position: absolute;
+        right: 0;
+        height: 100%;
+        margin-right: 1rem;
+    }
+
+    .leaderboard {
+        height: 50%;
+    }
+
+    .gameOver {
+
+        h3 {
+            font-size: 10rem;
+        }
+
+        h4 {
+            font-size: 8rem;
+        }
     }
 }
