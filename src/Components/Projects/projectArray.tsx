@@ -37,13 +37,13 @@ export interface Projs {
 export const projectArray: Projs[] = [
     {
         title: "Spaza Game Store",
-        img: "screenshots/spaza.png",
+        img: "/screenshots/spaza.png",
         description: "Full-stack ecommerce website. Developed with TypeScript, React on the frontend and C#, ASP.NET, Entity Framework and Postgres on the backend. Features a JsonWebToken based authentication system. To view a working demo, please clone the repo and run docker-compose up in your terminal.",
         stack: ["typescript", "react", "c#", "postgresql", "entity framework", "asp.net", "bootstrap", "json web token", "docker"],
         repo: "https://github.com/cossieB/spaza-ecommerce"
     },{
         title: "Meme Machine",
-        img: "screenshots/memes.png",
+        img: "/screenshots/memes.png",
         path: "https://mememachine.vercel.app/",
         external: true,
         description: "Full-stack CRUD application for posting and viewing memes. Developed with TypeScript, Next.js and React. Features a JWT based authentication system and uses MongoDB Atlas as a database. Also made a MySQL version, the code for which can be found on the 'using-mysql' branch of the repo.",
@@ -51,7 +51,7 @@ export const projectArray: Projs[] = [
         repo: 'https://github.com/cossieB/meme-machine'
     }, {
         title: "Internet Games Database",
-        img: "screenshots/igdb.png",
+        img: "/screenshots/igdb.png",
         path: "https://internet-games-database.vercel.app/",
         external: true,
         description: "CRUD application for adding information about games and the gaming industry. Developed with TypeScript, Next.js, React and SASS. Uses Heroku Postgres as a database and Prisma ORM to interact with the database.",
@@ -59,7 +59,7 @@ export const projectArray: Projs[] = [
         repo: "https://github.com/cossieB/internet-games-database"
     }, {
         title: "Microservices",
-        img: "screenshots/microservices.png",
+        img: "/screenshots/microservices.png",
         path: "https://cossie.herokuapp.com/",
         external: true,
         description: "Various REST APIs including header parser, file metadata, timestamp microservices and issue and exercise tracker. Deployed on Heroku.",
@@ -67,7 +67,7 @@ export const projectArray: Projs[] = [
         repo: 'https://github.com/cossieB/microservices'
     }, {
         title: "GraphQL API",
-        img: "screenshots/graphql.png",
+        img: "/screenshots/graphql.png",
         path: "https://cossie.herokuapp.com/graphql",
         external: true,
         description: "GraphQL API to get data from my Internet Games Database project. Uses express-graphql middleware and the data is stored in Heroku Postgres. Additionally I ported select services from the REST API project to this GraphQL one.",
@@ -80,16 +80,23 @@ export const projectArray: Projs[] = [
         description: "Play sudoku. Features clash highlighting and custom puzzle creator. It can also solve most puzzles using the backtracking algorithm.",
         stack: ["typescript", "react", "firebase", "framer motion"],
         repo: "https://github.com/cossieB/portfolio/tree/main/src/Components/Sudoku"
-    }, {
+    },{
+        title: "2048",
+        img: "/screenshots/2048.png",
+        path: "/2048",
+        description: "My clone of the 2048 puzzle/strategy game.",
+        stack: ["typescript", "react", "firebase", "framer motion"],
+        repo: "https://github.com/cossieB/portfolio/tree/main/src/Components/2048"
+    },{
         title: "Pomodoro",
-        img: "screenshots/pomodoro.png",
+        img: "/screenshots/pomodoro.png",
         path: "/pomodoro",
         description: "Timer for the pomodoro technique. You can change the session and the break lengths.",
         stack: ["typescript", "react", "firebase", "framer motion"],
         repo: "https://github.com/cossieB/portfolio/tree/main/src/Components/Pomodoro"
     }, {
         title: "Calculator",
-        img: "screenshots/calculator.png",
+        img: "/screenshots/calculator.png",
         path: "/calculator",
         description: "Non-scientific calculator.",
         stack: ["typescript", "react", "firebase", "framer motion"],
@@ -118,20 +125,20 @@ export const projectArray: Projs[] = [
     },{
         title: "Random Quote Machine",
         path: "/quotes",
-        img: "screenshots/quotes.png",
+        img: "/screenshots/quotes.png",
         description: "Some lighthearted quotes from across the ages.",
         stack: ["typescript", "react", "firebase", "framer motion"],
         repo: "https://github.com/cossieB/portfolio/tree/main/src/Components/Quotes"
     }, {
         title: "Markdown Preview",
         path: "markdown-preview",
-        img: "screenshots/markdown.png",
+        img: "/screenshots/markdown.png",
         description: "This neat little tool allows you to type markdown code and instantly see the output. Useful for git README.md files.",
         stack: ["typescript", "react", "firebase", "framer motion", "marked"],
         repo: "https://github.com/cossieB/portfolio/tree/main/src/Components/Markdown"
     }, {
         title: "Soundboard",
-        img: "screenshots/soundboard.png",
+        img: "/screenshots/soundboard.png",
         path: "/soundboard",
         description: "Press a button and play a sound. Features a volume slider",
         stack: ["typescript", "react", "firebase", "framer motion"],
@@ -139,7 +146,7 @@ export const projectArray: Projs[] = [
     }, {
         title: "Message Board",
         path: "/forum",
-        img: "screenshots/forum.png",
+        img: "/screenshots/forum.png",
         description: "User interface for a message board. Messages aren't stored.",
         stack: ["typescript", "react", "firebase", "framer motion"],
         repo: "https://github.com/cossieB/portfolio/tree/main/src/Components/Forum"

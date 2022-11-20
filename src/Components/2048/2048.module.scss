@@ -4,6 +4,8 @@ $hgtwdth: 7.5rem; // USED IN JAVASCRIPT. DO NOT CHANGE!!!!!!!
 .container {
     height: 100vh;
     width: 100vw;
+    top: 0;
+    left: 0;
     background-color: #3b4b50;
     @include flexCenter;
 }
@@ -37,7 +39,13 @@ $hgtwdth: 7.5rem; // USED IN JAVASCRIPT. DO NOT CHANGE!!!!!!!
     font-family: 'Orbitron', sans-serif;
     font-size: 10rem;
     top: 40%;
-    left: 10%;
+    left: 1%;
+    width: 25%;
+    @include flexCenter;
+    > aside {
+        color: #c8dd0f;
+        font-size: 1rem;
+    }
 }
 .gameOver {
     position: absolute;
@@ -99,6 +107,9 @@ $hgtwdth: 7.5rem; // USED IN JAVASCRIPT. DO NOT CHANGE!!!!!!!
     align-self: center;
     justify-content: center;
 }
+.signup {
+    color: white;
+}
 
 @media (max-width: 768px) {
     $hgtwdth: 4rem; // USED IN JAVASCRIPT. DO NOT CHANGE!!!!!!!
@@ -115,5 +126,10 @@ $hgtwdth: 7.5rem; // USED IN JAVASCRIPT. DO NOT CHANGE!!!!!!!
     .controlElem {
         height: $hgtwdth;
         width: $hgtwdth;
+    }
+}
+@media (min-width: 768px) {
+    .container {
+        overflow: hidden;
     }
 }
