@@ -84,8 +84,8 @@ export const projectArray: Projs[] = [
         title: "2048",
         img: "/screenshots/2048.png",
         path: "/2048",
-        description: "Clone of the 2048 puzzle/strategy game. This game has complex logic, so it was quite challenging to develop. Features mobile swipe controls.  High scores stored in Firestore and local storage.",
-        stack: ["typescript", "react", "firebase", "framer motion", "firestore"],
+        description: "Clone of the 2048 puzzle/strategy game. Features mobile swipe controls. High scores stored in Firestore and local storage. This game has complex logic, so it was quite challenging to develop.",
+        stack: ["typescript", "react", "firebase", "framer motion", "firestore", "sass"],
         repo: "https://github.com/cossieB/portfolio/tree/main/src/Components/2048"
     },{
         title: "Pomodoro",

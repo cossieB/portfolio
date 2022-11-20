@@ -1,11 +1,20 @@
+@use 'sass:math';
 @import '../../mixins';
 
 $boardColor: #c8dd0f;
 .container {
     background-color: #3b4b50;
+    @include flexCenter;
     width: 100vw;
+    height: 100vh;
 }
-
+.game {
+    width: 100vw;
+    height: 100vh;
+}
+@mixin radius() {
+    border-radius: 5px;
+}
 .board {
     position: relative;
     display: grid;
@@ -13,13 +22,19 @@ $boardColor: #c8dd0f;
 
     .block {
         background-color: darken($color: $boardColor, $amount: 15);
+        @include radius;
     }
 }
 
+@for $i from 1 through 11 {
+    .val#{math.pow(2,$i)} {
+        background-color: adjust-color($color: green, $red: $i*$i, $green: $i*$i, $blue: $i*$i);
+    }
+}
 .controlElem {
     @include flexCenter;
     position: absolute;
-    background-color: green;
+    @include radius;
     transition: all 250ms ease;
 }
 
@@ -103,17 +118,19 @@ $boardColor: #c8dd0f;
 }
 
 @media (max-width: 768px) {
-    .container {
-        @include flexCenter(column);
-        // justify-content: flex-start;
-        min-height: 100vh;
+    .game {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
     }
 
     .score {
         width: 80%;
-        height: 15rem;
-        margin-bottom: 1rem;
-
+        height: 25%;
+        padding: 0;
+        margin: 0;
         span {
             font-size: 5rem;
         }
@@ -138,7 +155,15 @@ $boardColor: #c8dd0f;
     }
 
     .leadersPanel {
-        width: 90%;
+        height: 100vh;
+        background-color: rgba(0,0,0, 0.5);
+        backdrop-filter: blur(10px);
+        width: 100vw;
+        position: fixed;
+        top: 0;
+        left: 0;
+        transform: translateX(100vw);
+        transition: transform 250ms ease;
     }
 
     .leaderboard {
@@ -152,12 +177,19 @@ $boardColor: #c8dd0f;
             font-size: 4rem;
         }
     }
+    .HSToggle {
+        border: none;
+        background: none;
+        color: #c8dd0f;
+        margin-top: 2.25rem;
+        @include flexCenter;
+    }
 }
 
 @media (min-width: 768px) {
     $hgtwdth: 7.5rem; // USED IN JAVASCRIPT. DO NOT CHANGE!!!!!!!
 
-    .container {
+    .game {
         overflow: hidden;
         height: 100vh;
         top: 0;

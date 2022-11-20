@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { useLayoutEffect, useRef } from 'react';
+import { useEffect, useLayoutEffect, useRef } from 'react';
 import styles from './2048.module.scss';
 
 export interface Props2048 {
@@ -11,7 +11,6 @@ export interface Props2048 {
 }
 
 export function ControlElem({ top, left, value, id }: Props2048) {
-
     const ref = useRef<HTMLDivElement>(null)
 
     useLayoutEffect(() => {
@@ -35,7 +34,7 @@ export function ControlElem({ top, left, value, id }: Props2048) {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.1, delay: 0.15 }}
             ref={ref}
-            className={styles.controlElem}
+            className={`${styles.controlElem} ${styles['val'+value]}`}
         >
             {value}
         </motion.div>
