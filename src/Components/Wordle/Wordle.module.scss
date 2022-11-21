@@ -1,0 +1,60 @@
+@import '../../mixins';
+
+.container {
+    background-color: #141b26;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
+.letterblock {
+    position: relative;
+    overflow: hidden;
+    $hgtwdth: 3.5rem;
+    height: $hgtwdth;
+    width: $hgtwdth;
+    margin-right: 0.25rem;
+    border: 2px solid gray;
+    border-radius: 7.5px;
+    color: white;
+    font-size: 1.5rem;
+    >div {
+        position: absolute;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        @include flexCenter
+    }
+    div:last-child {
+        top: 0;
+    }
+}
+.colorblock {
+    top: 100%;
+}
+@for $i from 0 through 5 {
+    .block#{$i} {
+        transition: all 500ms ease;
+        top: 0;
+        transition-delay: ($i + 1) * 500ms;
+    }
+}
+.correct {
+    background-color: green;
+}
+.ok {
+    background-color: #969635;
+}
+.wrong {
+    background-color: #6e2828;
+}
+
+.row {
+    display: flex;
+    margin-bottom: 0.5rem;
+}
+.blocks {
+    @include flexCenter(column);
+}

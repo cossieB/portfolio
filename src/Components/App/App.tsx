@@ -16,6 +16,7 @@ import { AnimatePresence } from 'framer-motion';
 import Sudoku from '../Sudoku/Sudoku';
 import Hanoi from '../Hanoi/Hanoi';
 import Game2048 from "../2048/2048";
+import Wordle from '../Wordle/Wordle';
 
 function App() {
     const location = useLocation()
@@ -40,6 +41,7 @@ function App() {
                 <Route path="/sudoku" key={"sudoku"}  ><Sudoku /> </Route>
                 <Route path="/hanoi" key={"hanoi"}  ><Hanoi /> </Route>
                 <Route path="/2048" key={"2048"}  ><Game2048 /> </Route>
+                <Route path="/wordle" key={"wordle"}  ><Wordle /> </Route>
             </Switch>
         </AnimatePresence>
     )
