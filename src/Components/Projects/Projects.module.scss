@@ -27,7 +27,8 @@
     height: 100vh;
     width: 10%;
     background-color: lavender;
-    $opac: 0.5;
+    $opac: 0.2;
+    color: black;
     opacity: $opac;
     font-size: clamp(1rem, 10vw, 20rem);
     @include flexCenter;
