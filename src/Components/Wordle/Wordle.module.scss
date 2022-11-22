@@ -4,15 +4,15 @@
     background-color: #141b26;
     height: 100vh;
     width: 100vw;
-    display: flex;
+    @include flexCenter(column);
     justify-content: center;
     color: white;
 }
+$hgtwdth: 3.5rem;
 
 .letterblock {
     position: relative;
     overflow: hidden;
-    $hgtwdth: 3.5rem;
     height: $hgtwdth;
     width: $hgtwdth;
     margin-right: 0.25rem;
@@ -41,14 +41,28 @@
         transition-delay: ($i + 1) * 250ms;
     }
 }
+.keyboard {
+    @include flexCenter(column);
+    .keyboardRow {
+        @include flexCenter;
+    }
+    .key {
+        height: $hgtwdth;
+        min-width: $hgtwdth;
+        @include flexCenter;
+        background-color: gray;
+        margin-right: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+}
 .correct {
-    background-color: green;
+    background-color: green !important;
 }
 .ok {
-    background-color: #969635;
+    background-color: #969635 !important;
 }
 .wrong {
-    background-color: #6e2828;
+    background-color: #6e2828 !important;
 }
 
 .row {

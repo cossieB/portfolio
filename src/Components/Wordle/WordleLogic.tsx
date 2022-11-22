@@ -1,27 +1,27 @@
 import { useEffect } from "react";
 import Blocks from "./Blocks";
+import Keyboard from "./Keyboard";
 import { WorldAction } from "./reducer";
 import { WordleState } from "./Wordle";
-import styles from "./Wordle.module.scss";
 
 const alphabet = "qwertyuiopasdfghjklzxcvbnm"
 const letters = alphabet.split('')
-const topRow = letters.slice(0, 10)
-const middleRow = letters.slice(9, 19)
-const bottomRow = letters.slice(18, 26)
+export const topRow = letters.slice(0, 10)
+export const middleRow = letters.slice(10, 19)
+export const bottomRow = letters.slice(19, 26)
 
-interface P {
+export interface Props {
     state: WordleState
     dispatch: React.Dispatch<WorldAction>
 }
 
-export default function WordleLogic({state, dispatch}: P) {
-    
+export default function WordleLogic({ state, dispatch }: Props) {
+
     useEffect(() => {
         document.addEventListener('keydown', handleKeypress);
         return () => document.removeEventListener('keydown', handleKeypress)
     }, [state.currentGuess, state.inputDisabled])
-        
+
     function handleKeypress(e: KeyboardEvent) {
         if (state.inputDisabled) return;
         if (e.key == "Backspace") return dispatch({ type: 'DELETE' })
@@ -33,15 +33,16 @@ export default function WordleLogic({state, dispatch}: P) {
         if (state.currentGuess.length != 5) {
             return
         }
-        dispatch({type: 'FLIP_OVER'})
+        dispatch({ type: 'FLIP_OVER' })
         setTimeout(() => {
-            dispatch({type: 'NEXT_GUESS'})
+            dispatch({ type: 'NEXT_GUESS' })
         }, 1750)
     }
 
     return (
-        <div className={styles.container} >
+        <>
             <Blocks state={state} />
-        </div>
+            <Keyboard state={state} dispatch={dispatch} />
+        </>
     )
 }

@@ -1,6 +1,6 @@
 import shuffleArray from "../../utils/shuffleArray"
 
-let words: string[] = [
+let words = new Set([
     "apple",
     "world",
     "globe",
@@ -11,12 +11,15 @@ let words: string[] = [
     "avert",
     "axiom",
     "power",
-    "dream"
-]
+    "dream",
+    "think"
+])
+let array: string[] = []
 words.forEach(word => {
-    if (word.length != 5) throw new Error(`${word} isn't five letters long.`)
-    if (/[^a-z]/.test(word)) throw new Error(`${word} contains non-letter characters`)
+    if (!(word.length != 5 || /[^a-z]/.test(word))) {
+        array.push(word)
+    }
 })
+// array = shuffleArray(array);
 
-words = shuffleArray(words);
-export {words}
+export {array as words}

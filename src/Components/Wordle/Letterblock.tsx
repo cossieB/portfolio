@@ -17,7 +17,7 @@ export default function LetterBlock(props: P) {
             className += " " + styles.ok
         }
         else {
-            className = styles.wrong
+            className += " " + styles.wrong
         }
         className += " " + styles[`block${index}`]
     }

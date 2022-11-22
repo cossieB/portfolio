@@ -2,6 +2,7 @@ import { useReducer } from "react";
 import reducer from "./reducer";
 import WordleLogic from "./WordleLogic";
 import { words } from "./words";
+import styles from "./Wordle.module.scss";
 
 const initialState = {
     wordIndex: 0,
@@ -17,7 +18,9 @@ export type WordleState = typeof initialState;
 export default function Wordle() {
     const [state, dispatch] = useReducer(reducer, initialState)
 
-    if (state.status == 'playing') return <WordleLogic state={state} dispatch={dispatch} />
-    else if (state.status == 'won') return <div />
-    else return <div />
+    return (
+        <div className={styles.container} >
+            {state.status == 'playing' ? <WordleLogic state={state} dispatch={dispatch} /> : <div /> }
+        </div>
+    )
 }
