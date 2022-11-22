@@ -4,6 +4,8 @@ import WordleLogic from "./WordleLogic";
 import { words } from "./words";
 import styles from "./Wordle.module.scss";
 import GameOver from "./GameOver";
+import { motion } from "framer-motion";
+import { containerVariant } from "../../variants";
 
 export const initialState = {
     wordIndex: 0,
@@ -20,10 +22,16 @@ export default function Wordle() {
     const [state, dispatch] = useReducer(reducer, initialState)
 
     return (
-        <div className={styles.container} >
+        <motion.div 
+        className={styles.container} 
+        variants={containerVariant}
+        initial='start'
+        animate='end'
+        exit='exit'
+        >
             {state.status == 'playing' ? 
             <WordleLogic state={state} dispatch={dispatch} /> : 
             <GameOver state={state} dispatch={dispatch} /> }
-        </div>
+        </motion.div>
     )
 }

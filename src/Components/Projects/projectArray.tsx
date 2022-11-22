@@ -81,6 +81,13 @@ export const projectArray: Projs[] = [
         stack: ["typescript", "react", "firebase", "framer motion", "firestore", "sass"],
         repo: "https://github.com/cossieB/portfolio/tree/main/src/Components/2048"
     },{
+        title: "Wordle",
+        img: "/screenshots/wordle.png",
+        path: "/wordle",
+        description: "My recreation of the popular game Wordle",
+        stack:  ["typescript", "react", "firebase", "framer motion"],
+        repo: "https://github.com/cossieB/portfolio/tree/main/src/Components/wordle"
+    },{
         title: "Sudoku",
         img: 'screenshots/sudoku.png',
         path: "/sudoku",
