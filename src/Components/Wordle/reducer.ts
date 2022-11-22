@@ -1,6 +1,6 @@
-import { WordleState } from "./Wordle";
+import { WordleState } from "./Wordle"
 
-type WorldAction = {
+export type WorldAction = {
     type: 'ADD_LETTER',
     payload: string
 } | {

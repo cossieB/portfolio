@@ -10,7 +10,8 @@ let words: string[] = [
     "overt",
     "avert",
     "axiom",
-    "power"
+    "power",
+    "dream"
 ]
 words.forEach(word => {
     if (word.length != 5) throw new Error(`${word} isn't five letters long.`)

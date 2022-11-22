@@ -34,11 +34,11 @@
 .colorblock {
     top: 100%;
 }
-@for $i from 0 through 5 {
+@for $i from 0 through 4 {
     .block#{$i} {
         transition: all 500ms ease;
         top: 0;
-        transition-delay: ($i + 1) * 500ms;
+        transition-delay: ($i + 1) * 250ms;
     }
 }
 .correct {
