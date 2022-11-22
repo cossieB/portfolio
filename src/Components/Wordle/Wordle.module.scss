@@ -8,14 +8,10 @@
     justify-content: center;
     color: white;
 }
-$hgtwdth: 3.5rem;
 
 .letterblock {
     position: relative;
     overflow: hidden;
-    height: $hgtwdth;
-    width: $hgtwdth;
-    margin-right: 0.25rem;
     border: 2px solid gray;
     border-radius: 7.5px;
     color: white;
@@ -47,12 +43,23 @@ $hgtwdth: 3.5rem;
         @include flexCenter;
     }
     .key {
-        height: $hgtwdth;
-        min-width: $hgtwdth;
         @include flexCenter;
         background-color: gray;
-        margin-right: 0.5rem;
-        margin-bottom: 0.5rem;
+        cursor: pointer;
+    }
+}
+.gameOver {
+    position: fixed;
+    top: 0;
+    left: 0;
+    @include flexCenter(column);
+    height: 100vh;
+    width: 100vw;
+    backdrop-filter: blur(5px);
+    button {
+        height: 2rem;
+        border: none;
+        background-color: springgreen;
     }
 }
 .correct {
@@ -71,4 +78,45 @@ $hgtwdth: 3.5rem;
 }
 .blocks {
     @include flexCenter(column);
+}
+
+@media (max-width: 768px) {
+    $hgtwdth: 2rem;
+    $gap: 0.25rem;
+    .key {
+        height: $hgtwdth;
+        min-width: $hgtwdth;
+        margin-right: $gap;
+        &.longKey {
+            min-width: 1.5 * $hgtwdth
+        }
+    }
+    .keyboardRow {
+        margin-bottom: $gap;
+    }
+    .letterblock {
+        height: $hgtwdth;
+        width: $hgtwdth;
+        margin-right: 0.25rem;
+    }
+}
+@media (min-width: 768px) {
+    $hgtwdth: 3.5rem;
+    $gap: 0.5rem;
+    .key {
+        height: $hgtwdth;
+        min-width: $hgtwdth;
+        margin-right: $gap;
+        &.longKey {
+            min-width: 1.5 * $hgtwdth
+        }
+    }
+    .keyboardRow {
+        margin-bottom: $gap;
+    }
+    .letterblock {
+        height: $hgtwdth;
+        width: $hgtwdth;
+        margin-right: 0.25rem;
+    }
 }

@@ -7,6 +7,7 @@ export interface RowProps {
     row: number
     wordToDisplay: string | undefined
     correctWord: string
+    guessList: string[]
 }
 
 export default function Row(props: RowProps) {

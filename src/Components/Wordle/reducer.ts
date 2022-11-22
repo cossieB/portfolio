@@ -1,4 +1,5 @@
-import { WordleState } from "./Wordle"
+import { initialState, WordleState } from "./Wordle"
+import { words } from "./words"
 
 export type WorldAction = {
     type: 'ADD_LETTER',
@@ -10,8 +11,10 @@ export type WorldAction = {
 } | {
     type: 'NEXT_GUESS'
 } | {
-    type: 'END_GAME', 
-    payload: WordleState['status']
+    type: 'END_GAME',
+    payload: Exclude<WordleState['status'], 'playing'>
+} | {
+    type: 'NEXT_WORD'
 }
 
 export default function reducer(state: WordleState, action: WorldAction): WordleState {
@@ -31,15 +34,24 @@ export default function reducer(state: WordleState, action: WorldAction): Wordle
                 return {
                     ...state,
                     guessList: [...state.guessList, state.currentGuess],
-                    currentGuess: "",
-                    activeRow: state.activeRow + 1,
                     inputDisabled: true
                 }
             else
                 return state
         case 'NEXT_GUESS':
-            return {...state, inputDisabled: false}
+            return {
+                ...state,
+                inputDisabled: false,
+                activeRow: state.activeRow + 1,
+                currentGuess: "",
+            }
         case 'END_GAME':
-            return {...state, inputDisabled: true, status: action.payload}
+            return { ...state, inputDisabled: true, status: action.payload }
+        case 'NEXT_WORD':
+            return {
+                ...initialState,
+                wordIndex: state.wordIndex + 1,
+                word: words[state.wordIndex + 1]
+            }
     }
 }

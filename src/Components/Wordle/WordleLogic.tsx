@@ -34,15 +34,28 @@ export default function WordleLogic({ state, dispatch }: Props) {
             return
         }
         dispatch({ type: 'FLIP_OVER' })
+
         setTimeout(() => {
-            dispatch({ type: 'NEXT_GUESS' })
+            if (state.word == state.currentGuess) {
+                dispatch({type: 'END_GAME', payload: 'won'})
+            }
+            else if (state.activeRow == 5) {
+                dispatch({type: 'END_GAME', payload: 'lost'})
+            }
+            else {
+                dispatch({ type: 'NEXT_GUESS' })
+            }
         }, 1750)
     }
 
     return (
         <>
             <Blocks state={state} />
-            <Keyboard state={state} dispatch={dispatch} />
+            <Keyboard 
+            state={state} 
+            dispatch={dispatch}
+            handleEnter={handleEnter}
+            />
         </>
     )
 }

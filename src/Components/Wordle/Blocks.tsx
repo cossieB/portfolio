@@ -17,6 +17,7 @@ export default function Blocks({ state }: P) {
                 row={i}
                 wordToDisplay={state.activeRow == i ? state.currentGuess : state.guessList[i]}
                 correctWord={state.word}
+                guessList={state.guessList}
             />)}
     </div>
     )

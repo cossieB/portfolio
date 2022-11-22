@@ -1,10 +1,14 @@
 import shuffleArray from "../../utils/shuffleArray"
 
 let words = new Set([
-    "apple",
+    "hello",
     "world",
+    "apple",
     "globe",
+    "phone",
+    "video",
     "point",
+    "prime",
     "guess",
     "marry",
     "overt",
@@ -12,7 +16,15 @@ let words = new Set([
     "axiom",
     "power",
     "dream",
-    "think"
+    "think",
+    "chart",
+    "chasm",
+    "toast",
+    "proof",
+    "trust",
+    "truth",
+    "queen",
+    "daisy"
 ])
 let array: string[] = []
 words.forEach(word => {
@@ -20,6 +32,6 @@ words.forEach(word => {
         array.push(word)
     }
 })
-// array = shuffleArray(array);
+array = shuffleArray(array);
 
 export {array as words}

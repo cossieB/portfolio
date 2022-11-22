@@ -7,9 +7,9 @@ interface P extends RowProps {
 }
 
 export default function LetterBlock(props: P) {
-    const {  activeRow, row, letter, correctWord, index } = props;
+    const {  activeRow, row, letter, correctWord, index, guessList } = props;
     let className = styles.colorblock;
-    if (activeRow > row) {
+    if (guessList.length > row) {
         if (correctWord[index] == letter) {
             className += " " + styles.correct
         }
