@@ -15,7 +15,8 @@ const initialState = {
     word: words[0],
     currentGuess: "",
     guessList: [] as string[],
-    inputDisabled: false
+    inputDisabled: false,
+    status: 'playing' as 'playing' | 'won' | 'lost'
 }
 export type WordleState = typeof initialState;
 
@@ -25,8 +26,8 @@ export default function Wordle() {
     useEffect(() => {
         document.addEventListener('keydown', handleKeypress);
         return () => document.removeEventListener('keydown', handleKeypress)
-    }, [state.currentGuess])
-
+    }, [state.currentGuess, state.inputDisabled])
+        
     function handleKeypress(e: KeyboardEvent) {
         if (state.inputDisabled) return;
         if (e.key == "Backspace") return dispatch({ type: 'DELETE' })
@@ -38,7 +39,10 @@ export default function Wordle() {
         if (state.currentGuess.length != 5) {
             return
         }
-        dispatch({type: 'NEXT_GUESS'})
+        dispatch({type: 'FLIP_OVER'})
+        setTimeout(() => {
+            dispatch({type: 'NEXT_GUESS'})
+        }, 1750)
     }
 
     return (
@@ -52,24 +56,22 @@ export default function Wordle() {
                         row={i}
                         wordToDisplay={state.activeRow == i ? state.currentGuess : state.guessList[i]}
                         correctWord={state.word}
-                        guess={state.guessList[i]}
                     />)}
             </div>
         </div>
     )
 }
 
-interface RowProps {
+export interface RowProps {
     currentGuess: string
     activeRow: number
     row: number
     wordToDisplay: string | undefined
     correctWord: string
-    guess: string
 }
 
-function Row(props: RowProps) {
-    const { currentGuess, activeRow, row, wordToDisplay } = props;
+export default function Row(props: RowProps) {
+    const { wordToDisplay } = props;
     return (
         <div className={styles.row}>
             {new Array(5).fill(0).map((_, i) =>
@@ -89,9 +91,9 @@ interface P extends RowProps {
 }
 
 function LetterBlock(props: P) {
-    const { wordToDisplay, activeRow, row, letter, correctWord, index, guess } = props;
-    let className = styles.colorblock
-    if (guess) {
+    const {  activeRow, row, letter, correctWord, index } = props;
+    let className = styles.colorblock;
+    if (activeRow > row) {
         if (correctWord[index] == letter) {
             className += " " + styles.correct
         }
