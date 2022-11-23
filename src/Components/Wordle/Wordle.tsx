@@ -22,16 +22,16 @@ export default function Wordle() {
     const [state, dispatch] = useReducer(reducer, initialState)
 
     return (
-        <motion.div 
-        className={styles.container} 
-        variants={containerVariant}
-        initial='start'
-        animate='end'
-        exit='exit'
+        <motion.div
+            className={styles.container}
+            variants={containerVariant}
+            initial='start'
+            animate='end'
+            exit='exit'
         >
-            {state.status == 'playing' ? 
-            <WordleLogic state={state} dispatch={dispatch} /> : 
-            <GameOver state={state} dispatch={dispatch} /> }
+            {state.status == 'playing' ?
+                <WordleLogic state={state} dispatch={dispatch} /> :
+                <GameOver state={state} dispatch={dispatch} />}
         </motion.div>
     )
 }
