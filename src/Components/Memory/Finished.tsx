@@ -1,5 +1,6 @@
 import { P33532 } from "./interfaces";
 import { LocalScores, GlobalScores } from "./memoryScores";
+import styles from './memory.module.scss';
 
 export default function Finished(props: P33532) {
     const { user, time, setFinished, flips, setUser } = props

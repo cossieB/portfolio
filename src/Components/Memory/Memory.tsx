@@ -6,27 +6,33 @@ import { Instructions } from "../Quiz/Quiz"
 import Finished from "./Finished"
 import GameStart from "./GameStart"
 import { Signup } from "../Quiz/Signup"
-import "./memory.scss"
+import styles from './memory.module.scss';
 
 export default function Memory() {
     useEffect(() => {
         document.title = 'Memory Game'
     }, [])
-    const [user, setUser] = useState("")
+    const [user, setUser] = useState("name")
     const [time, setTime] = useState(0);
     const [flips, setFlips] = useState(0)
     const [finished, setFinished] = useState(false)
-    const [readInstructions, setReadInstructions] = useState(false);
+    const [readInstructions, setReadInstructions] = useState(true);
     if (!user) {
         return (
-            <motion.div id="memoryContainer" className="container flexCenter" variants={containerVariant} initial="start" animate="end" exit={'exit'}>
+            <motion.div
+                className={styles.container}
+                variants={containerVariant}
+                initial="start"
+                animate="end"
+                exit={'exit'}
+            >
                 <Signup setUser={setUser} />
             </motion.div>
         )
     }
     else if (!readInstructions) {
         return (
-            <div id="memoryContainer" className="container flexCenter">
+            <div className={styles.container}>
                 <Instructions setReadInstructions={setReadInstructions} >
                     <div style={{ width: "60%", color: 'white' }}>
                         <h1>Rules</h1>
@@ -40,14 +46,14 @@ export default function Memory() {
     }
     else if (finished) {
         return (
-            <div id="memoryContainer" className="container flexCenter">
+            <div className={styles.container}>
                 <Finished user={user} time={time} setUser={setUser} setFinished={setFinished} flips={flips} />
             </div>
         )
     }
     else {
         return (
-            <div id="memoryContainer" className="container flexCenter">
+            <div className={styles.container}>
                 <GameStart time={time} setTime={setTime} setFinished={setFinished} flips={flips} setFlips={setFlips} />
             </div>
         )

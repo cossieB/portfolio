@@ -8,6 +8,6 @@ export default function Counter({ time, setTime }: P32453) {
     }, [time])
 
     return (
-        <></>
+        null
     )
 }

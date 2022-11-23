@@ -5,6 +5,11 @@
     align-items: center;
 }
 
+@mixin container {
+    width: 100vw;
+    height: 100vh;
+}
+
 @mixin hideScrollbar($elem) {
     #{$elem} {
         height: 0%;

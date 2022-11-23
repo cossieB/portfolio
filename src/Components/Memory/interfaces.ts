@@ -31,7 +31,8 @@ export interface P01955 {
 }
 export interface ISvg {
     html: React.SVGProps<SVGSVGElement>,
-    label: string
+    label: string,
+    bg: string,
 }
 export interface P32453 {
     time: number,
