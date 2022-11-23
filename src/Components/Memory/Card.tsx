@@ -2,6 +2,9 @@ import { MemoryState } from './Memory';
 import styles from './memory.module.scss';
 import { MemoryAction } from './reducer';
 import { ISvg } from './svgs';
+import correctAudio from "./correct.ogg"; 
+import flipAudio from "./flip.wav"
+import nopeAudio from "./nope.wav"
 
 export interface P01955 {
     card: ISvg,
@@ -11,42 +14,43 @@ export interface P01955 {
 }
 
 export default function Card(props: P01955) {
-    const flipAudio = document.getElementById('flipAudio') as HTMLAudioElement
-    const correctAudio = document.getElementById('correctAudio') as HTMLAudioElement
     
     const { card, index, state, dispatch } = props
     const {activeCards, matches, inputDisabled} = state
     
     let active = activeCards.some(c => c.index == index);
-    let match = matches.some(c => c == 'card' + index);
+    let match = matches.has(card.label);
     const className = active || match ? styles.show : ""
     
-    function showCard(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
+    function showCard() {
         if (inputDisabled) return;
-        let id = e.currentTarget.id;
-        let value = card.label
+        if (activeCards.some(item => item.index == index) || matches.has(card.label)) {
+            const audio = new Audio(nopeAudio)
+            audio.volume = 0.1;
+            audio.play()
+            return;
+        }
+
+        let {label} = card
+        let audio = new Audio()
+        audio.src = flipAudio
+        audio.volume = 0.1
+        if (activeCards.length == 0) dispatch({type: 'FLIP_OVER', payload: {index, label}});
 
         if (activeCards.length == 1) {
-            setTimeout(() => {
-                dispatch({type: 'CLEAR_ACTIVE_CARDS'})
-            }, 1250)
+            if (activeCards[0].label == label) {
+                audio.src = correctAudio
+                dispatch({type: 'CORRECT', payload: label})
+            }
+            else {
+                dispatch({type: 'FLIP_OVER', payload: {index, label}})
+                setTimeout(() => {
+                    dispatch({type: 'CLEAR_ACTIVE_CARDS'})
+                }, 1250)
+            }
         }        
-        dispatch({type: 'FLIP_OVER', payload: {index, value}})
-        
-
-        // if (activeCards.length < 2 && !matches.includes(id) && !activeCards.some(item => item.id == id)) {
-
-        //     setActiveCards(prev => [...prev, obj])
-        //     e.currentTarget.classList.toggle(styles.show);
-
-        //     if (value == activeCards[0]?.value) {
-        //         audio = correctAudio
-        //         e.currentTarget.classList.add(styles.matched)
-        //         document.getElementById(activeCards[0].id)?.classList.add(styles.matched)
-        //         setMatches(prev => [...prev, id, activeCards[0].id]);
-        //     }
-        // }
-        // audio.play()
+    
+        audio.play()
     }
 
     return (

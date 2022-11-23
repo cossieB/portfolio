@@ -10,13 +10,13 @@ import styles from './memory.module.scss';
 import { reducer } from "./reducer"
 
 const initialState = {
-    activeCards: [] as { index: number, value: string }[],
-    matches: [] as string[],
+    activeCards: [] as { index: number, label: string }[],
+    matches: new Set<string>(),
     inputDisabled: false,
     time: 0,
     flips: 0,
     finished: false,
-    gameSize: 2
+    gameSize: 4
 }
 
 export type MemoryState = typeof initialState
@@ -49,7 +49,13 @@ export default function Memory() {
                         <h1>Rules</h1>
                         <h2>There are two of each symbol. Find the matches.</h2>
                         <h3>Ready?</h3>
-                        <button style={{ color: 'white', border: '1px solid white' }} className="niceButton" onClick={() => setReadInstructions(true)}>I'm Ready.</button>
+                        <button
+                            style={{ color: 'white', border: '1px solid white' }}
+                            className="niceButton"
+                            onClick={() => setReadInstructions(true)}
+                        >
+                            I'm Ready.
+                        </button>
                     </div>
                 </Instructions>
             </div>
