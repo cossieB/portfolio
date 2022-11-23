@@ -19,21 +19,8 @@ export interface Times {
     flips: number,
     total: number
 }
-export interface P01955 {
-    card: ISvg,
-    idx: number,
-    showCard(e: React.MouseEvent<HTMLDivElement, MouseEvent>): void,
-    activeCards: {
-        id: string;
-        value: string;
-    }[],
-    matches: string[]
-}
-export interface ISvg {
-    html: React.SVGProps<SVGSVGElement>,
-    label: string,
-    bg: string,
-}
+
+
 export interface P32453 {
     time: number,
     setTime: React.Dispatch<React.SetStateAction<number>>

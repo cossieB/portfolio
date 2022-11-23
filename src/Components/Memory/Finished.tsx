@@ -1,9 +1,16 @@
 import { P33532 } from "./interfaces";
 import { LocalScores, GlobalScores } from "./memoryScores";
 import styles from './memory.module.scss';
+import { MemoryState } from "./Memory";
 
-export default function Finished(props: P33532) {
-    const { user, time, setFinished, flips, setUser } = props
+interface P {
+    user: string
+    state: MemoryState
+    setUser: React.Dispatch<React.SetStateAction<string>>
+}
+
+export default function Finished({user, state, setUser}: P) {
+    const {  time, flips } = state
 
     return (
         <div id="finished">

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion"
-import React, { useEffect } from "react"
+import React, { useEffect, useReducer } from "react"
 import { useState } from "react"
 import { containerVariant } from "../../variants"
 import { Instructions } from "../Quiz/Quiz"
@@ -7,16 +7,27 @@ import Finished from "./Finished"
 import GameStart from "./GameStart"
 import { Signup } from "../Quiz/Signup"
 import styles from './memory.module.scss';
+import { reducer } from "./reducer"
+
+const initialState = {
+    activeCards: [] as { index: number, value: string }[],
+    matches: [] as string[],
+    inputDisabled: false,
+    time: 0,
+    flips: 0,
+    finished: false,
+    gameSize: 2
+}
+
+export type MemoryState = typeof initialState
 
 export default function Memory() {
     useEffect(() => {
         document.title = 'Memory Game'
     }, [])
     const [user, setUser] = useState("name")
-    const [time, setTime] = useState(0);
-    const [flips, setFlips] = useState(0)
-    const [finished, setFinished] = useState(false)
     const [readInstructions, setReadInstructions] = useState(true);
+    const [state, dispatch] = useReducer(reducer, initialState);
     if (!user) {
         return (
             <motion.div
@@ -44,17 +55,21 @@ export default function Memory() {
             </div>
         )
     }
-    else if (finished) {
+    else if (state.finished) {
         return (
             <div className={styles.container}>
-                <Finished user={user} time={time} setUser={setUser} setFinished={setFinished} flips={flips} />
+                <Finished
+                    setUser={setUser}
+                    state={state}
+                    user={user}
+                />
             </div>
         )
     }
     else {
         return (
             <div className={styles.container}>
-                <GameStart time={time} setTime={setTime} setFinished={setFinished} flips={flips} setFlips={setFlips} />
+                <GameStart state={state} dispatch={dispatch} />
             </div>
         )
     }
