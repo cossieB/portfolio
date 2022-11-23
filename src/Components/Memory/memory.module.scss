@@ -1,3 +1,4 @@
+@use './pregame';
 @import '../../mixins';
 
 .container {
@@ -10,7 +11,7 @@
 
 #memoryBlock {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(8, 1fr);
     gap: 0.5rem;
 }
 $delay: 250ms;
@@ -63,76 +64,8 @@ $delay: 250ms;
     }
 }
 
-
-#highScores {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-around;
-    width: 100%;
-}
-
-#finished {
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-    height: 100%;
-    button:hover {
-        background-color: white;
-        transform: scale(1.03);
-    }
-}
-
-.datesAndTimes {
-    display: flex;
-    justify-content: space-between;
-}
-
-.leaderboardContainer {
-    width: 33%;
-}
-
-.memScores {
-    display: flex;
-    > div:first-child {
-        margin-right: 2rem;
-    }
-}
-.memscorediv {
-    display: grid;
-    grid-template-columns: auto auto;
-    margin-bottom: 1rem;
-    > :last-child {
-        background-color: white;
-        color: #161661;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: x-large;
-        grid-area: 1 / 2 / 3 / 3;
-    }
-}
-
 @media (max-width: 768px) {
-    #highScores {
-        flex-direction: column-reverse;
-        align-items: center;
-        width: 100%;
-    }
-
-    .leaderboard,
-    .leadership {
-        width: 100%;
-    }
-
-    .leaderboardContainer {
-        width: 90%;
-    }
-
-    .datesAndTimes {
-        width: 100%;
-    }
-
-    #memoryBlock {
-        width: 90%;
+    .memoryCard {
+        height: 4rem;
     }
 }

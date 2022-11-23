@@ -1,4 +1,4 @@
-import { MemoryState } from "./Memory"
+import { initialState, MemoryState } from "./Memory"
 
 export type MemoryAction = {
     type: 'FLIP_OVER',
@@ -15,6 +15,8 @@ export type MemoryAction = {
 } | {
     type: 'CORRECT',
     payload: string
+} | {
+    type: 'PLAY_AGAIN'
 }
 
 export function reducer(state: MemoryState, action: MemoryAction): MemoryState {
@@ -53,5 +55,8 @@ export function reducer(state: MemoryState, action: MemoryAction): MemoryState {
 
         case 'CHANGE_BOARD_SIZE':
             return { ...state, gameSize: state.gameSize + action.payload }
+
+        case 'PLAY_AGAIN':
+            return {...initialState, gameSize: state.gameSize, matches: new Set()}
     }
 }

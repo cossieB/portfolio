@@ -88,6 +88,13 @@ export const projectArray: Projs[] = [
         stack:  ["typescript", "react", "firebase", "framer motion"],
         repo: "https://github.com/cossieB/portfolio/tree/main/src/Components/wordle"
     },{
+        title: 'Memory Game',
+        path: '/memory',
+        img: "/screenshots/memory.png",
+        description: "Quiz that tests your memory. Features customizable game size. High scores stored in Firestore and local storage.",
+        stack: ["typescript", "react", "firebase", "framer motion", "firestore"],
+        repo: "https://github.com/cossieB/portfolio/tree/main/src/Components/Memory"
+    },{
         title: "Sudoku",
         img: 'screenshots/sudoku.png',
         path: "/sudoku",
@@ -116,13 +123,6 @@ export const projectArray: Projs[] = [
         stack: ["typescript", "react", "firebase", "framer motion", "firestore"],
         repo: "https://github.com/cossieB/portfolio/tree/main/src/Components/Quiz"
     }, {
-        title: 'Memory Game',
-        path: '/memory',
-        img: "/screenshots/memory.png",
-        description: "Quiz that tests your memory. High scores stored in Firestore and local storage.",
-        stack: ["typescript", "react", "firebase", "framer motion", "firestore"],
-        repo: "https://github.com/cossieB/portfolio/tree/main/src/Components/Memory"
-    },{
         title: "Tower of Hanoi",
         path: "/hanoi",
         img: "/screenshots/hanoi.png",

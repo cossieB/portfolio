@@ -49,7 +49,6 @@ export default function Card(props: P01955) {
                 }, 1250)
             }
         }        
-    
         audio.play()
     }
 

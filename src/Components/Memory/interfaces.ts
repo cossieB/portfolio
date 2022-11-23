@@ -2,6 +2,7 @@ export interface P335320 {
     user: string,
     time: number,
     flips: number
+    gameSize: number
 }
 
 export interface P33532 extends P335320 {
@@ -17,7 +18,8 @@ export interface Times {
     date: Date,
     time: number,
     flips: number,
-    total: number
+    total: number,
+    gameSize: number
 }
 
 
