@@ -1,5 +1,4 @@
-import { useEffect, useRef } from "react";
-import { WorldAction } from "./reducer";
+import Key from "./Key";
 import styles from "./Wordle.module.scss";
 import { topRow, middleRow, bottomRow, Props } from "./WordleLogic";
 
@@ -49,67 +48,6 @@ export default function Keyboard({ state, dispatch, handleEnter }: Props & { han
                     </svg>
                 </div>
             </div>
-        </div>
-    )
-}
-
-interface P1 extends Props {
-    letter: string
-}
-
-function Key({ letter, state, dispatch }: P1) {
-    const { guessList, word, inputDisabled, activeRow } = state
-    const ref = useRef<HTMLDivElement>(null)
-
-    useEffect(() => {
-        color()
-    }, [activeRow])
-
-    function color() {
-        let className = "";
-        for (let guess of guessList) {
-            for (let i = 0; i < guess.length; i++) {
-
-                if (guess[i] != letter) continue;
-                if (word[i] == letter) {
-                    className = styles.correct;
-                    break;
-                }
-                else if (word.includes(letter)) {
-                    className = styles.ok;
-                    break;
-                }
-                else {
-                    className = styles.wrong;
-                    break;
-                }
-            }
-        }
-        const div = ref.current!
-        if (className) {
-            if (div.classList.contains(styles.correct)) return
-            if (div.classList.contains(styles.ok) && className == styles.correct) {
-                div.classList.remove(styles.ok)
-                div.classList.add(className)
-                return;
-            }
-            if (div.classList.contains(styles.wrong) && (className == styles.correct || className == styles.ok)) {
-                div.classList.remove(styles.wrong)
-                div.classList.add(className)
-                return;
-            }
-            div.classList.add(className)
-        }
-    }
-    return (
-        <div
-            ref={ref}
-            className={`${styles.key}`}
-            onClick={() => {
-                !inputDisabled && dispatch({ type: 'ADD_LETTER', payload: letter })
-            }}
-        >
-            {letter.toUpperCase()}
         </div>
     )
 }

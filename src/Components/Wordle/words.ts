@@ -268,7 +268,18 @@ let words = new Set([
     "munch",
     "gravy",
     "steel",
-    "steer"
+    "steer",
+    "grave",
+    "stake",
+    "skate",
+    "skunk",
+    "float",
+    "plane",
+    "plain",
+    "feint",
+    "faint",
+    "brand",
+    "plate"
 ])
 
 let array: string[] = []
