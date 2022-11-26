@@ -37,7 +37,7 @@ export default function Messages() {
                             <div >{post.date.toLocaleString('en-za', { day: "2-digit", month: "short", year: "numeric" })}</div>
                             
                             <div className="postContent" >
-                                {post.quotes.length > 0 ? post.quotes.map(p => <div key={p.id} className="quotedPost" > {console.log(post.quotes.length)} {p.date.toLocaleString('en-za', { day: "2-digit", month: "short", year: "numeric" })} <br /> <strong>{p.author.username}</strong> wrote: <br /> {p.content} </div> ) : ""}
+                                {post.quotes.length > 0 ? post.quotes.map(p => <div key={p.id} className="quotedPost" > {p.date.toLocaleString('en-za', { day: "2-digit", month: "short", year: "numeric" })} <br /> <strong>{p.author.username}</strong> wrote: <br /> {p.content} </div> ) : ""}
                                 {post.content}
                             </div>
                             <div className="quoteOrEdit">{post.author == user ? <button onClick={() => SetPostToEdit(post)} >Edit</button> : ""}<button onClick={() => setQuotedPost(post)} >Quote</button>  </div>

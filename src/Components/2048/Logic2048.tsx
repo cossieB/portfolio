@@ -96,7 +96,7 @@ export default function Logic2048(props: P) {
                 }
             });
         }
-        setArray(array.filter(x => !x.deleted));
+        setArray(prev => prev.filter(x => !x.deleted));
         createBlock();
     }
     function collide(toIncrease: Props2048, toDelete: Props2048) {
@@ -130,13 +130,11 @@ export default function Logic2048(props: P) {
             const elem = array[i];
             if ((i + 1) % 4 != 0) {
                 if (array[i + 1].value == elem.value) {
-                    console.log(elem, i)
                     return false;
                 }
             }
             if (i + 4 < array.length) {
                 if (array[i + 4].value == elem.value) {
-                    console.log(elem, i)
                     return false;
                 }
             }

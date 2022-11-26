@@ -279,7 +279,25 @@ let words = new Set([
     "feint",
     "faint",
     "brand",
-    "plate"
+    "plate",
+    "brave",
+    "woman",
+    "brake",
+    "trash",
+    "exist",
+    "heist",
+    "beast",
+    "feast",
+    "reply",
+    "cigar",
+    "treat",
+    "ether",
+    "stomp",
+    "stock",
+    "stark",
+    "range",
+    "house",
+    "diner",
 ])
 
 let array: string[] = []

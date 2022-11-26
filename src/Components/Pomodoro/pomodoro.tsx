@@ -41,7 +41,7 @@ export default class Pomodoro extends React.Component<PomProp, PomState> {
             this.setState({ breakMin: m, breakTime: convert(m * 60), break: m*60 })
         }
     }
-    start() {console.log(this.state.break)
+    start() {
         if (!this.timer) {
             let beep = document.getElementById("startbeep") as HTMLAudioElement
             beep.pause(); beep.currentTime = 0;

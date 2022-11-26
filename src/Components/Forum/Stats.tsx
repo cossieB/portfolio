@@ -5,13 +5,12 @@ import { Posts } from "./users"
 export default function Stats({ post }: { post: Posts }) {
     const user = useContext(UserContext)!
     const [rerender, setRerender] = useState(false)
-    function like(p: Posts) {console.log("Pressed")
+    function like(p: Posts) {
         if (p.likes.includes(user)) {
-            console.log("if")
             p.unlikedBy(user)
 
         }
-        else {console.log("else")
+        else {
             p.likeBy(user)
         }
         setRerender(p => !p)
