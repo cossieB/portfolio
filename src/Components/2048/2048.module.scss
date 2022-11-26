@@ -1,4 +1,5 @@
 @use 'sass:math';
+@use 'sass:color';
 @import '../../mixins';
 
 $boardColor: #c8dd0f;
@@ -28,7 +29,7 @@ $boardColor: #c8dd0f;
 
 @for $i from 1 through 11 {
     .val#{math.pow(2,$i)} {
-        background-color: adjust-color($color: green, $red: $i*$i, $green: $i*$i, $blue: $i*$i);
+        background-color: color.adjust($color: green, $hue: $i * $i * $i, $lightness: $i * 5%, $saturation: 100 - $i * 1%);
     }
 }
 .controlElem {
