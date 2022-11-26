@@ -96,8 +96,10 @@ export default function Logic2048(props: P) {
                 }
             });
         }
-        setArray(prev => prev.filter(x => !x.deleted));
-        createBlock();
+        setTimeout(() => {
+            setArray(prev => prev.filter(x => !x.deleted));
+            createBlock();
+        }, 0)
     }
     function collide(toIncrease: Props2048, toDelete: Props2048) {
         toIncrease.value *= 2;
