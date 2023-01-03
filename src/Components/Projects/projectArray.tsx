@@ -10,7 +10,9 @@ export const stack: {[key: string]: string} = {
     "entity framework": "https://i.imgur.com/DU7Cbis.png",
     pug: "https://miro.medium.com/max/1012/1*XQrm5n6_iX2mY93lT4d4cA.png",
     "json web token": "/logos/jwt.svg",
-    prisma: "https://cdn.worldvectorlogo.com/logos/prisma-2.svg"
+    prisma: "https://cdn.worldvectorlogo.com/logos/prisma-2.svg",
+    supabase: "https://miro.medium.com/max/1200/1*xOqCfciF90c8nH0HhMpapQ.png",
+    render: "https://intellyx.com/wp-content/uploads/2019/08/Render-cloud-intellyx-BC-logo.png"
 }
 const sections = [langs, frontend, backend, misc]
 
@@ -54,24 +56,24 @@ export const projectArray: Projs[] = [
         img: "/screenshots/igdb.png",
         path: "https://internet-games-database.vercel.app/",
         external: true,
-        description: "CRUD application for adding information about games and the gaming industry. Developed with TypeScript, Next.js, React and SASS. Uses Heroku Postgres as a database and Prisma ORM to interact with the database.",
-        stack: ["typescript", "next.js", "react", "node.js", "postgresql", "prisma", "mongodb","heroku", "mongoose", "vercel", "framer motion", "sass"],
+        description: "CRUD application for adding information about games and the gaming industry. Developed with TypeScript, Next.js, React and SASS. Uses Supabase Postgres as a database and Prisma ORM to interact with the database.",
+        stack: ["typescript", "next.js", "react", "node.js", "postgresql", "prisma", "mongodb","supabase", "mongoose", "vercel", "framer motion", "sass"],
         repo: "https://github.com/cossieB/internet-games-database"
     }, {
         title: "Microservices",
         img: "/screenshots/microservices.png",
-        path: "https://cossie.herokuapp.com/",
+        path: "https://cossie.onrender.com/",
         external: true,
-        description: "Various REST APIs including header parser, file metadata, timestamp microservices and issue and exercise tracker. Deployed on Heroku.",
-        stack: ["typescript", "node.js", "expressjs", "mongodb", "mongoose", "pug", "heroku"],
+        description: "Various REST APIs including header parser, file metadata, timestamp microservices and issue and exercise tracker. Deployed on Render.",
+        stack: ["typescript", "node.js", "expressjs", "mongodb", "mongoose", "pug", "render"],
         repo: 'https://github.com/cossieB/microservices'
     }, {
         title: "GraphQL API",
         img: "/screenshots/graphql.png",
-        path: "https://cossie.herokuapp.com/graphql",
+        path: "https://cossie.onrender.com/graphql",
         external: true,
-        description: "GraphQL API to get data from my Internet Games Database project. Uses express-graphql middleware and the data is stored in Heroku Postgres. Additionally I ported select services from the REST API project to this GraphQL one.",
-        stack: ['typescript', 'node.js', 'expressjs', 'postgresql', 'prisma', 'mongodb', 'mongoose', 'pug', 'heroku', 'graphql'],
+        description: "GraphQL API to get data from my Internet Games Database project. Uses express-graphql middleware and the data is stored in Supabase Postgres. Additionally I ported select services from the REST API project to this GraphQL one.",
+        stack: ['typescript', 'node.js', 'expressjs', 'postgresql', 'prisma', 'mongodb', 'mongoose', 'pug', 'render', 'supabase', 'graphql'],
         repo: "https://github.com/cossieB/microservices/tree/main/src/graphql"
     },{
         title: "2048",

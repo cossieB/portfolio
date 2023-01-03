@@ -863,5 +863,9 @@ export const quotes: Quote[] = [
     quote: "and another thing: im not mad. please dont put in the newspaper that i got mad",
     author: "dril",
     tags: ["humor"]
+  },{
+    quote: "It is better to remain silent and be thought a fool than to talk and remove all doubt.",
+    author: "unknown",
+    tags: ["humor"]
   }
 ]
