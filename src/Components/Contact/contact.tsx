@@ -59,7 +59,7 @@ export default function Contact() {
 
     async function sendData() {
         try {
-            const response = await fetch('https://cossie.herokuapp.com/api/email', {
+            const response = await fetch('https://cossie.onrender.com/api/email', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
