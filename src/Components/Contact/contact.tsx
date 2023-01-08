@@ -59,8 +59,9 @@ export default function Contact() {
 
     async function sendData() {
         try {
-            const response = await fetch('https://cossie.onrender.com/api/email', {
+            const response = await fetch('https://cossie.netlify.app/api/email', {
                 method: 'POST',
+                mode: 'no-cors',
                 headers: {
                     'Content-Type': 'application/json'
                 },

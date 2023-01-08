@@ -12,7 +12,8 @@ export const stack: {[key: string]: string} = {
     "json web token": "/logos/jwt.svg",
     prisma: "https://cdn.worldvectorlogo.com/logos/prisma-2.svg",
     supabase: "https://miro.medium.com/max/1200/1*xOqCfciF90c8nH0HhMpapQ.png",
-    render: "https://intellyx.com/wp-content/uploads/2019/08/Render-cloud-intellyx-BC-logo.png"
+    render: "https://intellyx.com/wp-content/uploads/2019/08/Render-cloud-intellyx-BC-logo.png",
+    netlify: "https://upload.wikimedia.org/wikipedia/commons/b/b8/Netlify_logo.svg"
 }
 const sections = [langs, frontend, backend, misc]
 
@@ -34,7 +35,6 @@ export interface Projs {
     stack: string[],
     repo: string
 }
-
 
 export const projectArray: Projs[] = [
     {
@@ -62,11 +62,11 @@ export const projectArray: Projs[] = [
     }, {
         title: "Microservices",
         img: "/screenshots/microservices.png",
-        path: "https://cossie.onrender.com/",
+        path: "https://cossie.netlify.app/",
         external: true,
-        description: "Various REST APIs including header parser, file metadata, timestamp microservices and issue and exercise tracker. Deployed on Render.",
-        stack: ["typescript", "node.js", "expressjs", "mongodb", "mongoose", "pug", "render"],
-        repo: 'https://github.com/cossieB/microservices'
+        description: "Various REST APIs including header parser, file metadata, timestamp microservices, issue and exercise trackers and translator services. Deployed on Netlify and uses serverless Netlify functions.",
+        stack: ["typescript", "node.js", "mongodb", "mongoose", "netlify"],
+        repo: 'https://github.com/cossieB/serverless'
     }, {
         title: "GraphQL API",
         img: "/screenshots/graphql.png",
