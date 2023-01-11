@@ -1,6 +1,5 @@
 import {langs, frontend, backend, misc, Lang} from '../About/vars'
 
-
 export const stack: {[key: string]: string} = {
     "framer motion": "https://pagepro.co/blog/wp-content/uploads/2020/03/framer-motion.png",
     firestore: "https://res.cloudinary.com/practicaldev/image/fetch/s--VnDDBkku--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/akm5od0383lcbhxvb9zb.png",
@@ -13,7 +12,8 @@ export const stack: {[key: string]: string} = {
     prisma: "https://cdn.worldvectorlogo.com/logos/prisma-2.svg",
     supabase: "https://miro.medium.com/max/1200/1*xOqCfciF90c8nH0HhMpapQ.png",
     render: "https://intellyx.com/wp-content/uploads/2019/08/Render-cloud-intellyx-BC-logo.png",
-    netlify: "https://upload.wikimedia.org/wikipedia/commons/b/b8/Netlify_logo.svg"
+    netlify: "https://upload.wikimedia.org/wikipedia/commons/b/b8/Netlify_logo.svg",
+    apollo: "https://user-images.githubusercontent.com/841294/53402609-b97a2180-39ba-11e9-8100-812bab86357c.png"
 }
 const sections = [langs, frontend, backend, misc]
 
@@ -72,9 +72,9 @@ export const projectArray: Projs[] = [
         img: "/screenshots/graphql.png",
         path: "https://cossie.onrender.com/graphql",
         external: true,
-        description: "GraphQL API to get data from my Internet Games Database project. Uses express-graphql middleware and the data is stored in Supabase Postgres. Additionally I ported select services from the REST API project to this GraphQL one.",
-        stack: ['typescript', 'node.js', 'expressjs', 'postgresql', 'prisma', 'mongodb', 'mongoose', 'pug', 'render', 'supabase', 'graphql'],
-        repo: "https://github.com/cossieB/microservices/tree/main/src/graphql"
+        description: "GraphQL API to get data from my Internet Games Database project. The project is deployed on Vercel and it uses Apollo Server. The data is stored in Supabase Postgres.",
+        stack: ['typescript', 'node.js', 'next.js', 'postgresql', 'prisma', 'mongodb', 'mongoose', 'apollo', 'supabase', 'graphql', 'vercel'],
+        repo: "https://github.com/cossieB/internet-games-database/tree/main/graphql"
     },{
         title: "2048",
         img: "/screenshots/2048.png",
