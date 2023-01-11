@@ -70,7 +70,7 @@ export const projectArray: Projs[] = [
     }, {
         title: "GraphQL API",
         img: "/screenshots/graphql.png",
-        path: "https://cossie.onrender.com/graphql",
+        path: "https://internet-games-database.vercel.app/api/graphql",
         external: true,
         description: "GraphQL API to get data from my Internet Games Database project. The project is deployed on Vercel and it uses Apollo Server. The data is stored in Supabase Postgres.",
         stack: ['typescript', 'node.js', 'next.js', 'postgresql', 'prisma', 'mongodb', 'mongoose', 'apollo', 'supabase', 'graphql', 'vercel'],
