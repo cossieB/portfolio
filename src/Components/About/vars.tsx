@@ -8,12 +8,12 @@ export const langs: Lang[] = [
     {
         language: "TypeScript",
         logo: "/logos/typescript.png",
-        skill: 7
+        skill: 8
     },
     {
         language: "JavaScript",
         logo: "/logos/javascript.png",
-        skill: 7
+        skill: 8
     },
     {
         language: "Python",
@@ -25,6 +25,9 @@ export const langs: Lang[] = [
         logo: '/logos/csharp.svg',
         skill: 5
     },
+]
+
+export const frontend: Lang[] = [
     {
         language: "HTML",
         logo: "/logos/html.png",
@@ -33,35 +36,32 @@ export const langs: Lang[] = [
     {
         language: "CSS",
         logo: "/logos/css.png",
-        skill: 6
+        skill: 7
     }, 
-]
-
-export const frontend: Lang[] = [
     {
         language: 'React',
         logo: "/logos/react.png",
         skill: 7
     },
     {
-        language: "Next.js",
-        logo: "/logos/next.png",
+        language: "SASS",
+        logo: "/logos/sass.png",
+        skill: 7
+    },
+    {
+        language: "Bootstrap",
+        logo: "/logos/bootstrap.png",
+        skill: 5
+    },
+    {
+        language: "Tailwind",
+        logo: "/logos/tailwind.svg",
         skill: 7
     },
     {
         language: "jQuery",
         logo: "/logos/jquery.png",
         skill: 2
-    },
-    {
-        language: "SASS",
-        logo: "/logos/sass.png",
-        skill: 6
-    },
-    {
-        language: "Bootstrap",
-        logo: "/logos/bootstrap.png",
-        skill: 5
     },
 ]
 
@@ -87,13 +87,18 @@ export const backend: Lang[] = [
         skill: 6
     },
     {
-        language: "MySQL",
-        logo: '/logos/mysql.png',
-        skill: 5
+        language: "Next.js",
+        logo: "/logos/next.png",
+        skill: 7
     },
     {
         language: "PostgreSQL",
         logo: "/logos/psql.png",
+        skill: 6
+    },
+    {
+        language: "Prisma",
+        logo: "/logos/prisma.svg",
         skill: 5
     },
     {
