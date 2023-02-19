@@ -37,13 +37,14 @@
 .detailsStackLogos {
     display: flex;
     flex-wrap: wrap;
+    gap: 0.75rem;
     justify-content: center;
     row-gap: 10%;
     margin-bottom: 1.5rem;
 
     img {
-        margin-right: 1rem;
-        height: 5rem;
+        max-height: 5rem;
+        max-width: 100%;
     }
 }
 
@@ -106,12 +107,6 @@
         top: auto;
         left: auto;
         width: 100%;
-
-        img {
-            width: 30%;
-            max-height: unset;
-            height: auto;
-        }
     }
 
     .detailsOuter {

@@ -867,5 +867,9 @@ export const quotes: Quote[] = [
     quote: "It is better to remain silent and be thought a fool than to talk and remove all doubt.",
     author: "unknown",
     tags: ["humor"]
+  },{
+    quote: "Why are you the way that you are? Honestly, every time I try to do something fun or exciting you make it not that way.",
+    author: "Michael Scott",
+    tags: ['humor']
   }
 ]

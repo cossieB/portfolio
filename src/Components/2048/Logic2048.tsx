@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Board } from './Board';
 import { Props2048 } from './ControlElem';
 
@@ -96,6 +96,7 @@ export default function Logic2048(props: P) {
                 }
             });
         }
+        // Put the delete action at the end of the event loop meaning the blocks finish their movement before they're deleted
         setTimeout(() => {
             setArray(prev => prev.filter(x => !x.deleted));
             createBlock();
@@ -110,8 +111,7 @@ export default function Logic2048(props: P) {
         setScore(prev => prev + toIncrease.value);
     }
     function createBlock(initialRender?: true) {
-        if (array.length == 16)
-            return;
+        if (array.length == 16) return;
         const empties = numbers.filter(num => !array.map(t => 4 * t.top + t.left).includes(num));
         const tempIndex = Math.floor(Math.random() * empties.length);
         const index = empties[tempIndex];

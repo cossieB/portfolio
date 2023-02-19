@@ -29,7 +29,7 @@ export default function GameOver(props: P123) {
     async function setGlobal() {
         try {
             await addDoc(collection(db, 'scores'), {
-                name: user, date: new Date(), score: correct
+                name: user, date: new Date(), score: correct, difficulty
             })
         }
         catch (e: any) {

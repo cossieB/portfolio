@@ -302,7 +302,16 @@ let words = new Set([
     "paint",
     "thank",
     "taint",
-    "swell"
+    "swell",
+    "small",
+    "grown",
+    "group",
+    "major",
+    "minor",
+    "dairy",
+    "crash",
+    "union",
+    "grand"
 ])
 
 let array: string[] = []

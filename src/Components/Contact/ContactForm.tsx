@@ -14,11 +14,10 @@ export default function ContactForm(props: P6265451) {
         <>
             <h1>Contact Me</h1>
             <form id='contactForm' className="flexColumn flexCenter" onSubmit={handleSubmit}>
-                    <Input id="contactName" input={state.name} label="name" dispatch={dispatch} />
-                    <Input id="contactOrg" input={state.organization} label="organization" dispatch={dispatch} />
-                    <Input id="contactEmail" input={state.email} label="email" dispatch={dispatch} />
-                <div>
-                    <label htmlFor='contactMessage' >Message</label>
+                <Input id="contactName" input={state.name} label="name" dispatch={dispatch} />
+                <Input id="contactOrg" input={state.organization} label="organization" dispatch={dispatch} />
+                <Input id="contactEmail" input={state.email} label="email" dispatch={dispatch} />
+                <div className="formControl">
                     <textarea
                         onChange={(e) => dispatch({
                             type: 'UPDATE_STRING',
@@ -32,7 +31,9 @@ export default function ContactForm(props: P6265451) {
                         required
                         minLength={10}
                         maxLength={500}
-                        name="message" placeholder="Message" />
+                        name="message"
+                    />
+                    <label htmlFor='contactMessage' >Message</label>
                 </div>
                 <button type="submit" disabled={state.submitted} >Submit</button>
             </form>
@@ -50,15 +51,15 @@ interface P743346 {
 function Input(props: P743346) {
     const { id, label, input, dispatch } = props
     return (
-        <div>
-            <label htmlFor={id} > {titleCase(label)} </label>
+        <div className="formControl">
             <input
                 onChange={e => dispatch({ type: 'UPDATE_STRING', payload: { name: label, value: e.target.value } })}
                 value={input}
                 id={id}
                 required
                 name={label}
-                placeholder={titleCase(label)} />
+            />
+            <label htmlFor={id} > {titleCase(label)} </label>
         </div>
     )
 }

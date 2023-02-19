@@ -59,9 +59,9 @@ export const frontend: Lang[] = [
         skill: 7
     },
     {
-        language: "jQuery",
-        logo: "/logos/jquery.png",
-        skill: 2
+        language: "SolidJS",
+        logo: "/logos/solid.svg",
+        skill: 5
     },
 ]
 

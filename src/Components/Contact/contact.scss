@@ -14,11 +14,25 @@
     border-radius: .5rem;
     box-shadow: 0 0 20px black;
 
-    textarea, input, button {
+    textarea,
+    input,
+    button {
+        position: relative;
         border-radius: .5rem;
         color: white;
         border: none;
         background: #00000050;
+    }
+
+    textarea,
+    input {
+        &:focus {
+            outline: none;
+            +label {
+                top: -15px;
+                font-size: 12px;
+            }
+        }
     }
 
     div {
@@ -49,9 +63,63 @@
         }
     }
 
+    label {
+        position: absolute;
+        top: 0;
+        transition: all 250ms ease-in-out;
+    }
+
     input {
         height: 25px;
     }
+}
+
+// #contactForm {
+//     width: 50%;
+//     margin: 0 auto;
+//     display: flex;
+//     flex-direction: column;
+//     margin-bottom: 2rem;
+
+//     input {
+//         height: 2rem;
+//     }
+
+//     input,
+//     textarea {
+//         color: blue;
+//         margin-bottom: 1rem;
+//         border-top: none;
+//         border-left: none;
+//         border-right: none;
+//         background: none;
+//         transition: all 1000ms ease;
+
+//         &:focus {
+//             outline: none;
+
+//             +label {
+//                 top: -15px;
+//                 font-size: 12px;
+//             }
+//         }
+//     }
+
+//     textarea {
+//         height: 10rem;
+//     }
+
+//     label {
+//         position: absolute;
+//         top: 0;
+//         transition: all 250ms ease-in-out;
+//     }
+// }
+.formControl {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-bottom: 0.75rem;
 }
 
 @media (max-width: 768px) {

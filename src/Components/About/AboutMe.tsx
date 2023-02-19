@@ -12,10 +12,12 @@ export default function AboutMe() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 style={{ fontSize: 16 }} >
-                <p>I am Buntu Cossie, a self-taught full-stack developer based in South Africa. I'm mainly a MERN stack and
-                    TypeScript developer but I am also comfortable with Python, C# and PostgreSQL.</p>
-                <p>I'm a diligent and highly intelligent individual with an avid interest in technology and computer
-                    programming. I'm a fast learner and meticulous worker who enjoys challenges and problem solving. </p>
+                <p>
+                    I am Buntu Cossie a full-stack developer from South Africa. I make web apps in TypeScript, C#, React, Next.js, Solid.js and PostgreSQL amongst a whole list of other technologies. Soon I'll be adding Blazor Webassembly and Rust to my repertoire.
+                </p>
+                <p>
+                    Perhaps my two greatest assets are my passion for software development and tech in general, and my ability to quickly learn new skills. These drive me to look for new and creative ways to to develop software and solve real world problems
+                </p>
                 <p>Select a tab {window.innerWidth > 768 ? "on the left" : "at the top of the page"} to view my proficiencies.</p>
             </motion.div>
         </div>
