@@ -32,6 +32,7 @@ export default function ContactForm(props: P6265451) {
                         minLength={10}
                         maxLength={500}
                         name="message"
+                        placeholder=" "
                     />
                     <label htmlFor='contactMessage' >Message</label>
                 </div>
@@ -58,6 +59,7 @@ function Input(props: P743346) {
                 id={id}
                 required
                 name={label}
+                placeholder=" "
             />
             <label htmlFor={id} > {titleCase(label)} </label>
         </div>

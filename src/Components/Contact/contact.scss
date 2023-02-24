@@ -26,11 +26,12 @@
 
     textarea,
     input {
-        &:focus {
+        &:focus, &:not(:placeholder-shown) {
             outline: none;
             +label {
                 top: -15px;
                 font-size: 12px;
+                color: hsl(180, 25%, 75%);
             }
         }
     }
@@ -74,47 +75,6 @@
     }
 }
 
-// #contactForm {
-//     width: 50%;
-//     margin: 0 auto;
-//     display: flex;
-//     flex-direction: column;
-//     margin-bottom: 2rem;
-
-//     input {
-//         height: 2rem;
-//     }
-
-//     input,
-//     textarea {
-//         color: blue;
-//         margin-bottom: 1rem;
-//         border-top: none;
-//         border-left: none;
-//         border-right: none;
-//         background: none;
-//         transition: all 1000ms ease;
-
-//         &:focus {
-//             outline: none;
-
-//             +label {
-//                 top: -15px;
-//                 font-size: 12px;
-//             }
-//         }
-//     }
-
-//     textarea {
-//         height: 10rem;
-//     }
-
-//     label {
-//         position: absolute;
-//         top: 0;
-//         transition: all 250ms ease-in-out;
-//     }
-// }
 .formControl {
     display: flex;
     flex-direction: column;
