@@ -13,7 +13,8 @@ export const stack: { [key: string]: string } = {
     render: "https://intellyx.com/wp-content/uploads/2019/08/Render-cloud-intellyx-BC-logo.png",
     netlify: "https://upload.wikimedia.org/wikipedia/commons/b/b8/Netlify_logo.svg",
     apollo: "https://user-images.githubusercontent.com/841294/53402609-b97a2180-39ba-11e9-8100-812bab86357c.png",
-    trpc: "https://trpc.io/img/logo.svg"
+    trpc: "https://trpc.io/img/logo.svg",
+    imgur: "https://upload.wikimedia.org/wikipedia/commons/e/e9/Imgur_logo.svg"
 }
 const sections = [langs, frontend, backend, misc]
 
@@ -42,8 +43,8 @@ export const projectArray: Projs[] = [
         img: "/screenshots/memes.png",
         path: "https://mememachine.vercel.app/",
         external: true,
-        description: "Full-stack CRUD application for posting and viewing memes. Features 'like', 'follow' functionality and OAuth login with Google and Facebook. Developed with TypeScript, Next.js, React and Tailwind CSS. The data is stored in Supabase PostgreSQL and Prisma ORM is used to interact with the database. Uses the Next-Auth library for authentication and tRPC to bridge the front-end and back-end. ",
-        stack: ["typescript", "next.js", "react", "node.js", "postgresql", "prisma", "json web token", "vercel", "trpc", "tailwind"],
+        description: "Full-stack CRUD application for posting and viewing memes. Features 'like', 'follow' functionality and OAuth login with Google and Facebook. Developed with TypeScript, Next.js, React and Tailwind CSS. Images are uploaded to Imgur using the Imgur API. The data is stored in Supabase PostgreSQL and Prisma ORM is used to interact with the database. Uses the Next-Auth library for authentication and tRPC to bridge the front-end and back-end. ",
+        stack: ["typescript", "next.js", "react", "node.js", "postgresql", "prisma", "json web token", "vercel", "trpc", "tailwind", "imgur"],
         repo: 'https://github.com/cossieB/meme-machine'
     }, {
         title: "Spaza Game Store",

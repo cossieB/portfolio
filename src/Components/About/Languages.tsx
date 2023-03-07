@@ -1,7 +1,10 @@
-import { motion, Variant, Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import { skillsMap } from "./skillsMap";
+import Tooltip from "../shared/Tooltip";
 import { variant } from "./utils";
 import { Lang } from "./vars";
+import styles from './about.module.scss'
+import { useRef, useState } from "react";
 
 export default function Languages({ arr }: { arr: Lang[] }) {
     return (
@@ -18,38 +21,31 @@ export default function Languages({ arr }: { arr: Lang[] }) {
     )
 }
 
-const circleVariant: Variants = {
-    initial: {
-        opacity: 0,
-        pathLength: 0
-    },
-    animate: {
-        opacity: 1,
-        pathLength: 1,
-        transition: {
-            duration: 5
-        }
-    }
-}
-
 function LangDiv({ lingo, i, length }: { lingo: Lang, i: number, length: number }) {
     const [strokeColour, summary] = skillsMap(lingo.skill)
+    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+    const ref = useRef<HTMLDivElement>(null)
     return (
         <motion.div
             key={lingo.language}
-            className='skillDiv'
+            className={styles.skillDiv}
             variants={variant}
             initial="start"
             animate="end"
             exit="exit"
+            ref={ref}
+            onMouseEnter={e => {
+                const rect = ref.current!.getBoundingClientRect()
+                setMousePosition({ x: e.pageX - rect.left, y: e.pageY })
+            }}
             custom={{ index: i, reverse: length - 1 - i }}  >
             <img
-                className='langLogos'
+                className={styles.langLogos}
                 src={lingo.logo}
                 alt={`${lingo.language} logo`}
-                title={lingo.language} />
+            />
             <svg xlinkTitle="skill level"
-                className="skill"
+                className={styles.skill}
                 height={100}
                 width={100}
             >
@@ -74,6 +70,7 @@ function LangDiv({ lingo, i, length }: { lingo: Lang, i: number, length: number 
                 />
                 <title> {summary} </title>
             </svg>
+            <Tooltip label={lingo.language} x={mousePosition.x} y={mousePosition.y} />
         </motion.div>
     )
 }

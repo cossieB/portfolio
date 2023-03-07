@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { useEffect } from 'react'
 import { containerVariant } from '../../variants'
-import './about.scss'
+import styles from './about.module.scss'
 import AboutMain from './AboutMain'
 
 export default function About() {
@@ -9,7 +9,12 @@ export default function About() {
         document.title = "Buntu Cossie"
     }, [])
     return (
-        <motion.div id="aboutContainer" variants={containerVariant} initial="start" animate="end" exit={'exit'}>
+        <motion.div
+            id={styles.aboutContainer}
+            variants={containerVariant} initial="start"
+            animate="end"
+            exit={'exit'}
+        >
             <AboutMain />
         </motion.div>
     )

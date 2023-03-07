@@ -1,11 +1,12 @@
 import { motion } from "framer-motion"
-import { useRef, useEffect, useLayoutEffect } from "react"
+import { useRef, useLayoutEffect, useState } from "react"
 import { Link } from "react-router-dom"
+import Tooltip from "../shared/Tooltip"
 import { stack } from "./projectArray"
 import { P889715 } from "./Projects"
 import styles from './Projects.module.scss'
 
-export default function Details({ proj, setSelected, wrapper }: P889715) {
+export default function Details({ proj, setSelected }: P889715) {
     const divWrapper = useRef<HTMLDivElement>(null)
     useLayoutEffect(() => {
         if (window.innerWidth < 768) {
@@ -21,7 +22,7 @@ export default function Details({ proj, setSelected, wrapper }: P889715) {
             className={styles.detailsPage}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
-            exit={{scale: 0.5, opacity: 0, }}
+            exit={{ scale: 0.5, opacity: 0, }}
             transition={{ duration: 0.5, type: 'spring', }}
         >
             <div className={styles.detail}>
@@ -31,12 +32,12 @@ export default function Details({ proj, setSelected, wrapper }: P889715) {
                             <h2>{proj.title}</h2>
                         </a> :
                         proj.path ?
-                        <Link to={proj.path} >
-                            <h2> {proj.title} </h2>
-                        </Link> :
-                        <div>
-                            <h2> {proj.title} </h2>
-                        </div>
+                            <Link to={proj.path} >
+                                <h2> {proj.title} </h2>
+                            </Link> :
+                            <div>
+                                <h2> {proj.title} </h2>
+                            </div>
                     }
                     <div style={{ height: '60%', alignItems: 'center', display: 'flex' }} >
                         <a href={proj.repo} target="_blank" rel="noreferrer" >
@@ -71,12 +72,34 @@ export default function Details({ proj, setSelected, wrapper }: P889715) {
                         <h3 style={{ textAlign: "center", fontSize: 25 }} >Stack</h3>
                         <div className={styles.detailsStackLogos}>
                             {proj.stack.map(item =>
-                                <img key={item} src={stack[item]} title={item} />
+                                <Logo item={item} />
                             )}
                         </div>
                     </div>
                 </div>
             </div>
         </motion.div>
+    )
+}
+
+function Logo({item}: {item: string}) {
+    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+    const ref = useRef<HTMLDivElement>(null)
+    return (
+        <div
+            className={styles.logos}
+            ref={ref}
+            onMouseEnter={e => {
+                const rect = ref.current!.getBoundingClientRect()
+                setMousePosition({ x: e.pageX - rect.left, y: e.pageY })
+            }}
+        >
+            <img src={stack[item]} />
+            <Tooltip
+                label={item}
+                x={mousePosition.x}
+                y={mousePosition.y}
+            />
+        </div>
     )
 }

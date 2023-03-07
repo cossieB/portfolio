@@ -86,11 +86,26 @@ $htwt: 15rem;
 }
 
 .skillDiv {
+    position: relative;
     display: flex;
     background-color: #3393a0;
 
     svg {
         background-color: $bg;
+    }
+    &:hover {
+        span {
+            opacity: 1;
+        }
+    }
+    span {
+        opacity: 0;
+        position: absolute;
+        border-radius: 0.5rem/2rem;
+        background-color: hsl(219, 50%, 25%);
+        padding: 0.5rem;
+        transition: opacity 250ms ease;
+        font-size: 1rem;
     }
 }
 

@@ -1,10 +1,11 @@
 import { motion } from "framer-motion";
+import styles from './about.module.scss'
 
 export default function AboutMe() {
     return (
         <div>
-            <div id="nameAndPic">
-                <img id="myPic" src="/me.jpg" alt="Myself" />
+            <div id={styles.nameAndPic}>
+                <img id={styles.myPic} src="/me.jpg" alt="Myself" />
                 <h1>Buntu Cossie</h1>
             </div>
             <motion.div
