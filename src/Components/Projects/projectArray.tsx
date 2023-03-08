@@ -11,7 +11,8 @@ export const stack: { [key: string]: string } = {
     Netlify: "https://upload.wikimedia.org/wikipedia/commons/b/b8/Netlify_logo.svg",
     Apollo: "https://user-images.githubusercontent.com/841294/53402609-b97a2180-39ba-11e9-8100-812bab86357c.png",
     tRPC: "https://trpc.io/img/logo.svg",
-    Imgur: "https://upload.wikimedia.org/wikipedia/commons/e/e9/Imgur_logo.svg"
+    Imgur: "https://upload.wikimedia.org/wikipedia/commons/e/e9/Imgur_logo.svg",
+    NextAuth: "https://res.cloudinary.com/practicaldev/image/fetch/s--TpDTGYw5--/c_imagga_scale,f_auto,fl_progressive,h_900,q_auto,w_1600/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/yuxiptjqj8pa4bvyffym.png"
 }
 const sections = [langs, frontend, backend, misc]
 
@@ -41,7 +42,7 @@ export const projectArray: Projs[] = [
         path: "https://mememachine.vercel.app/",
         external: true,
         description: "Full-stack CRUD application for posting and viewing memes. Features 'like', 'follow' functionality and OAuth login with Google and Facebook. Developed with TypeScript, Next.js, React and Tailwind CSS. Images are uploaded to Imgur using the Imgur API. The data is stored in Supabase PostgreSQL and Prisma ORM is used to interact with the database. Uses the Next-Auth library for authentication and tRPC to bridge the front-end and back-end. ",
-        stack: ["TypeScript", "Next.js", "React", "Node.JS", "PostgreSQL", "Prisma", "Supabase", "Json Web Token", "Vercel", "tRPC", "Tailwind", "Imgur"],
+        stack: ["TypeScript", "Next.js", "React", "Node.JS", "PostgreSQL", "Prisma", "Supabase", "Json Web Token", "Vercel", "tRPC", "Tailwind", "Imgur", "NextAuth"],
         repo: 'https://github.com/cossieB/meme-machine'
     }, {
         title: "Spaza Game Store",

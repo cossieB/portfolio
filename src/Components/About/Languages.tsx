@@ -36,7 +36,7 @@ function LangDiv({ lingo, i, length }: { lingo: Lang, i: number, length: number 
             ref={ref}
             onMouseEnter={e => {
                 const rect = ref.current!.getBoundingClientRect()
-                setMousePosition({ x: e.pageX - rect.left, y: e.pageY })
+                setMousePosition({ x: e.pageX - rect.left, y: rect.height * 0.5  })
             }}
             custom={{ index: i, reverse: length - 1 - i }}  >
             <img

@@ -7,6 +7,7 @@
     width: 100vw;
     position: absolute;
 }
+
 .detail {
     display: flex;
     flex-direction: column;
@@ -15,9 +16,6 @@
     z-index: 50;
     opacity: 0.9;
     width: 80%;
-    position: absolute;
-
-
     height: min-content;
 }
 
@@ -93,6 +91,17 @@
 
         &:hover {
             text-decoration: underline;
+        }
+    }
+}
+
+.logoImg {
+    +span {
+        color: aliceblue;
+    }
+    &:hover {
+        +span {
+            opacity: 1;
         }
     }
 }

@@ -72,7 +72,7 @@ export default function Details({ proj, setSelected }: P889715) {
                         <h3 style={{ textAlign: "center", fontSize: 25 }} >Stack</h3>
                         <div className={styles.detailsStackLogos}>
                             {proj.stack.map(item =>
-                                <Logo item={item} />
+                                <Logo key={item} item={item} />
                             )}
                         </div>
                     </div>
@@ -82,24 +82,25 @@ export default function Details({ proj, setSelected }: P889715) {
     )
 }
 
-function Logo({item}: {item: string}) {
+function Logo({ item }: { item: string }) {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-    const ref = useRef<HTMLDivElement>(null)
+    const ref = useRef<HTMLImageElement>(null)
     return (
-        <div
-            className={styles.logos}
-            ref={ref}
-            onMouseEnter={e => {
-                const rect = ref.current!.getBoundingClientRect()
-                setMousePosition({ x: e.pageX - rect.left, y: e.pageY })
-            }}
-        >
-            <img src={stack[item]} />
+        <>
+            <img
+                ref={ref}
+                className={styles.logoImg}
+                onMouseEnter={e => {
+                    const rect = ref.current!.getBoundingClientRect(); console.log(e.pageX - rect.left)
+                    setMousePosition({ x: e.pageX, y: e.pageY })
+                }}
+                src={stack[item]}
+            />
             <Tooltip
                 label={item}
                 x={mousePosition.x}
                 y={mousePosition.y}
             />
-        </div>
+        </>
     )
 }
