@@ -1,5 +1,5 @@
 import { motion } from "framer-motion"
-import { useRef, useLayoutEffect, useState } from "react"
+import { useRef, useLayoutEffect, useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import Tooltip from "../shared/Tooltip"
 import { stack } from "./projectArray"
@@ -10,12 +10,16 @@ export default function Details({ proj, setSelected }: P889715) {
     const divWrapper = useRef<HTMLDivElement>(null)
     useLayoutEffect(() => {
         if (window.innerWidth < 768) {
-            divWrapper.current!.style.top = `${window.scrollY}px`
+            divWrapper.current!.style.top = `${0}px`
         }
         else {
             divWrapper.current!.style.top = `${window.scrollY}px`
         }
     }, [])
+    useEffect(() => {
+        document.body.style.overflowY = 'hidden'
+        return () => document.body.removeAttribute('style')
+    })
     return (
         <motion.div
             ref={divWrapper}
@@ -91,8 +95,8 @@ function Logo({ item }: { item: string }) {
                 ref={ref}
                 className={styles.logoImg}
                 onMouseEnter={e => {
-                    const rect = ref.current!.getBoundingClientRect(); console.log(e.pageX - rect.left)
-                    setMousePosition({ x: e.pageX, y: e.pageY })
+                    const rect = ref.current!.getBoundingClientRect();  console.log({clientY: e.clientY,pageY: e.pageY, screenY: e.screenY, top: rect.top})
+                    setMousePosition({ x: e.clientX, y: e.clientY })
                 }}
                 src={stack[item]}
             />
