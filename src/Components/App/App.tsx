@@ -17,6 +17,7 @@ import Sudoku from '../Sudoku/Sudoku';
 import Hanoi from '../Hanoi/Hanoi';
 import Game2048 from "../2048/2048";
 import Wordle from '../Wordle/Wordle';
+import GraphiqlPage from '../Graphiql/Graphiql';
 
 function App() {
     const location = useLocation()
@@ -42,6 +43,7 @@ function App() {
                 <Route path="/hanoi" key={"hanoi"}  ><Hanoi /> </Route>
                 <Route path="/2048" key={"2048"}  ><Game2048 /> </Route>
                 <Route path="/wordle" key={"wordle"}  ><Wordle /> </Route>
+                <Route path="/graphiql" key={"graphiql"}  ><GraphiqlPage /> </Route>
             </Switch>
         </AnimatePresence>
     )
