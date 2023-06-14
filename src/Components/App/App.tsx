@@ -23,7 +23,6 @@ import { useEffect } from 'react';
 function App() {
     useEffect(() => {
         const url = new URL(window.location.href)
-        console.log(url)
         if (/cossie-91/i.test(url.hostname)) {
             window.location.replace(`https://react.cossie.dev${url.pathname}`)
         }
