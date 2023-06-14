@@ -18,8 +18,16 @@ import Hanoi from '../Hanoi/Hanoi';
 import Game2048 from "../2048/2048";
 import Wordle from '../Wordle/Wordle';
 import GraphiqlPage from '../Graphiql/Graphiql';
+import { useEffect } from 'react';
 
 function App() {
+    useEffect(() => {
+        const url = new URL(window.location.href)
+        console.log(url)
+        if (/cossie-91/i.test(url.hostname)) {
+            window.location.replace(`https://react.cossie.dev${url.pathname}`)
+        }
+    })
     const location = useLocation()
     return (
         <AnimatePresence>
