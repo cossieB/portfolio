@@ -14,8 +14,16 @@
     ],
     "redirects": [
         {
-            "source": "/:glob*",
+            "source": "https://cossie-91.web.app/:glob*",
             "destination": "https://react.cossie.dev/:glob",
+            "type": 301
+        },{
+            "source": "https://cossie-91.web.app/",
+            "destination": "https://react.cossie.dev/",
+            "type": 301
+        }, {
+            "source": "https://cossie-91.web.app",
+            "destination": "https://react.cossie.dev",
             "type": 301
         }
     ]
