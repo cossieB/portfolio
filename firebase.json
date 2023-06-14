@@ -11,6 +11,13 @@
         "source": "**",
         "destination": "/index.html"
       }
+    ],
+    "redirects": [
+        {
+            "source": "https://cossie-91.web.app/:glob*",
+            "destination": "https://react.cossie.dev/:glob",
+            "type": 301
+        }
     ]
   }
 }
